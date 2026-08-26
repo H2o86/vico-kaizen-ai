@@ -111,21 +111,30 @@ class KaizenDuplicateChecker:
         max_score = matches[0]['overall_similarity_pct'] if matches else 0
         top_match = matches[0] if matches else None
 
+        orig_reward_str = ""
+        if top_match and top_match.get('tien_thuong_vnd'):
+            try:
+                rw = float(top_match['tien_thuong_vnd'])
+                rw_50 = float(rw * 0.5)
+                orig_reward_str = f" (Mức thưởng gốc: {rw:,.0f} VNĐ ➔ Mức thưởng mở rộng gợi ý 50%: {rw_50:,.0f} VNĐ)"
+            except:
+                pass
+
         # Determine Duplicate Risk Level & Reward Policy (50% Rule)
         if max_score >= 70:
             risk_level = "🔴 TRÙNG LẮP HOÀN TOÀN"
             risk_code = "HIGH_DUPLICATE"
-            reward_policy = "⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (0%): Đề tài trùng lặp hoàn toàn với Kaizen đã có trong hệ thống."
-            recommendation = f"Ý tưởng trùng lặp hoàn toàn với Kaizen mã [{top_match['ma_kaizen']}] ({top_match['ten_y_tuong']}). Cần bác bỏ hoặc chuyển sang trạng thái theo dõi duy trì."
+            reward_policy = f"⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (Mức thưởng: 0 VNĐ): Đề tài trùng lặp hoàn toàn (tương đồng {max_score}%) với Kaizen mã [{top_match['ma_kaizen']}]."
+            recommendation = f"Ý tưởng trùng lặp hoàn toàn với Kaizen mã [{top_match['ma_kaizen']}] ({top_match['ten_y_tuong']}). Ban Cải Tiến loại bỏ hoặc ghi nhận duy trì."
         elif max_score >= 35:
             risk_level = "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)"
             risk_code = "EXPANDED_SOLUTION"
-            reward_policy = f"⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (50%): Đề tài có giải pháp tương tự hoặc nhân rộng từ Kaizen gốc [{top_match['ma_kaizen']}]. Theo quy định công ty, mức khen thưởng tính bằng 50% mức thưởng của giải pháp gốc."
+            reward_policy = f"⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (THƯỞNG 50%): Đề tài có giải pháp tương tự/nhân rộng từ Kaizen gốc [{top_match['ma_kaizen']}]. Theo quy định công ty, mức khen thưởng = 50% mức thưởng giải pháp gốc{orig_reward_str}."
             recommendation = f"Đề tài có giải pháp tương tự đề tài gốc [{top_match['ma_kaizen']}] ({top_match['ten_y_tuong']}). Ban Cải Tiến xét duyệt khen thưởng ở mức 50% so với giải pháp gốc."
         else:
             risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)"
             risk_code = "NEW_IDEA"
-            reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa có giải pháp tương tự trong kho CSDL."
+            reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa từng có giải pháp tương tự trong CSDL công ty. Đủ điều kiện hưởng 100% mức thưởng tối đa."
             recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%)."
 
         report_md = self._format_report(content_text, risk_level, reward_policy, recommendation, matches)
