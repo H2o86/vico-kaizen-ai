@@ -41,7 +41,7 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json?v=556.8");
+        const res = await fetch("./kaizen_database.json?v=556.9");
         allKaizensCache = await res.json();
         
         // Fetch live updates from Google Sheet with 100% strict deduplication
@@ -138,7 +138,10 @@ function parseGoogleSheetRows(csvRows) {
         const solM = rowText.match(/🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)/s);
         const benM = rowText.match(/✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)/s);
         const resM = rowText.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)/s);
-        const stM = rowText.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|$)/s);
+        
+        const sysM = rowText.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)/s);
+        const tkM = rowText.match(/📊 Trạng thái triển khai \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)/s);
+        const dtM = rowText.match(/📊 Trạng thái duy trì\/mở rộng \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)/s);
 
         const title = titleM ? titleM[1].trim() : '';
         const code = codeM ? codeM[1].trim() : `GS-LIVE-${idx}`;
@@ -146,7 +149,10 @@ function parseGoogleSheetRows(csvRows) {
         const solution = solM ? solM[1].trim() : '';
         const benefits = benM ? benM[1].trim() : '';
         const resources = resM ? resM[1].trim() : '';
-        const status = stM ? stM[1].trim() : 'Đề nghị mới';
+
+        const status = sysM && sysM[1].trim() !== '*empty*' ? sysM[1].trim() : 'Đề nghị mới';
+        const tkStatus = tkM && tkM[1].trim() !== '*empty*' ? tkM[1].trim() : '';
+        const dtStatus = dtM && dtM[1].trim() !== '*empty*' ? dtM[1].trim() : '';
 
         if (title) {
             records.push({
@@ -160,6 +166,8 @@ function parseGoogleSheetRows(csvRows) {
                 danh_gia_hieu_qua: benefits,
                 nguon_luc: resources,
                 trang_thai: status,
+                trang_thai_trien_khai: tkStatus,
+                trang_thai_duy_tri: dtStatus,
                 phan_loai: 'Live Google Sheet'
             });
         }
@@ -350,6 +358,8 @@ function evaluateClientSide(inputStr, topK = 5) {
             gia_tri_lam_loi_vnd: rec.gia_tri_lam_loi_vnd,
             tinh_trang_khen_thuong: rec.tinh_trang_khen_thuong,
             trang_thai: rec.trang_thai,
+            trang_thai_trien_khai: rec.trang_thai_trien_khai,
+            trang_thai_duy_tri: rec.trang_thai_duy_tri,
             overall_similarity_pct: Math.min(99.9, Math.round(sim * 220 * 10) / 10),
             solution_similarity_pct: Math.min(99.9, Math.round(solSim * 200 * 10) / 10)
         };
@@ -630,7 +640,13 @@ function openDetailModal(maKaizen) {
         <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; color: #94a3b8; font-size: 13px;">
             <span><i class="fa-solid fa-user" style="color: #60a5fa;"></i> <strong>Tác giả / Người đề xuất:</strong> ${k.nguoi_de_xuat || 'Hệ thống'}</span>
             <span><i class="fa-solid fa-calendar" style="color: #60a5fa;"></i> <strong>Năm:</strong> ${k.nam || '2026'}</span>
-            <span><i class="fa-solid fa-tag" style="color: #60a5fa;"></i> <strong>Trạng thái:</strong> ${k.trang_thai || 'Báo cáo mới'}</span>
+        </div>
+
+        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 14px 18px; border-radius: 8px; margin-bottom: 14px;">
+            <h4 style="color: #60a5fa; margin-bottom: 8px;"><i class="fa-solid fa-square-poll-vertical"></i> 📊 Trạng Thái Đánh Giá & Triển Khai (TĐV):</h4>
+            <p style="line-height: 1.6;"><strong>1. Trạng thái (hệ thống):</strong> <span class="match-code" style="font-size: 13px;">${k.trang_thai || 'Báo cáo mới'}</span></p>
+            ${k.trang_thai_trien_khai ? `<p style="line-height: 1.6; margin-top: 6px;"><strong>2. Trạng thái triển khai (TĐV):</strong> <span style="color: #34d399; font-weight: 600;">${k.trang_thai_trien_khai}</span></p>` : ''}
+            ${k.trang_thai_duy_tri ? `<p style="line-height: 1.6; margin-top: 6px;"><strong>3. Trạng thái duy trì/mở rộng (TĐV):</strong> <span style="color: #fbbf24; font-weight: 600;">${k.trang_thai_duy_tri}</span></p>` : ''}
         </div>
         
         <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 14px 18px; border-radius: 8px; margin-bottom: 14px;">

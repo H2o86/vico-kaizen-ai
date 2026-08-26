@@ -43,7 +43,9 @@ try:
         benefits_m = re.search(r'✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
         resources_m = re.search(r'💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)', row_text, re.DOTALL)
         expansion_m = re.search(r'🚀 Cơ hội nhân rộng phát triển:\s*(.*?)(?=\n📊|$)', row_text, re.DOTALL)
-        system_status_m = re.search(r'📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|$)', row_text, re.DOTALL)
+        system_status_m = re.search(r'📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
+        tk_status_m = re.search(r'📊 Trạng thái triển khai \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
+        dt_status_m = re.search(r'📊 Trạng thái duy trì/mở rộng \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
 
         title = title_m.group(1).strip() if title_m else ''
         code = code_m.group(1).strip() if code_m else f'GS-2026-{idx+1}'
@@ -52,7 +54,10 @@ try:
         benefits = benefits_m.group(1).strip() if benefits_m else ''
         resources = resources_m.group(1).strip() if resources_m else ''
         expansion = expansion_m.group(1).strip() if expansion_m else ''
-        status = system_status_m.group(1).strip() if system_status_m else 'Đề nghị mới'
+        
+        status = system_status_m.group(1).strip() if system_status_m and system_status_m.group(1).strip() != '*empty*' else 'Đề nghị mới'
+        tk_status = tk_status_m.group(1).strip() if tk_status_m and tk_status_m.group(1).strip() != '*empty*' else ''
+        dt_status = dt_status_m.group(1).strip() if dt_status_m and dt_status_m.group(1).strip() != '*empty*' else ''
 
         # Infer unit from text if possible
         unit = 'Hệ thống mới'
@@ -80,6 +85,8 @@ try:
                 'tien_thuong_vnd': None,
                 'tinh_trang_khen_thuong': '',
                 'trang_thai': status,
+                'trang_thai_trien_khai': tk_status,
+                'trang_thai_duy_tri': dt_status,
                 'phan_loai': 'Google Sheet Kaizen',
                 'ngay_gui': datetime.now().strftime('%d/%m/%Y'),
                 'hinh_anh_truoc': '',
