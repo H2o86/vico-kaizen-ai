@@ -1,0 +1,36 @@
+name: Auto Sync Google Sheet Kaizens
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC (07:00 AM VN time)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl scikit-learn numpy
+
+      - name: Aggregate & Sync Google Sheet
+        run: |
+          python aggregate_kaizen_db.py
+
+      - name: Commit & Push updated database
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add kaizen_database.json kaizen_database.csv kaizen_database.xlsx
+          git diff-index --quiet HEAD || git commit -m "Auto-sync live Google Sheet Kaizens [skip ci]"
+          git push

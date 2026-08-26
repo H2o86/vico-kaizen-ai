@@ -3,12 +3,13 @@ let searchDebounceTimer = null;
 let allKaizensCache = [];
 let isLocalServer = true;
 
+const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=642561884&single=true&output=csv';
+
 document.addEventListener("DOMContentLoaded", async () => {
     await initApp();
 });
 
 async function initApp() {
-    // Check if running on local server or static GitHub Pages
     try {
         const res = await fetch("/api/stats");
         if (res.ok) {
@@ -30,56 +31,131 @@ async function loadStaticJSONDatabase() {
     try {
         const res = await fetch("./kaizen_database.json");
         allKaizensCache = await res.json();
+        
+        // Also fetch live updates from Google Sheet in background to ensure 100% fresh data!
+        await fetchLiveGoogleSheetUpdates();
 
-        // Update stats
-        document.getElementById("stat-total").innerText = allKaizensCache.length;
-        document.getElementById("stat-total-count").innerText = allKaizensCache.length;
-
-        let a3Count = 0;
-        let newCount = 0;
-        const unitsSet = new Set();
-        const statusCounts = {};
-
-        allKaizensCache.forEach(k => {
-            if (k.don_vi) unitsSet.add(k.don_vi);
-            const st = k.trang_thai || 'Báo cáo mới';
-            statusCounts[st] = (statusCounts[st] || 0) + 1;
-
-            if (st.includes("A3") || st.includes("hoàn thành") || st.includes("Đã triển khai") || st.includes("Duy trì")) {
-                a3Count++;
-            } else {
-                newCount++;
-            }
-        });
-
-        document.getElementById("stat-a3").innerText = a3Count;
-        document.getElementById("stat-units").innerText = unitsSet.size;
-
-        // Populate unit filter
-        const unitSelect = document.getElementById("db-filter-unit");
-        unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
-        unitsSet.forEach(u => {
-            const opt = document.createElement("option");
-            opt.value = u;
-            opt.textContent = u;
-            unitSelect.appendChild(opt);
-        });
-
-        // Populate status filter
-        const statusSelect = document.getElementById("db-filter-status");
-        statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
-        Object.keys(statusCounts).forEach(st => {
-            const opt = document.createElement("option");
-            opt.value = st;
-            opt.textContent = st;
-            statusSelect.appendChild(opt);
-        });
-
+        updateUIStats();
         renderStaticTable(1);
 
     } catch (err) {
         console.error("Failed to load kaizen_database.json:", err);
     }
+}
+
+// Fetch live updates from Google Sheet directly in browser
+async function fetchLiveGoogleSheetUpdates() {
+    try {
+        const res = await fetch(LIVE_GS_CSV_URL);
+        if (!res.ok) return;
+
+        const csvText = await res.text();
+        const parsedGS = parseGoogleSheetCSV(csvText);
+
+        if (parsedGS && parsedGS.length > 0) {
+            // Deduplicate with existing cache
+            const existingCodes = new Set(allKaizensCache.map(k => k.ma_kaizen));
+            let newAdded = 0;
+
+            parsedGS.forEach(item => {
+                if (!existingCodes.has(item.ma_kaizen)) {
+                    allKaizensCache.unshift(item); // Add newest item at top
+                    existingCodes.add(item.ma_kaizen);
+                    newAdded++;
+                }
+            });
+
+            if (newAdded > 0) {
+                console.log(`[Google Sheet Live Sync] Added ${newAdded} brand new Kaizens in real-time!`);
+            }
+        }
+    } catch (e) {
+        console.warn("Live Google Sheet browser fetch note:", e);
+    }
+}
+
+// Client-side regex parser for Google Sheet CSV
+function parseGoogleSheetCSV(csvText) {
+    const rows = csvText.split('\n');
+    const records = [];
+
+    rows.forEach((rowStr, idx) => {
+        if (!rowStr.includes("💡 Tên ý tưởng:") && !rowStr.includes("💡 Mã ý tưởng:")) return;
+
+        const titleM = rowStr.match(/💡 Tên ý tưởng:\s*(.*?)(?=\\n💡|\\n⚠️|\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
+        const codeM = rowStr.match(/💡 Mã ý tưởng:\s*(.*?)(?=\\n⚠️|\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
+        const statusM = rowStr.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
+        const solM = rowStr.match(/🛠️ Giải pháp:\s*(.*?)(?=\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
+        const benM = rowStr.match(/✨ Tính lợi ích:\s*(.*?)(?=\\n💪|\\n🚀|\\n📊|\n|$)/s);
+        const resM = rowStr.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\\n🚀|\\n📊|\n|$)/s);
+        const stM = rowStr.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\\n📊|\n|$)/s);
+
+        const title = titleM ? titleM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const code = codeM ? codeM[1].trim() : `GS-LIVE-${idx}`;
+        const statusQuo = statusM ? statusM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const solution = solM ? solM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const benefits = benM ? benM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const resources = resM ? resM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const status = stM ? stM[1].trim() : 'Đề nghị mới';
+
+        if (title) {
+            records.push({
+                ma_kaizen: code,
+                nam: 2026,
+                ten_y_tuong: title,
+                don_vi: 'Hệ thống mới',
+                nguoi_de_xuat: 'Google Sheet Trực Tuyến',
+                thuc_trang: statusQuo,
+                giai_phap: solution,
+                danh_gia_hieu_qua: benefits,
+                nguon_luc: resources,
+                trang_thai: status,
+                phan_loai: 'Live Google Sheet'
+            });
+        }
+    });
+
+    return records;
+}
+
+function updateUIStats() {
+    document.getElementById("stat-total").innerText = allKaizensCache.length;
+    document.getElementById("stat-total-count").innerText = allKaizensCache.length;
+
+    let a3Count = 0;
+    const unitsSet = new Set();
+    const statusCounts = {};
+
+    allKaizensCache.forEach(k => {
+        if (k.don_vi) unitsSet.add(k.don_vi);
+        const st = k.trang_thai || 'Báo cáo mới';
+        statusCounts[st] = (statusCounts[st] || 0) + 1;
+
+        if (st.includes("A3") || st.includes("hoàn thành") || st.includes("Đã triển khai") || st.includes("Duy trì")) {
+            a3Count++;
+        }
+    });
+
+    document.getElementById("stat-a3").innerText = a3Count;
+    document.getElementById("stat-units").innerText = unitsSet.size;
+
+    const unitSelect = document.getElementById("db-filter-unit");
+    unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
+    unitsSet.forEach(u => {
+        const opt = document.createElement("option");
+        opt.value = u;
+        opt.textContent = u;
+        unitSelect.appendChild(opt);
+    });
+
+    const statusSelect = document.getElementById("db-filter-status");
+    statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
+    Object.keys(statusCounts).forEach(st => {
+        const opt = document.createElement("option");
+        opt.value = st;
+        opt.textContent = st;
+        statusSelect.appendChild(opt);
+    });
 }
 
 // Tab Switcher
@@ -137,7 +213,6 @@ async function fetchStats() {
         document.getElementById("stat-a3").innerText = a3Count || 320;
         document.getElementById("stat-units").innerText = Object.keys(data.unit_counts || {}).length || 15;
 
-        // Unit filter
         const unitSelect = document.getElementById("db-filter-unit");
         unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
         for (const [unitName, _] of Object.entries(data.unit_counts || {})) {
@@ -149,7 +224,6 @@ async function fetchStats() {
             }
         }
 
-        // Status filter
         const statusSelect = document.getElementById("db-filter-status");
         statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
         for (const [stName, _] of Object.entries(data.status_counts || {})) {
@@ -189,13 +263,11 @@ async function handleEvaluate(e) {
             const data = await res.json();
             renderEvaluationResult(data, contentText);
         } else {
-            // Client-side AI Evaluation for GitHub Pages
             const data = evaluateClientSide(contentText, topK);
             renderEvaluationResult(data, contentText);
         }
     } catch (err) {
         console.error("Evaluation error:", err);
-        // Fallback to client-side
         const data = evaluateClientSide(contentText, topK);
         renderEvaluationResult(data, contentText);
     } finally {
@@ -523,8 +595,10 @@ async function syncGoogleSheet() {
             fetchStats();
             fetchDatabase(1);
         } else {
-            await loadStaticJSONDatabase();
-            alert("Đã cập nhật lại CSDL Kaizen!");
+            await fetchLiveGoogleSheetUpdates();
+            updateUIStats();
+            renderStaticTable(1);
+            alert("Đã đồng bộ trực tuyến dữ liệu mới nhất từ Google Sheet!");
         }
     } catch (err) {
         alert("Lỗi khi đồng bộ: " + err.message);
