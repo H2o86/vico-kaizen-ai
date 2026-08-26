@@ -11928,7 +11928,7 @@
     "ma_kaizen": "KZ2020-001",
     "nam": 2020,
     "ten_y_tuong": "Long đen định vị đá mài/cắt",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Nhóm mài sửa",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Sử dụng đá mài 180 lắp vào máy mài lắp đá 100 gây mất an toàn do đá không được định tâm có thể bị vỡ, văng gây sát thương cho người sử dụng và người xung quanh. Năm 2019 có ~ 3 vụ tai nạn do đá mài vỡ.",
@@ -11945,13 +11945,13 @@
     "ngay_gui": "06/01/2020",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-001 | Tên ý tưởng: Long đen định vị đá mài/cắt | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Sử dụng đá mài 180 lắp vào máy mài lắp đá 100 gây mất an toàn do đá không được định tâm có thể bị vỡ, văng gây sát thương cho người sử dụng và người xung quanh. Năm 2019 có ~ 3 vụ tai nạn do đá mài vỡ. | Giải pháp: Cắt long đen cấp cho người sử dụng lắp thêm vào máy để định tâm đá cắt | Lợi ích: Tránh hiện tượng vỡ đá cắt do hiện tượng lệch tâm gây tai nạn lao động, tiết kiệm thời gian thay đá cắt giúp tăng năng suất làm việc | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả về mặt an toàn và tiết kiệm thời gian thao tác thay đá cắt của người lao động | Nguồn lực: 60 long đen phẳng cắt theo kích thước bản vẽ."
+    "full_text_search": "Mã: KZ2020-001 | Tên ý tưởng: Long đen định vị đá mài/cắt | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Sử dụng đá mài 180 lắp vào máy mài lắp đá 100 gây mất an toàn do đá không được định tâm có thể bị vỡ, văng gây sát thương cho người sử dụng và người xung quanh. Năm 2019 có ~ 3 vụ tai nạn do đá mài vỡ. | Giải pháp: Cắt long đen cấp cho người sử dụng lắp thêm vào máy để định tâm đá cắt | Lợi ích: Tránh hiện tượng vỡ đá cắt do hiện tượng lệch tâm gây tai nạn lao động, tiết kiệm thời gian thay đá cắt giúp tăng năng suất làm việc | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả về mặt an toàn và tiết kiệm thời gian thao tác thay đá cắt của người lao động | Nguồn lực: 60 long đen phẳng cắt theo kích thước bản vẽ."
   },
   {
     "ma_kaizen": "KZ2020-002",
     "nam": 2020,
     "ten_y_tuong": "Hệ thống điều khiển PLC cho dây chuyền nguội cát",
-    "don_vi": "PX ĐÚC",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Xe rung chân không",
     "nguoi_de_xuat": "Trần Việt Tiệp",
     "thuc_trang": "Hệ thống điều khiển của xe rung bằng cơ khí lỗi thời, khó sửa chữa khi hư hỏng, điều khiển rung không chính xác nên không đáp ứng được yêu cầu sản xuất",
@@ -11968,13 +11968,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-002 | Tên ý tưởng: Hệ thống điều khiển PLC cho dây chuyền nguội cát | Đơn vị: PX ĐÚC | Người đề xuất: Trần Việt Tiệp | Thực trạng: Hệ thống điều khiển của xe rung bằng cơ khí lỗi thời, khó sửa chữa khi hư hỏng, điều khiển rung không chính xác nên không đáp ứng được yêu cầu sản xuất | Giải pháp: Sử dụng PLC với HMI là những thiết bị tiên tiến có khả năng lập trình giải quyết các yêu cầu phức tạp đòi hỏi sự chính xác của các yêu cầu sản xuất mới | Lợi ích: Công nghệ mới giúp điều khiển nhanh gọn chính xác, xử lý được những yêu cầu phức tạp, có thể dễ dàng điều chỉnh theo như cầu cải tiến; giám sát liên tục quá trình rung chèn, cho phép ghi lại lịch sử làm việc tự động và chính xác phục vụ cho quá trình nghiên cứu công nghệ; ghi chép lại thời gian chạy máy, lịch sử sự cố phục vụ cho dữ liệu quản lý thiết bị; có khả năng kết nối linh hoạt phục vụ định hướng hiện đại hóa điều khiển giúp giám sát toàn bộ quá trình làm việc của thiết bị trong công ty | Nhân rộng: Cải tiến mang lại hiệu quả cao, thiết bị hoạt động bền bỉ hơn, dễ sử dụng với màn hình điều khiển cảm ứng trực quan, tiết kiệm chi phí bảo trì hàng năm | Nguồn lực: Nghiên cứu lập trình PLC Siemens, HMI WeinTek (Chi phí thiết bị điều khiển ~ 15 triệu đồng)"
+    "full_text_search": "Mã: KZ2020-002 | Tên ý tưởng: Hệ thống điều khiển PLC cho dây chuyền nguội cát | Đơn vị: Phòng R&D | Người đề xuất: Trần Việt Tiệp | Thực trạng: Hệ thống điều khiển của xe rung bằng cơ khí lỗi thời, khó sửa chữa khi hư hỏng, điều khiển rung không chính xác nên không đáp ứng được yêu cầu sản xuất | Giải pháp: Sử dụng PLC với HMI là những thiết bị tiên tiến có khả năng lập trình giải quyết các yêu cầu phức tạp đòi hỏi sự chính xác của các yêu cầu sản xuất mới | Lợi ích: Công nghệ mới giúp điều khiển nhanh gọn chính xác, xử lý được những yêu cầu phức tạp, có thể dễ dàng điều chỉnh theo như cầu cải tiến; giám sát liên tục quá trình rung chèn, cho phép ghi lại lịch sử làm việc tự động và chính xác phục vụ cho quá trình nghiên cứu công nghệ; ghi chép lại thời gian chạy máy, lịch sử sự cố phục vụ cho dữ liệu quản lý thiết bị; có khả năng kết nối linh hoạt phục vụ định hướng hiện đại hóa điều khiển giúp giám sát toàn bộ quá trình làm việc của thiết bị trong công ty | Nhân rộng: Cải tiến mang lại hiệu quả cao, thiết bị hoạt động bền bỉ hơn, dễ sử dụng với màn hình điều khiển cảm ứng trực quan, tiết kiệm chi phí bảo trì hàng năm | Nguồn lực: Nghiên cứu lập trình PLC Siemens, HMI WeinTek (Chi phí thiết bị điều khiển ~ 15 triệu đồng)"
   },
   {
     "ma_kaizen": "KZ2020-003",
     "nam": 2020,
     "ten_y_tuong": "Tự chế tạo điều khiển cẩu trục",
-    "don_vi": "BAN QLTB",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Điều khiển cầu trục công ty",
     "nguoi_de_xuat": "Trần Việt Tiệp",
     "thuc_trang": "Điều khiển từ xa cẩu trục thường xuyên hỏng nút ấn và phải thay thế sửa chữa hoặc bỏ đi cả bộ điều khiển, hàng năm phải mua thay thế hàng chục bộ điều khiển (1,5~2,5 Tr/bộ)",
@@ -11991,13 +11991,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-003 | Tên ý tưởng: Tự chế tạo điều khiển cẩu trục | Đơn vị: BAN QLTB | Người đề xuất: Trần Việt Tiệp | Thực trạng: Điều khiển từ xa cẩu trục thường xuyên hỏng nút ấn và phải thay thế sửa chữa hoặc bỏ đi cả bộ điều khiển, hàng năm phải mua thay thế hàng chục bộ điều khiển (1,5~2,5 Tr/bộ) | Giải pháp: Phục hồi khả năng sử dụng của các bộ điều khiển cũ bằng cách tự chế tạo bộ tay điều khiển mới với nút ấn chất lượng tốt, dễ thay thế, hàn nút ấn với mạch của tay điều khiển cũ để phục hồi khả năng làm việc | Lợi ích: Nâng cao tuổi thọ của tay điều khiển cẩu, giảm chi phí mua điều khiển mới, thuận tiện cho công tác sửa chữa thay thế nút ấn, giảm thời gian dừng cẩu do sự cố về tay điều khiển, tận dụng được hoàn toàn bộ điều khiển cũ chờ hủy. | Nhân rộng:  | Nguồn lực: Thợ PX Cơ điện, 7 nút ấn & 1 công tắc chất lượng tốt, 1 bộ vỏ tay điều khiển làm từ tôn gấp sơn tĩnh điện"
+    "full_text_search": "Mã: KZ2020-003 | Tên ý tưởng: Tự chế tạo điều khiển cẩu trục | Đơn vị: Phòng R&D | Người đề xuất: Trần Việt Tiệp | Thực trạng: Điều khiển từ xa cẩu trục thường xuyên hỏng nút ấn và phải thay thế sửa chữa hoặc bỏ đi cả bộ điều khiển, hàng năm phải mua thay thế hàng chục bộ điều khiển (1,5~2,5 Tr/bộ) | Giải pháp: Phục hồi khả năng sử dụng của các bộ điều khiển cũ bằng cách tự chế tạo bộ tay điều khiển mới với nút ấn chất lượng tốt, dễ thay thế, hàn nút ấn với mạch của tay điều khiển cũ để phục hồi khả năng làm việc | Lợi ích: Nâng cao tuổi thọ của tay điều khiển cẩu, giảm chi phí mua điều khiển mới, thuận tiện cho công tác sửa chữa thay thế nút ấn, giảm thời gian dừng cẩu do sự cố về tay điều khiển, tận dụng được hoàn toàn bộ điều khiển cũ chờ hủy. | Nhân rộng:  | Nguồn lực: Thợ PX Cơ điện, 7 nút ấn & 1 công tắc chất lượng tốt, 1 bộ vỏ tay điều khiển làm từ tôn gấp sơn tĩnh điện"
   },
   {
     "ma_kaizen": "KZ2020-004",
     "nam": 2020,
     "ten_y_tuong": "Bơm hóa chất Alphaset dùng khí nén",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Bơm hóa chất khí nén",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Dùng bơm điện, không linh hoạt trong sử dụng, thiết bị nhanh hỏng do hóa chất rò rỉ bám dính làm cháy động cơ sau khoảng 2~3 tháng sử dụng",
@@ -12014,13 +12014,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-004 | Tên ý tưởng: Bơm hóa chất Alphaset dùng khí nén | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng bơm điện, không linh hoạt trong sử dụng, thiết bị nhanh hỏng do hóa chất rò rỉ bám dính làm cháy động cơ sau khoảng 2~3 tháng sử dụng | Giải pháp: Thay đổi cấu tạo, thêm đường khí nén | Lợi ích: Linh hoạt, an toàn và hiệu quả trong việc bơm hóa chất từ thùng phuy, không phải tốn chi chí mua bơm (3 triệu đồng/cái/3 tháng). Giảm chi phí mua thiết bị cho công ty ~12 triệu đồng /năm | Nhân rộng: Cải tiến chi phí thấp và đạt hiệu quả cao, có thể ứng dụng mang lại lợi ích lâu dài | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-004 | Tên ý tưởng: Bơm hóa chất Alphaset dùng khí nén | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng bơm điện, không linh hoạt trong sử dụng, thiết bị nhanh hỏng do hóa chất rò rỉ bám dính làm cháy động cơ sau khoảng 2~3 tháng sử dụng | Giải pháp: Thay đổi cấu tạo, thêm đường khí nén | Lợi ích: Linh hoạt, an toàn và hiệu quả trong việc bơm hóa chất từ thùng phuy, không phải tốn chi chí mua bơm (3 triệu đồng/cái/3 tháng). Giảm chi phí mua thiết bị cho công ty ~12 triệu đồng /năm | Nhân rộng: Cải tiến chi phí thấp và đạt hiệu quả cao, có thể ứng dụng mang lại lợi ích lâu dài | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-005",
     "nam": 2020,
     "ten_y_tuong": "Chân sạc tự động cho xe goong điện",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Xe gòong",
     "nguoi_de_xuat": "Trần Việt Tiệp",
     "thuc_trang": "Các xe goong hết ca phải cắm sạc mất công thao tác và dễ dẫn đến quên làm kiệt ắc quy gây hư hỏng ắc quy",
@@ -12037,13 +12037,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-005 | Tên ý tưởng: Chân sạc tự động cho xe goong điện | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Trần Việt Tiệp | Thực trạng: Các xe goong hết ca phải cắm sạc mất công thao tác và dễ dẫn đến quên làm kiệt ắc quy gây hư hỏng ắc quy | Giải pháp: Thiết kế chân sạc tự động,\nKhi xe chạy đến vị trí tự động 3s sau sẽ cấp điện sạc ắc quy chống phóng điện điểm tiếp xúc gây hỏng má\nThiết kế lò xo có thể tăng chỉnh để tăng khả năng kẹp chắc chắn cho má | Lợi ích: Kéo dài tuổi thọ acquy, linh hoạt trong SX | Nhân rộng: Đang chờ do xe chuyển khuôn chưa hoàn thiện | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-005 | Tên ý tưởng: Chân sạc tự động cho xe goong điện | Đơn vị: Phòng R&D | Người đề xuất: Trần Việt Tiệp | Thực trạng: Các xe goong hết ca phải cắm sạc mất công thao tác và dễ dẫn đến quên làm kiệt ắc quy gây hư hỏng ắc quy | Giải pháp: Thiết kế chân sạc tự động,\nKhi xe chạy đến vị trí tự động 3s sau sẽ cấp điện sạc ắc quy chống phóng điện điểm tiếp xúc gây hỏng má\nThiết kế lò xo có thể tăng chỉnh để tăng khả năng kẹp chắc chắn cho má | Lợi ích: Kéo dài tuổi thọ acquy, linh hoạt trong SX | Nhân rộng: Đang chờ do xe chuyển khuôn chưa hoàn thiện | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-006",
     "nam": 2020,
     "ten_y_tuong": "Tay nắm cho hộp bảo vệ khuôn DISA",
-    "don_vi": "PX DISA",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Che khuôn",
     "nguoi_de_xuat": "Hồng",
     "thuc_trang": "Không có vị trí cầm, khó thao tác",
@@ -12060,13 +12060,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-006 | Tên ý tưởng: Tay nắm cho hộp bảo vệ khuôn DISA | Đơn vị: PX DISA | Người đề xuất: Hồng | Thực trạng: Không có vị trí cầm, khó thao tác | Giải pháp: Thêm quai | Lợi ích: An toàn, tiết kiểm thời gian thao tác | Nhân rộng: Mở rộng triển khai trên toàn bộ chụp khuôn + đề xuất khen thưởng động viên | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-006 | Tên ý tưởng: Tay nắm cho hộp bảo vệ khuôn DISA | Đơn vị: PX Cơ điện | Người đề xuất: Hồng | Thực trạng: Không có vị trí cầm, khó thao tác | Giải pháp: Thêm quai | Lợi ích: An toàn, tiết kiểm thời gian thao tác | Nhân rộng: Mở rộng triển khai trên toàn bộ chụp khuôn + đề xuất khen thưởng động viên | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-007",
     "nam": 2020,
     "ten_y_tuong": "Mũi đục chặt bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Đục hơi chặt bi",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Mũi đục mua sẵn đục không hiệu quả gây khó thao tác, năng suất chặt bi thấp",
@@ -12083,13 +12083,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-007 | Tên ý tưởng: Mũi đục chặt bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Vũ Văn Trường | Thực trạng: Mũi đục mua sẵn đục không hiệu quả gây khó thao tác, năng suất chặt bi thấp | Giải pháp: Cải tạo lại mũi đục có hình dáng bám vào cổ bi | Lợi ích: Năng suất, an toàn, hình dáng cong giúp bám cổ bi tốt hơn giúp tăng hiệu quả chặt bi | Nhân rộng: Cải tiến đơn giản có hiệu quả cao và được áp dụng lâu dài, giảm được thời gian lao động và sức lao động | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-007 | Tên ý tưởng: Mũi đục chặt bi | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Mũi đục mua sẵn đục không hiệu quả gây khó thao tác, năng suất chặt bi thấp | Giải pháp: Cải tạo lại mũi đục có hình dáng bám vào cổ bi | Lợi ích: Năng suất, an toàn, hình dáng cong giúp bám cổ bi tốt hơn giúp tăng hiệu quả chặt bi | Nhân rộng: Cải tiến đơn giản có hiệu quả cao và được áp dụng lâu dài, giảm được thời gian lao động và sức lao động | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-008",
     "nam": 2020,
     "ten_y_tuong": "Cải tiến cơ cấu mở cửa lấy cát thí nghiệm",
-    "don_vi": "PX DISA",
+    "don_vi": "PX Đúc 2",
     "vi_tri": "Máy trộn TM 190-75",
     "nguoi_de_xuat": "Được",
     "thuc_trang": "Cửa lấy cát thí nghiệm theo thiết kế ban đầu dùng tay đẩy. Cát khó ra nên phải dùng que gỗ để chọc thông cát",
@@ -12106,13 +12106,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-008 | Tên ý tưởng: Cải tiến cơ cấu mở cửa lấy cát thí nghiệm | Đơn vị: PX DISA | Người đề xuất: Được | Thực trạng: Cửa lấy cát thí nghiệm theo thiết kế ban đầu dùng tay đẩy. Cát khó ra nên phải dùng que gỗ để chọc thông cát | Giải pháp: Dùng cơ cấu khí nén + phần đầu thông lỗ cát | Lợi ích: Cát ra nhanh, không mất thời gian chờ đợi để lấy mẫu ( 1 mẻ trộn là 120 giây nên thời gian lấy mẫu cần chuẩn để điều chỉnh) | Nhân rộng: Hiệu quả, đề xuất khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-008 | Tên ý tưởng: Cải tiến cơ cấu mở cửa lấy cát thí nghiệm | Đơn vị: PX Đúc 2 | Người đề xuất: Được | Thực trạng: Cửa lấy cát thí nghiệm theo thiết kế ban đầu dùng tay đẩy. Cát khó ra nên phải dùng que gỗ để chọc thông cát | Giải pháp: Dùng cơ cấu khí nén + phần đầu thông lỗ cát | Lợi ích: Cát ra nhanh, không mất thời gian chờ đợi để lấy mẫu ( 1 mẻ trộn là 120 giây nên thời gian lấy mẫu cần chuẩn để điều chỉnh) | Nhân rộng: Hiệu quả, đề xuất khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-009",
     "nam": 2020,
     "ten_y_tuong": "Cải tạo tủ điều khiển",
-    "don_vi": "PX DISA",
+    "don_vi": "Phòng Thiết bị",
     "vi_tri": "Máy trộn TM 190-7",
     "nguoi_de_xuat": "Vũ Văn Hưng",
     "thuc_trang": "Trộn tay nên trong lúc vận hành dễ bấm nhầm, dễ gây xả tiếp hỗn hợp khi đang trộn gây quá tải và mất thời gian vệ sinh buồng trộn. Ảnh hưởng đến sản xuất không liên tục",
@@ -12129,13 +12129,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-009 | Tên ý tưởng: Cải tạo tủ điều khiển | Đơn vị: PX DISA | Người đề xuất: Vũ Văn Hưng | Thực trạng: Trộn tay nên trong lúc vận hành dễ bấm nhầm, dễ gây xả tiếp hỗn hợp khi đang trộn gây quá tải và mất thời gian vệ sinh buồng trộn. Ảnh hưởng đến sản xuất không liên tục | Giải pháp: Chỉnh sửa phần điều khiển trong tủ điện. | Lợi ích: Bước đầu đánh giá tạm ổn | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-009 | Tên ý tưởng: Cải tạo tủ điều khiển | Đơn vị: Phòng Thiết bị | Người đề xuất: Vũ Văn Hưng | Thực trạng: Trộn tay nên trong lúc vận hành dễ bấm nhầm, dễ gây xả tiếp hỗn hợp khi đang trộn gây quá tải và mất thời gian vệ sinh buồng trộn. Ảnh hưởng đến sản xuất không liên tục | Giải pháp: Chỉnh sửa phần điều khiển trong tủ điện. | Lợi ích: Bước đầu đánh giá tạm ổn | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-010",
     "nam": 2020,
     "ten_y_tuong": "Hệ thống dữ liệu dùng chung",
-    "don_vi": "BAN QLTB",
+    "don_vi": "Phòng Thiết bị",
     "vi_tri": "Hệ thống dữ liệu dùng chung",
     "nguoi_de_xuat": "Trần Thảo Nguyên",
     "thuc_trang": "Dữ liệu chung đang rời rạc, khó quản lý",
@@ -12152,13 +12152,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-010 | Tên ý tưởng: Hệ thống dữ liệu dùng chung | Đơn vị: BAN QLTB | Người đề xuất: Trần Thảo Nguyên | Thực trạng: Dữ liệu chung đang rời rạc, khó quản lý | Giải pháp: Tạo một thư mục chung và đồng bộ lên Google Driver (miễn phí 15Gb) để chia sẻ dữ liệu dùng chung của phòng, chia sẻ cho các thành viên trong phòng cùng dử dụng, tổ chức, xây dựng dữ liệu | Lợi ích: Hiệu quả, thuận tiện trong việc sử dụng dữ liệu dùng chung, giúp các thành viên có thể trao đổi/truy cập dữ liệu làm việc ở mọi nơi | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-010 | Tên ý tưởng: Hệ thống dữ liệu dùng chung | Đơn vị: Phòng Thiết bị | Người đề xuất: Trần Thảo Nguyên | Thực trạng: Dữ liệu chung đang rời rạc, khó quản lý | Giải pháp: Tạo một thư mục chung và đồng bộ lên Google Driver (miễn phí 15Gb) để chia sẻ dữ liệu dùng chung của phòng, chia sẻ cho các thành viên trong phòng cùng dử dụng, tổ chức, xây dựng dữ liệu | Lợi ích: Hiệu quả, thuận tiện trong việc sử dụng dữ liệu dùng chung, giúp các thành viên có thể trao đổi/truy cập dữ liệu làm việc ở mọi nơi | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-011",
     "nam": 2020,
     "ten_y_tuong": "Thiết kế file quản lý dữ liệu quản lý thiết bị",
-    "don_vi": "BAN QLTB",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Quản lý bảo trì, sửa chữa thiết bị, quản lý mua sắm, quản lý xuất nhập kho công ty",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Quản lý dữ liệu bảo dưỡng nhiều thiết bị trên các file dữ liệu rời rạc nên mất thời gian trong việc rà soát, phát hành phiếu bảo dưỡng, dễ xảy ra sai sót trong phát hành - điều chỉnh nội dung - quản lý tần suất bảo dưỡng, không quản lý/tổng hợp được dữ liệu sửa chữa thiết bị sản xuất/mua sắm vật tư thiết bị. Thời gian xuất phiếu bảo dưỡng có thể mất từ 1~2 ngày tùy theo số lượng phiếu và có thể có nhiều thiếu sót. Không thể tổng hợp được tần suất hỏng của thiết bị sản xuất",
@@ -12175,13 +12175,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-011 | Tên ý tưởng: Thiết kế file quản lý dữ liệu quản lý thiết bị | Đơn vị: BAN QLTB | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Quản lý dữ liệu bảo dưỡng nhiều thiết bị trên các file dữ liệu rời rạc nên mất thời gian trong việc rà soát, phát hành phiếu bảo dưỡng, dễ xảy ra sai sót trong phát hành - điều chỉnh nội dung - quản lý tần suất bảo dưỡng, không quản lý/tổng hợp được dữ liệu sửa chữa thiết bị sản xuất/mua sắm vật tư thiết bị. Thời gian xuất phiếu bảo dưỡng có thể mất từ 1~2 ngày tùy theo số lượng phiếu và có thể có nhiều thiếu sót. Không thể tổng hợp được tần suất hỏng của thiết bị sản xuất | Giải pháp: Thiết kế file excel quản lý dữ liệu và xuất phiếu hàng loạt với độ chính xác cao và dễ kiểm soát điều chỉnh nội dung và tần suất bảo dưỡng phù hợp với các giai đoạn của thiết bị\nThiết kế file quản lý dữ liệu sửa chữa thiết bị\nThiết kế file quản lý mua vật tư của phòng\nThiết kế file quản lý xuất nhập kho thiết bị dự phòng | Lợi ích: Hiệu quả trong theo dõi việc bảo dưỡng, giảm thời gian xuất phiếu bảo dưỡng, dễ dàng quản lý điều chỉnh nội dung bảo dưỡng, giảm thời gian xuất phiếu bảo dưỡng, phiếu bảo dưỡng xuất ra chính xác bất kể số lượng (cụ thể mất khoảng 5 phút để xuất phiếu bảo dưỡng và không có lỗi sai), dễ dàng xuất số liệu báo cáo, giảm thời gian xử lý dữ liệu so với phương pháp thủ công trước khi cải tiến, có thể nhanh chóng tổng hợp xuất báo cáo tần suất sửa chữa bảo dưỡng. Xây dựng được mô hình dữ liệu quản lý thiết bị theo định hướng số hóa doanh nghiệp | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-011 | Tên ý tưởng: Thiết kế file quản lý dữ liệu quản lý thiết bị | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Quản lý dữ liệu bảo dưỡng nhiều thiết bị trên các file dữ liệu rời rạc nên mất thời gian trong việc rà soát, phát hành phiếu bảo dưỡng, dễ xảy ra sai sót trong phát hành - điều chỉnh nội dung - quản lý tần suất bảo dưỡng, không quản lý/tổng hợp được dữ liệu sửa chữa thiết bị sản xuất/mua sắm vật tư thiết bị. Thời gian xuất phiếu bảo dưỡng có thể mất từ 1~2 ngày tùy theo số lượng phiếu và có thể có nhiều thiếu sót. Không thể tổng hợp được tần suất hỏng của thiết bị sản xuất | Giải pháp: Thiết kế file excel quản lý dữ liệu và xuất phiếu hàng loạt với độ chính xác cao và dễ kiểm soát điều chỉnh nội dung và tần suất bảo dưỡng phù hợp với các giai đoạn của thiết bị\nThiết kế file quản lý dữ liệu sửa chữa thiết bị\nThiết kế file quản lý mua vật tư của phòng\nThiết kế file quản lý xuất nhập kho thiết bị dự phòng | Lợi ích: Hiệu quả trong theo dõi việc bảo dưỡng, giảm thời gian xuất phiếu bảo dưỡng, dễ dàng quản lý điều chỉnh nội dung bảo dưỡng, giảm thời gian xuất phiếu bảo dưỡng, phiếu bảo dưỡng xuất ra chính xác bất kể số lượng (cụ thể mất khoảng 5 phút để xuất phiếu bảo dưỡng và không có lỗi sai), dễ dàng xuất số liệu báo cáo, giảm thời gian xử lý dữ liệu so với phương pháp thủ công trước khi cải tiến, có thể nhanh chóng tổng hợp xuất báo cáo tần suất sửa chữa bảo dưỡng. Xây dựng được mô hình dữ liệu quản lý thiết bị theo định hướng số hóa doanh nghiệp | Nhân rộng: Theo dõi, đề xuất khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-012",
     "nam": 2020,
     "ten_y_tuong": "Cắt máng treo dây điện lò NL",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Đường dây điện ra vào lò NL",
     "nguoi_de_xuat": "Lương Quang Huy",
     "thuc_trang": "Dài, mất diện tích thao tác",
@@ -12198,13 +12198,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-012 | Tên ý tưởng: Cắt máng treo dây điện lò NL | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Lương Quang Huy | Thực trạng: Dài, mất diện tích thao tác | Giải pháp: Cắt ngắn phần treo để giải phóng mặt bằng | Lợi ích: An toàn, mở rộng diện tích | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-012 | Tên ý tưởng: Cắt máng treo dây điện lò NL | Đơn vị: PX Cơ điện | Người đề xuất: Lương Quang Huy | Thực trạng: Dài, mất diện tích thao tác | Giải pháp: Cắt ngắn phần treo để giải phóng mặt bằng | Lợi ích: An toàn, mở rộng diện tích | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-013",
     "nam": 2020,
     "ten_y_tuong": "Miệng hồi cát CDR",
-    "don_vi": "PX DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Disacool",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Cát tràn miệng CDR, mất thời gian vệ sinh ảnh hưởng đến sản xuất",
@@ -12221,13 +12221,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-013 | Tên ý tưởng: Miệng hồi cát CDR | Đơn vị: PX DISA | Người đề xuất: Vũ Văn Trường | Thực trạng: Cát tràn miệng CDR, mất thời gian vệ sinh ảnh hưởng đến sản xuất | Giải pháp: Hàn thêm vành hồi cát vào miệng dưới sàng rung | Lợi ích: Lượng cát ra giảm tới 95 %. Giảm công vệ sinh trong quá trình SX và sau SX | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-013 | Tên ý tưởng: Miệng hồi cát CDR | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Cát tràn miệng CDR, mất thời gian vệ sinh ảnh hưởng đến sản xuất | Giải pháp: Hàn thêm vành hồi cát vào miệng dưới sàng rung | Lợi ích: Lượng cát ra giảm tới 95 %. Giảm công vệ sinh trong quá trình SX và sau SX | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-014",
     "nam": 2020,
     "ten_y_tuong": "Cải tạo kết cấu máy xóc bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Máy xóc bi",
     "nguoi_de_xuat": "Trần Việt Tiệp",
     "thuc_trang": "Đứt ốc khi chạy bi đường kính lớn",
@@ -12244,13 +12244,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-014 | Tên ý tưởng: Cải tạo kết cấu máy xóc bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Trần Việt Tiệp | Thực trạng: Đứt ốc khi chạy bi đường kính lớn | Giải pháp: Thay đổi kết cấu | Lợi ích: Chờ duyệt PA | Nhân rộng: Họp xem xét(do máy sử dụng liên tục chưa triển khai) | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-014 | Tên ý tưởng: Cải tạo kết cấu máy xóc bi | Đơn vị: Phòng R&D | Người đề xuất: Trần Việt Tiệp | Thực trạng: Đứt ốc khi chạy bi đường kính lớn | Giải pháp: Thay đổi kết cấu | Lợi ích: Chờ duyệt PA | Nhân rộng: Họp xem xét(do máy sử dụng liên tục chưa triển khai) | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-015",
     "nam": 2020,
     "ten_y_tuong": "Đục chặt bi trước khâu xóc bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Máy xóc bi",
     "nguoi_de_xuat": "Lê Xuân Tuyên",
     "thuc_trang": "Trước là bi 80,90 bốc cả  thêm 1 tấn đậu nữa cho vào máy để xóc(tổng là 3 tấn cả đậu và bi) dẫn đến máy xóc làm việc 2 ngày liền thì đứt ốc rơi tấm lót mất công sửa chữa, thời gian xóc 1 tiếng 1 mẻ chỉ đc 1.2 tấn/1 mẻ vẫn phải chặt bi đôi và nhặt đậu ra mất nhiều thời gian và hao bi ( mòn bi).một ngày xóc cả 2 máy đc 8 tấn bi",
@@ -12267,13 +12267,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-015 | Tên ý tưởng: Đục chặt bi trước khâu xóc bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Trước là bi 80,90 bốc cả  thêm 1 tấn đậu nữa cho vào máy để xóc(tổng là 3 tấn cả đậu và bi) dẫn đến máy xóc làm việc 2 ngày liền thì đứt ốc rơi tấm lót mất công sửa chữa, thời gian xóc 1 tiếng 1 mẻ chỉ đc 1.2 tấn/1 mẻ vẫn phải chặt bi đôi và nhặt đậu ra mất nhiều thời gian và hao bi ( mòn bi).một ngày xóc cả 2 máy đc 8 tấn bi | Giải pháp: Thay đổi trình tự sản xuất : dùng đục hơi chặt bi và phân loại đậu ra trước cho bi vào xóc đc 3.5 tấn 1 mẻ thời gian xóc là 15 phút(thời gian xóc giảm)ngày xóc 3.5 mẻ/1 ngày.đc 12 tấn( tăng sản lượng lên) | Lợi ích: Thời chạy máy xóc giảm một nửa tải, công sửa chữa máy giảm, công nhân bốc đậu và bi cũng nhẹ nhàng hơn khi tách bi ra khỏi đậu. | Nhân rộng: Kaizen đơn giản mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-015 | Tên ý tưởng: Đục chặt bi trước khâu xóc bi | Đơn vị: PX NL2 | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Trước là bi 80,90 bốc cả  thêm 1 tấn đậu nữa cho vào máy để xóc(tổng là 3 tấn cả đậu và bi) dẫn đến máy xóc làm việc 2 ngày liền thì đứt ốc rơi tấm lót mất công sửa chữa, thời gian xóc 1 tiếng 1 mẻ chỉ đc 1.2 tấn/1 mẻ vẫn phải chặt bi đôi và nhặt đậu ra mất nhiều thời gian và hao bi ( mòn bi).một ngày xóc cả 2 máy đc 8 tấn bi | Giải pháp: Thay đổi trình tự sản xuất : dùng đục hơi chặt bi và phân loại đậu ra trước cho bi vào xóc đc 3.5 tấn 1 mẻ thời gian xóc là 15 phút(thời gian xóc giảm)ngày xóc 3.5 mẻ/1 ngày.đc 12 tấn( tăng sản lượng lên) | Lợi ích: Thời chạy máy xóc giảm một nửa tải, công sửa chữa máy giảm, công nhân bốc đậu và bi cũng nhẹ nhàng hơn khi tách bi ra khỏi đậu. | Nhân rộng: Kaizen đơn giản mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-016",
     "nam": 2020,
     "ten_y_tuong": "Gia cố rãnh trượt máy nắn",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Máy nắn",
     "nguoi_de_xuat": "Hồng",
     "thuc_trang": "Máy nắn khi thiết kế ban đầu do tính toán không chuẩn nên bulong chịu lực của má chịu lực hướng ngang dễ cắt làm gãy bulong rát nguy hiểm cho người sử dụng\nThực tế đã có 1 trường hợp bị má trượt văng ra sượt đầu",
@@ -12290,13 +12290,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-016 | Tên ý tưởng: Gia cố rãnh trượt máy nắn | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Hồng | Thực trạng: Máy nắn khi thiết kế ban đầu do tính toán không chuẩn nên bulong chịu lực của má chịu lực hướng ngang dễ cắt làm gãy bulong rát nguy hiểm cho người sử dụng\nThực tế đã có 1 trường hợp bị má trượt văng ra sượt đầu | Giải pháp: Thiết kế thêm mã chịu lực dọc, nhờ thế bulong má trượt không bị gãy, ít hư hỏng phải dừng máy, và cũng an toàn hơn cho người sử dụng | Lợi ích: an toàn cho người sư dụng | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-016 | Tên ý tưởng: Gia cố rãnh trượt máy nắn | Đơn vị: PX Cơ điện | Người đề xuất: Hồng | Thực trạng: Máy nắn khi thiết kế ban đầu do tính toán không chuẩn nên bulong chịu lực của má chịu lực hướng ngang dễ cắt làm gãy bulong rát nguy hiểm cho người sử dụng\nThực tế đã có 1 trường hợp bị má trượt văng ra sượt đầu | Giải pháp: Thiết kế thêm mã chịu lực dọc, nhờ thế bulong má trượt không bị gãy, ít hư hỏng phải dừng máy, và cũng an toàn hơn cho người sử dụng | Lợi ích: an toàn cho người sư dụng | Nhân rộng: Độngviên khen thưởng | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-017",
     "nam": 2020,
     "ten_y_tuong": "Hút khói dầu lò ram giếng",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Lò ram giếng",
     "nguoi_de_xuat": "Trần Việt Tiệp",
     "thuc_trang": "Lò Ram Giếng khi ra lò rất khói, khói phát sinh do cháy dầu của quá trình tôi rất độc hại ảnh hưởng nhiều sức khỏe của công nhân",
@@ -12313,13 +12313,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-017 | Tên ý tưởng: Hút khói dầu lò ram giếng | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Trần Việt Tiệp | Thực trạng: Lò Ram Giếng khi ra lò rất khói, khói phát sinh do cháy dầu của quá trình tôi rất độc hại ảnh hưởng nhiều sức khỏe của công nhân | Giải pháp: Dùng quạt hút hút khói trước khi mở cửa,\nDùng ống bổ sung khí ngoài để trung hòa khí nóng hút ra giảm nhiệt cho quạt\nkhí hút ra đề xuất dùng ống đưa ra ngoài xưởng lên cao | Lợi ích: Giảm được lượng khói sinh ra ro dầu cháy và giảm nhiệt độ cao gây ảnh hưởng tới sức khỏe của người lao động khi thao tác ra lò, cải thiện môi trường làm việc trong xưởng | Nhân rộng: Chưa đánh giá | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-017 | Tên ý tưởng: Hút khói dầu lò ram giếng | Đơn vị: Phòng R&D | Người đề xuất: Trần Việt Tiệp | Thực trạng: Lò Ram Giếng khi ra lò rất khói, khói phát sinh do cháy dầu của quá trình tôi rất độc hại ảnh hưởng nhiều sức khỏe của công nhân | Giải pháp: Dùng quạt hút hút khói trước khi mở cửa,\nDùng ống bổ sung khí ngoài để trung hòa khí nóng hút ra giảm nhiệt cho quạt\nkhí hút ra đề xuất dùng ống đưa ra ngoài xưởng lên cao | Lợi ích: Giảm được lượng khói sinh ra ro dầu cháy và giảm nhiệt độ cao gây ảnh hưởng tới sức khỏe của người lao động khi thao tác ra lò, cải thiện môi trường làm việc trong xưởng | Nhân rộng: Chưa đánh giá | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-018",
     "nam": 2020,
     "ten_y_tuong": "Cặp nhiệt đốt xốp",
-    "don_vi": "PX khuôn nền",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Đốt xốp khi tháo khuôn",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Dùng que sắt, nung đỏ rồi đốt, mất thời gian và không chủ động",
@@ -12336,13 +12336,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-018 | Tên ý tưởng: Cặp nhiệt đốt xốp | Đơn vị: PX khuôn nền | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng que sắt, nung đỏ rồi đốt, mất thời gian và không chủ động | Giải pháp: Chế tạo bộ đốt bằng cặp nhiệt điện. | Lợi ích: Chủ động, an toàn, hiệu quả | Nhân rộng: Cải tiến giúp nâng cao năng suất lao động, giảm chi phí đốt lò nung, giảm nhiệt độ và khói bụi trong môi trường làm việc của PX | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-018 | Tên ý tưởng: Cặp nhiệt đốt xốp | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng que sắt, nung đỏ rồi đốt, mất thời gian và không chủ động | Giải pháp: Chế tạo bộ đốt bằng cặp nhiệt điện. | Lợi ích: Chủ động, an toàn, hiệu quả | Nhân rộng: Cải tiến giúp nâng cao năng suất lao động, giảm chi phí đốt lò nung, giảm nhiệt độ và khói bụi trong môi trường làm việc của PX | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-019",
     "nam": 2020,
     "ten_y_tuong": "Cải tạo quang treo ra lò NL",
-    "don_vi": "PX Nhiệt luyện",
+    "don_vi": "PX NL1",
     "vi_tri": "Móc cẩu lò NL",
     "nguoi_de_xuat": "Nguyễn Văn Duy",
     "thuc_trang": "Móc cầu không điều chỉnh được khoảng cách 2 quai treo",
@@ -12359,13 +12359,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-019 | Tên ý tưởng: Cải tạo quang treo ra lò NL | Đơn vị: PX Nhiệt luyện | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Móc cầu không điều chỉnh được khoảng cách 2 quai treo | Giải pháp: Khoan thêm lỗ, điều chỉnh được khoảng cách giữa các quai | Lợi ích: Linh động trong SX | Nhân rộng: Cải tiến đơn giản đạt hiệu quả\\ | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-019 | Tên ý tưởng: Cải tạo quang treo ra lò NL | Đơn vị: PX NL1 | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Móc cầu không điều chỉnh được khoảng cách 2 quai treo | Giải pháp: Khoan thêm lỗ, điều chỉnh được khoảng cách giữa các quai | Lợi ích: Linh động trong SX | Nhân rộng: Cải tiến đơn giản đạt hiệu quả\\ | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-020",
     "nam": 2020,
     "ten_y_tuong": "Xe vận chuyển thùng phuy",
-    "don_vi": "PX nhiệt luyện Disa",
+    "don_vi": "PX NL2",
     "vi_tri": "Vận chuyển thùng phi",
     "nguoi_de_xuat": "Kính",
     "thuc_trang": "Vận chuyển thùng phuy bằng phương pháp lăn thùng trên nền xưởng , mỗi lần 3~4 cái mất nhiều thời gian, kém hiệu quả",
@@ -12382,7 +12382,7 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-020 | Tên ý tưởng: Xe vận chuyển thùng phuy | Đơn vị: PX nhiệt luyện Disa | Người đề xuất: Kính | Thực trạng: Vận chuyển thùng phuy bằng phương pháp lăn thùng trên nền xưởng , mỗi lần 3~4 cái mất nhiều thời gian, kém hiệu quả | Giải pháp: Chế tạo xe, mỗi lần vận chuyển 8 thùng với thời gian di chuyển nhanh hơn | Lợi ích: Tiết kiệm thời gian và sức lao động, nâng cao năng suất làm việc lên ~2 lần | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả về mặt an toàn và tiết kiệm thời gian thao tác vận chuyển thùng phuy của người lao động | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-020 | Tên ý tưởng: Xe vận chuyển thùng phuy | Đơn vị: PX NL2 | Người đề xuất: Kính | Thực trạng: Vận chuyển thùng phuy bằng phương pháp lăn thùng trên nền xưởng , mỗi lần 3~4 cái mất nhiều thời gian, kém hiệu quả | Giải pháp: Chế tạo xe, mỗi lần vận chuyển 8 thùng với thời gian di chuyển nhanh hơn | Lợi ích: Tiết kiệm thời gian và sức lao động, nâng cao năng suất làm việc lên ~2 lần | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả về mặt an toàn và tiết kiệm thời gian thao tác vận chuyển thùng phuy của người lao động | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-021",
@@ -12411,7 +12411,7 @@
     "ma_kaizen": "KZ2020-023",
     "nam": 2020,
     "ten_y_tuong": "Tái chế chuôi đá mài lỗ thành chuôi cacbit",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Que cacbit làm búa đập",
     "nguoi_de_xuat": "Trần Trọng Quân",
     "thuc_trang": "Phải cắt từ sắt dây phi 5 để hàn vào que cacbit",
@@ -12428,13 +12428,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-023 | Tên ý tưởng: Tái chế chuôi đá mài lỗ thành chuôi cacbit | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Trần Trọng Quân | Thực trạng: Phải cắt từ sắt dây phi 5 để hàn vào que cacbit | Giải pháp: Tận dụng chuôi thép phế liệu từ đá mài lỗ | Lợi ích: Tận dụng được công sức cắt thép và tiền mua thép phi 5                                                                     Chuôi thép của đá mài liên kết tốt và giữ que cacbit tốt trong thao | Nhân rộng: ý tưởng đơn giản đạt hiệu quả về kinh tế và công lao động | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-023 | Tên ý tưởng: Tái chế chuôi đá mài lỗ thành chuôi cacbit | Đơn vị: PX Cơ điện | Người đề xuất: Trần Trọng Quân | Thực trạng: Phải cắt từ sắt dây phi 5 để hàn vào que cacbit | Giải pháp: Tận dụng chuôi thép phế liệu từ đá mài lỗ | Lợi ích: Tận dụng được công sức cắt thép và tiền mua thép phi 5                                                                     Chuôi thép của đá mài liên kết tốt và giữ que cacbit tốt trong thao | Nhân rộng: ý tưởng đơn giản đạt hiệu quả về kinh tế và công lao động | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-024",
     "nam": 2020,
     "ten_y_tuong": "Chữ mẻ nấu và thứ tự trong loại sigma 89,1-114,3-350 và sigma 89,1-271",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Chữ mẻ nấu và thứ tự trong loại sigma 89,1-114,3-350 và sigma 89,1-270",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "Trước cải tiến phải đánh riêng bảng chữ sau đó cắt dán lên mẫu xốp của cánh xoắn sigma 89,1-114,3-350 và sigma 89,1-270",
@@ -12451,13 +12451,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-024 | Tên ý tưởng: Chữ mẻ nấu và thứ tự trong loại sigma 89,1-114,3-350 và sigma 89,1-271 | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: Trước cải tiến phải đánh riêng bảng chữ sau đó cắt dán lên mẫu xốp của cánh xoắn sigma 89,1-114,3-350 và sigma 89,1-270 | Giải pháp: Sau khi sử dụng mã số lắp luôn vào khuôn nhôm khi đánh sản phẩm , sản phẩm ra đạt luôn mã số | Lợi ích: Tiết kiệm vật tư và thời gian để đánh ra bảng mã số                                                                         Bớt được công đoạn cắt mã và dán mã                        Tính thẩm mỹ | Nhân rộng: Cải tiến giúp nâng cao năng suất lao động và chất lượng sản phẩm | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-024 | Tên ý tưởng: Chữ mẻ nấu và thứ tự trong loại sigma 89,1-114,3-350 và sigma 89,1-271 | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: Trước cải tiến phải đánh riêng bảng chữ sau đó cắt dán lên mẫu xốp của cánh xoắn sigma 89,1-114,3-350 và sigma 89,1-270 | Giải pháp: Sau khi sử dụng mã số lắp luôn vào khuôn nhôm khi đánh sản phẩm , sản phẩm ra đạt luôn mã số | Lợi ích: Tiết kiệm vật tư và thời gian để đánh ra bảng mã số                                                                         Bớt được công đoạn cắt mã và dán mã                        Tính thẩm mỹ | Nhân rộng: Cải tiến giúp nâng cao năng suất lao động và chất lượng sản phẩm | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-025",
     "nam": 2020,
     "ten_y_tuong": "Cân bàn máy phân loại bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Khu vực phân loại bi",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Dùng sàng tôi thủ công để phân loại bi đóng thùng bi thành phẩm, không kiểm soát được khối lượng bi đóng trong phi",
@@ -12474,13 +12474,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-025 | Tên ý tưởng: Cân bàn máy phân loại bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng sàng tôi thủ công để phân loại bi đóng thùng bi thành phẩm, không kiểm soát được khối lượng bi đóng trong phi | Giải pháp: Chế tạo bộ cân tự động khi đóng bi tại máy phân loại bi | Lợi ích: Tiết kiệm thời gian, kiểm soát khối lượng phi bi theo yêu cầu, tăng năng suất, chất lượng khâu phân loại bi | Nhân rộng: Cải tiến mang lại hiệu quả cao, giúp nâng cao năng suất đóng bi cũng như kiểm soát được khối lượng sản phẩm với màn hình hiển thị số cân trực quan | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-025 | Tên ý tưởng: Cân bàn máy phân loại bi | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Dùng sàng tôi thủ công để phân loại bi đóng thùng bi thành phẩm, không kiểm soát được khối lượng bi đóng trong phi | Giải pháp: Chế tạo bộ cân tự động khi đóng bi tại máy phân loại bi | Lợi ích: Tiết kiệm thời gian, kiểm soát khối lượng phi bi theo yêu cầu, tăng năng suất, chất lượng khâu phân loại bi | Nhân rộng: Cải tiến mang lại hiệu quả cao, giúp nâng cao năng suất đóng bi cũng như kiểm soát được khối lượng sản phẩm với màn hình hiển thị số cân trực quan | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-026",
     "nam": 2020,
     "ten_y_tuong": "Thanh chống sản phẩm hỗ trợ sơn phủ",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX Hoàn thiện",
     "vi_tri": "Bộ phận sơn hàng",
     "nguoi_de_xuat": "Lê Trung Hải",
     "thuc_trang": "Tấm lót để nằm ra nền xưởng để sơn và lật bằng cẩu trục để sơn mặt còn lại gây mất thời gian, công sức và mất an toàn",
@@ -12497,13 +12497,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-026 | Tên ý tưởng: Thanh chống sản phẩm hỗ trợ sơn phủ | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Lê Trung Hải | Thực trạng: Tấm lót để nằm ra nền xưởng để sơn và lật bằng cẩu trục để sơn mặt còn lại gây mất thời gian, công sức và mất an toàn | Giải pháp: Sử dụng ống thép (liệu nấu chưa sử dụng) xuyên qua lỗ tấm lót tạo chân chống tấm lót ở vị trí đứng thuận tiện cho việc sơn sản phẩm cả 2 mặt | Lợi ích: Tiết kiệm thời gian, tăng năng suất | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-026 | Tên ý tưởng: Thanh chống sản phẩm hỗ trợ sơn phủ | Đơn vị: PX Hoàn thiện | Người đề xuất: Lê Trung Hải | Thực trạng: Tấm lót để nằm ra nền xưởng để sơn và lật bằng cẩu trục để sơn mặt còn lại gây mất thời gian, công sức và mất an toàn | Giải pháp: Sử dụng ống thép (liệu nấu chưa sử dụng) xuyên qua lỗ tấm lót tạo chân chống tấm lót ở vị trí đứng thuận tiện cho việc sơn sản phẩm cả 2 mặt | Lợi ích: Tiết kiệm thời gian, tăng năng suất | Nhân rộng: Cải tiến đơn giản mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2020-027",
     "nam": 2020,
     "ten_y_tuong": "Ray chuyển xe goong giữa 2 gian xưởng NL Disa",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Khu vực máy xóc bi",
     "nguoi_de_xuat": "Lê Xuân Tuyên",
     "thuc_trang": "Dùng cẩu để cẩu bi từ xe goong cửa máy soc sang ray chuyển đẩy tay sang bên nhiệt luyện",
@@ -12520,13 +12520,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2020-027 | Tên ý tưởng: Ray chuyển xe goong giữa 2 gian xưởng NL Disa | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Dùng cẩu để cẩu bi từ xe goong cửa máy soc sang ray chuyển đẩy tay sang bên nhiệt luyện | Giải pháp: - Lắp dặt đường goong từ cửa máy xóc sang khu nhiệt luyện (ý tưởng Mr. Tuyên NL)                  - Chế tạo xe gòng điện, Lắp đặt thêm máng tại cửa máy xóc. Bi sau xóc sẽ đổ trực tiếp vào xe và chuyển sang khu nhiệt luyện. | Lợi ích: Tiết kiệm thời gian chuyển bi, tăng năng suất | Nhân rộng: Chưa đánh giá | Nguồn lực: "
+    "full_text_search": "Mã: KZ2020-027 | Tên ý tưởng: Ray chuyển xe goong giữa 2 gian xưởng NL Disa | Đơn vị: PX NL2 | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Dùng cẩu để cẩu bi từ xe goong cửa máy soc sang ray chuyển đẩy tay sang bên nhiệt luyện | Giải pháp: - Lắp dặt đường goong từ cửa máy xóc sang khu nhiệt luyện (ý tưởng Mr. Tuyên NL)                  - Chế tạo xe gòng điện, Lắp đặt thêm máng tại cửa máy xóc. Bi sau xóc sẽ đổ trực tiếp vào xe và chuyển sang khu nhiệt luyện. | Lợi ích: Tiết kiệm thời gian chuyển bi, tăng năng suất | Nhân rộng: Chưa đánh giá | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-001",
     "nam": 2021,
     "ten_y_tuong": "Gân tăng cứng SP ống gió đứng Ninh - Ninh bình",
-    "don_vi": "PHÒNG KTCN",
+    "don_vi": "Phòng KTCN",
     "vi_tri": "Sản phẩm: Ống gió Đứng Khách hàng Ninh - Ninh Bình",
     "nguoi_de_xuat": "Nguyễn Đăng Sơn",
     "thuc_trang": "Đúc 28 quả, hỏng 14 quả tỷ lệ hỏng 50%",
@@ -12543,13 +12543,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-001 | Tên ý tưởng: Gân tăng cứng SP ống gió đứng Ninh - Ninh bình | Đơn vị: PHÒNG KTCN | Người đề xuất: Nguyễn Đăng Sơn | Thực trạng: Đúc 28 quả, hỏng 14 quả tỷ lệ hỏng 50% | Giải pháp: Thêm gân tăng cứng chịu lực | Lợi ích: Kaizen cho kết quả tốt, sau cải tiến đúc 6 quả, đạt 6 quả, tỷ lên 100%. | Nhân rộng: Cải tiến đạt kết quả tốt,\nCải tiến thuộc nhóm cải tiến khắc phục không phù hợp | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-001 | Tên ý tưởng: Gân tăng cứng SP ống gió đứng Ninh - Ninh bình | Đơn vị: Phòng KTCN | Người đề xuất: Nguyễn Đăng Sơn | Thực trạng: Đúc 28 quả, hỏng 14 quả tỷ lệ hỏng 50% | Giải pháp: Thêm gân tăng cứng chịu lực | Lợi ích: Kaizen cho kết quả tốt, sau cải tiến đúc 6 quả, đạt 6 quả, tỷ lên 100%. | Nhân rộng: Cải tiến đạt kết quả tốt,\nCải tiến thuộc nhóm cải tiến khắc phục không phù hợp | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-002",
     "nam": 2022,
     "ten_y_tuong": "Chuyển đổi nhanh mã thẻ vào khuôn âm bản cánh xoắn SIGMA 350-370",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Cánh xoắn SIGMA 350 - 270",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "Đánh xốp âm bản tấm mã tháng và tấm mã mẻ.\nCắt dán mã tháng và mã mẻ vào cánh xoắn SIGMA 350 và 270.\nDo cắt dán thủ công bằng tay nên chữ và số không đẹp, tốn nhiều công chế tạo và  chỉnh sửa sau đúc",
@@ -12566,13 +12566,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-002 | Tên ý tưởng: Chuyển đổi nhanh mã thẻ vào khuôn âm bản cánh xoắn SIGMA 350-370 | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: Đánh xốp âm bản tấm mã tháng và tấm mã mẻ.\nCắt dán mã tháng và mã mẻ vào cánh xoắn SIGMA 350 và 270.\nDo cắt dán thủ công bằng tay nên chữ và số không đẹp, tốn nhiều công chế tạo và  chỉnh sửa sau đúc | Giải pháp: Gia công mẫu CNC âm bản của cánh xoắn ∂ 350 và ∂ 270 tạo hố để lắp mã tháng và mã mẻ.\nMã tháng, mã mẻ được gia công CNC và lắp vào khuôn khi cần thay đổi. | Lợi ích: Kaizen cho kết quả tốt:\nSản phẩm ra đẹp và đều đạt yêu cầu, đặc biệt sản phẩn SIGMA 350 và 270 là các sản phẩm xuất khẩu nên giá trị và hình ảnh công ty được nâng cao\nTiết kiệm được nhiều nhân công đánh xốp, cắt, dán, mài sửa, giúp tăng năng suất lao động | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-002 | Tên ý tưởng: Chuyển đổi nhanh mã thẻ vào khuôn âm bản cánh xoắn SIGMA 350-370 | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: Đánh xốp âm bản tấm mã tháng và tấm mã mẻ.\nCắt dán mã tháng và mã mẻ vào cánh xoắn SIGMA 350 và 270.\nDo cắt dán thủ công bằng tay nên chữ và số không đẹp, tốn nhiều công chế tạo và  chỉnh sửa sau đúc | Giải pháp: Gia công mẫu CNC âm bản của cánh xoắn ∂ 350 và ∂ 270 tạo hố để lắp mã tháng và mã mẻ.\nMã tháng, mã mẻ được gia công CNC và lắp vào khuôn khi cần thay đổi. | Lợi ích: Kaizen cho kết quả tốt:\nSản phẩm ra đẹp và đều đạt yêu cầu, đặc biệt sản phẩn SIGMA 350 và 270 là các sản phẩm xuất khẩu nên giá trị và hình ảnh công ty được nâng cao\nTiết kiệm được nhiều nhân công đánh xốp, cắt, dán, mài sửa, giúp tăng năng suất lao động | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-003",
     "nam": 2021,
     "ten_y_tuong": "Gông ép khuôn IKN",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Nhóm làm khuôn IKN",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Dùng quả đè để ép các tấm khuôn cát gây mất sức lao động, mất thời gian chuẩn bị khuôn rót đổ và thời gian tháo rỡ sản phẩm sau đúc",
@@ -12589,13 +12589,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-003 | Tên ý tưởng: Gông ép khuôn IKN | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Dùng quả đè để ép các tấm khuôn cát gây mất sức lao động, mất thời gian chuẩn bị khuôn rót đổ và thời gian tháo rỡ sản phẩm sau đúc | Giải pháp: Dùng gông thép để tạo lực ép | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Giảm thời gian chuẩn bị khuôn ~300 giây cho 1 bộ khuôn\n- Giảm thời gian tháo rỡ sản phẩm sau đúc ~300 giây cho mỗi bộ khuôn\n- Giảm công sức cho người lao động không phải bê vác quả nặng | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-003 | Tên ý tưởng: Gông ép khuôn IKN | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Dùng quả đè để ép các tấm khuôn cát gây mất sức lao động, mất thời gian chuẩn bị khuôn rót đổ và thời gian tháo rỡ sản phẩm sau đúc | Giải pháp: Dùng gông thép để tạo lực ép | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Giảm thời gian chuẩn bị khuôn ~300 giây cho 1 bộ khuôn\n- Giảm thời gian tháo rỡ sản phẩm sau đúc ~300 giây cho mỗi bộ khuôn\n- Giảm công sức cho người lao động không phải bê vác quả nặng | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-004",
     "nam": 2021,
     "ten_y_tuong": "Cải tiến phương pháp tách khuôn thao Iteko",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Nhóm làm thao khuôn Iteko",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Sử dụng cẩu trục và búa gỗ để tháo vỏ khuôn gây lãng phí thời gian và khó đảm bảo chất lượng bề mặt sản phẩm, sản phẩm phải sửa nhiều gây lãng phí và giảm năng suất lao động",
@@ -12612,13 +12612,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-004 | Tên ý tưởng: Cải tiến phương pháp tách khuôn thao Iteko | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Sử dụng cẩu trục và búa gỗ để tháo vỏ khuôn gây lãng phí thời gian và khó đảm bảo chất lượng bề mặt sản phẩm, sản phẩm phải sửa nhiều gây lãng phí và giảm năng suất lao động | Giải pháp: Khoan lỗ ren vào vỏ khuôn nhôm để đẩy sản phẩm ra khỏi lòng khuôn. Sản phẩm được đẩy ra nhanh và không làm hư hại bề mặt sản phẩm | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Không còn sản phẩm bị hỏng phải sửa do khâu tháo khuôn\n- Sản lượng sản phẩm tăng lên do giảm được thời gian tháo khuôn (từ 5~6 SP/ngày tăng lên 8~9 SP/ngày) | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-004 | Tên ý tưởng: Cải tiến phương pháp tách khuôn thao Iteko | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Sử dụng cẩu trục và búa gỗ để tháo vỏ khuôn gây lãng phí thời gian và khó đảm bảo chất lượng bề mặt sản phẩm, sản phẩm phải sửa nhiều gây lãng phí và giảm năng suất lao động | Giải pháp: Khoan lỗ ren vào vỏ khuôn nhôm để đẩy sản phẩm ra khỏi lòng khuôn. Sản phẩm được đẩy ra nhanh và không làm hư hại bề mặt sản phẩm | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Không còn sản phẩm bị hỏng phải sửa do khâu tháo khuôn\n- Sản lượng sản phẩm tăng lên do giảm được thời gian tháo khuôn (từ 5~6 SP/ngày tăng lên 8~9 SP/ngày) | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-005",
     "nam": 2021,
     "ten_y_tuong": "Cào thu hồi sơn tưới",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "PX Khuôn",
     "vi_tri": "Nhóm hoàn thiện sản phẩm phuôn",
     "nguoi_de_xuat": "Việt-A",
     "thuc_trang": "Dùng chổi quét tay để gạt sơn trên thành máng sơn tưới gây lãng phí thời gian và loãng sơn do phải dùng nhiều cồn để có thể quét",
@@ -12635,13 +12635,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-005 | Tên ý tưởng: Cào thu hồi sơn tưới | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Việt-A | Thực trạng: Dùng chổi quét tay để gạt sơn trên thành máng sơn tưới gây lãng phí thời gian và loãng sơn do phải dùng nhiều cồn để có thể quét | Giải pháp: Chế tạo cần gạt để gạt được diện tích rộng hơn, gạt hiệu quả hơn và không phải bổ sung thêm cồn gây loãng sơn | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Sơn được thu hồi nhanh hơn giảm lãng phí di sơn khô trên thành máng\n- Giảm lãng phí trên mỗi sản phẩm | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-005 | Tên ý tưởng: Cào thu hồi sơn tưới | Đơn vị: PX Khuôn | Người đề xuất: Việt-A | Thực trạng: Dùng chổi quét tay để gạt sơn trên thành máng sơn tưới gây lãng phí thời gian và loãng sơn do phải dùng nhiều cồn để có thể quét | Giải pháp: Chế tạo cần gạt để gạt được diện tích rộng hơn, gạt hiệu quả hơn và không phải bổ sung thêm cồn gây loãng sơn | Lợi ích: Kaizen đạt hiệu quả tốt:\n- Sơn được thu hồi nhanh hơn giảm lãng phí di sơn khô trên thành máng\n- Giảm lãng phí trên mỗi sản phẩm | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-006",
     "nam": 2021,
     "ten_y_tuong": "Chốt khóa nhanh then cửa lồng xóc bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Nhóm Xóc bi",
     "nguoi_de_xuat": "Vũ Duy Tư",
     "thuc_trang": "Chốt gài then cửa máy xóc bi làm bằng bulong gây khó khăn trong thao tác đóng/mở cửa gây lãng phí về thời gian và sức lực",
@@ -12658,13 +12658,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-006 | Tên ý tưởng: Chốt khóa nhanh then cửa lồng xóc bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Vũ Duy Tư | Thực trạng: Chốt gài then cửa máy xóc bi làm bằng bulong gây khó khăn trong thao tác đóng/mở cửa gây lãng phí về thời gian và sức lực | Giải pháp: Dùng dây thép D3.2 quấn thành chốt cài để thay thế cho bulong | Lợi ích: Kaizen đạt hiệu quả tốt:\n- thao tác tháo chốt nhanh hơn, tăng thời gian có ích của máy xóc | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-006 | Tên ý tưởng: Chốt khóa nhanh then cửa lồng xóc bi | Đơn vị: PX NL2 | Người đề xuất: Vũ Duy Tư | Thực trạng: Chốt gài then cửa máy xóc bi làm bằng bulong gây khó khăn trong thao tác đóng/mở cửa gây lãng phí về thời gian và sức lực | Giải pháp: Dùng dây thép D3.2 quấn thành chốt cài để thay thế cho bulong | Lợi ích: Kaizen đạt hiệu quả tốt:\n- thao tác tháo chốt nhanh hơn, tăng thời gian có ích của máy xóc | Nhân rộng: Cải tiến tốn ít chi phí nhưng mang lại hiệu quả | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-007",
     "nam": 2021,
     "ten_y_tuong": "Thanh đập phẳng mặt khuôn Alphaset",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "PX Khuôn",
     "vi_tri": "Nhóm làm khuôn đầu máy 310P",
     "nguoi_de_xuat": "Việt-B",
     "thuc_trang": "Dùng chày gỗ để đập lèn phẳng cát mặt khuôn gây mất thời gian. Đập cục bộ nên cát không được lèn chặt",
@@ -12681,13 +12681,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-007 | Tên ý tưởng: Thanh đập phẳng mặt khuôn Alphaset | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Việt-B | Thực trạng: Dùng chày gỗ để đập lèn phẳng cát mặt khuôn gây mất thời gian. Đập cục bộ nên cát không được lèn chặt | Giải pháp: hàn thanh đập từ tôn 2mm có cán để đập lèn | Lợi ích: Kaizem đạt hiệu quả tốt: giảm thời gian đập lèn cát mặt khuôn, cát lèn đều, đẹp, thao tác thuận lợi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-007 | Tên ý tưởng: Thanh đập phẳng mặt khuôn Alphaset | Đơn vị: PX Khuôn | Người đề xuất: Việt-B | Thực trạng: Dùng chày gỗ để đập lèn phẳng cát mặt khuôn gây mất thời gian. Đập cục bộ nên cát không được lèn chặt | Giải pháp: hàn thanh đập từ tôn 2mm có cán để đập lèn | Lợi ích: Kaizem đạt hiệu quả tốt: giảm thời gian đập lèn cát mặt khuôn, cát lèn đều, đẹp, thao tác thuận lợi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-008",
     "nam": 2021,
     "ten_y_tuong": "Lỗ khoan thoát nước khoang đọng hút bụi DISA",
-    "don_vi": "PX DISA",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm vệ sinh đường ống hút bụi",
     "nguoi_de_xuat": "Phùng Tiến Sỹ",
     "thuc_trang": "Bụi trong đường ống bị bết do ẩm gây đọng nước và bụi, mất thời gian vệ sinh và xả nước",
@@ -12704,13 +12704,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-008 | Tên ý tưởng: Lỗ khoan thoát nước khoang đọng hút bụi DISA | Đơn vị: PX DISA | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Bụi trong đường ống bị bết do ẩm gây đọng nước và bụi, mất thời gian vệ sinh và xả nước | Giải pháp: Khoan lỗ thoát nước tại khoang đọng để nước tự chảy ra ngoài | Lợi ích: Cải tiến đạt hiệu quả giúp tăng hiệu quả làm việc | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-008 | Tên ý tưởng: Lỗ khoan thoát nước khoang đọng hút bụi DISA | Đơn vị: PX NL1 | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Bụi trong đường ống bị bết do ẩm gây đọng nước và bụi, mất thời gian vệ sinh và xả nước | Giải pháp: Khoan lỗ thoát nước tại khoang đọng để nước tự chảy ra ngoài | Lợi ích: Cải tiến đạt hiệu quả giúp tăng hiệu quả làm việc | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-009",
     "nam": 2021,
     "ten_y_tuong": "Cải tiến xoay phân loại bi",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Nhóm đóng bi",
     "nguoi_de_xuat": "Tân",
     "thuc_trang": "Bi trên băng tải phân loại bi di chuyển tĩnh, người kiểm tra bi phải lăn bằng tay để kiểm tra chất lượng bề mặt bi dẫn đến bỏ sót nhiều bi lỗi",
@@ -12727,13 +12727,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-009 | Tên ý tưởng: Cải tiến xoay phân loại bi | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Tân | Thực trạng: Bi trên băng tải phân loại bi di chuyển tĩnh, người kiểm tra bi phải lăn bằng tay để kiểm tra chất lượng bề mặt bi dẫn đến bỏ sót nhiều bi lỗi | Giải pháp: Làm thanh chặn ngang trên băng tải phân loại bi để bi tự động xoay giúp người kiểm tra bi dễ dàng phân loại được bi lỗi | Lợi ích: Cải tiến mang lại hiệu quả cao, nâng cao năng suất và chất lượng sản phẩm đóng phi do được kiểm soát tốt hơn | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-009 | Tên ý tưởng: Cải tiến xoay phân loại bi | Đơn vị: PX NL2 | Người đề xuất: Tân | Thực trạng: Bi trên băng tải phân loại bi di chuyển tĩnh, người kiểm tra bi phải lăn bằng tay để kiểm tra chất lượng bề mặt bi dẫn đến bỏ sót nhiều bi lỗi | Giải pháp: Làm thanh chặn ngang trên băng tải phân loại bi để bi tự động xoay giúp người kiểm tra bi dễ dàng phân loại được bi lỗi | Lợi ích: Cải tiến mang lại hiệu quả cao, nâng cao năng suất và chất lượng sản phẩm đóng phi do được kiểm soát tốt hơn | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-010",
     "nam": 2021,
     "ten_y_tuong": "Xử lý lỗi tắc bi dùng khí nén",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Bắn bi treo",
     "nguoi_de_xuat": "Phùng Tiến Sỹ",
     "thuc_trang": "Bi làm sạch SP khi chảy xuống vít tải đáy máy bị dồn ứ gây tắc nghẽn kẹt vít tải dẫn đến phải dừng máy gây ảnh hưởng sản xuất",
@@ -12750,13 +12750,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-010 | Tên ý tưởng: Xử lý lỗi tắc bi dùng khí nén | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Bi làm sạch SP khi chảy xuống vít tải đáy máy bị dồn ứ gây tắc nghẽn kẹt vít tải dẫn đến phải dừng máy gây ảnh hưởng sản xuất | Giải pháp: Khoan lỗ ở vỏ máy đầu vít tải, lắp ống khí nén phun hỗ trợ đẩy bi | Lợi ích: Kaizen đạt được hiệu quả tốt, đã giải quyết được vấn đề bằng tài nguyên sẵn có, không tốn thêm chi phí, máy sản xuất được liên tục, không bị dừng do sự cố tắc bi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-010 | Tên ý tưởng: Xử lý lỗi tắc bi dùng khí nén | Đơn vị: PX NL1 | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Bi làm sạch SP khi chảy xuống vít tải đáy máy bị dồn ứ gây tắc nghẽn kẹt vít tải dẫn đến phải dừng máy gây ảnh hưởng sản xuất | Giải pháp: Khoan lỗ ở vỏ máy đầu vít tải, lắp ống khí nén phun hỗ trợ đẩy bi | Lợi ích: Kaizen đạt được hiệu quả tốt, đã giải quyết được vấn đề bằng tài nguyên sẵn có, không tốn thêm chi phí, máy sản xuất được liên tục, không bị dừng do sự cố tắc bi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-011",
     "nam": 2021,
     "ten_y_tuong": "Khoang đọng chống xối mòn phễu tiếp bi",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Bắn bi treo",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Phễu tiếp bi làm sạch sản phẩm bị mòn thủng tại vị trí góc chuyển do bi liên tục xối vào gây thất thoát bi và dừng sửa (hàn vá) dẫn đến ảnh hưởng sản xuất",
@@ -12773,13 +12773,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-011 | Tên ý tưởng: Khoang đọng chống xối mòn phễu tiếp bi | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Phễu tiếp bi làm sạch sản phẩm bị mòn thủng tại vị trí góc chuyển do bi liên tục xối vào gây thất thoát bi và dừng sửa (hàn vá) dẫn đến ảnh hưởng sản xuất | Giải pháp: Thiết kế lại phễu có thêm khoang chứa bi tại vị trí bị mòn để loại bỏ phần diện tích bị xối mòn | Lợi ích: Cải tiến đạt hiệu quả tốt. Phễu tiếp bi không còn bị mòn thủng. Không phải dừng máy do lỗi mòn thủng phễu tiếp bi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-011 | Tên ý tưởng: Khoang đọng chống xối mòn phễu tiếp bi | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Phễu tiếp bi làm sạch sản phẩm bị mòn thủng tại vị trí góc chuyển do bi liên tục xối vào gây thất thoát bi và dừng sửa (hàn vá) dẫn đến ảnh hưởng sản xuất | Giải pháp: Thiết kế lại phễu có thêm khoang chứa bi tại vị trí bị mòn để loại bỏ phần diện tích bị xối mòn | Lợi ích: Cải tiến đạt hiệu quả tốt. Phễu tiếp bi không còn bị mòn thủng. Không phải dừng máy do lỗi mòn thủng phễu tiếp bi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-012",
     "nam": 2021,
     "ten_y_tuong": "Miệng hứng hồi bi cửa máy",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Bắn bi treo",
     "nguoi_de_xuat": "Phùng Lương",
     "thuc_trang": "Bi làm sạch sản phẩm rò rỉ qua kẽ cửa vào hàng rơi ra phía trước máy, người vận hành phải quét và thu hồi bi đổ vào trong máy mỗi ngày khoảng 30 phút",
@@ -12796,13 +12796,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-012 | Tên ý tưởng: Miệng hứng hồi bi cửa máy | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Phùng Lương | Thực trạng: Bi làm sạch sản phẩm rò rỉ qua kẽ cửa vào hàng rơi ra phía trước máy, người vận hành phải quét và thu hồi bi đổ vào trong máy mỗi ngày khoảng 30 phút | Giải pháp: Làm miệng hứng bên dưới cửa để khi bi rơi qua kẽ cửa sẽ rơi lại vào buồng vít tải | Lợi ích: Cải tiến giúp người vận hành không phải quét dọn, tập trung cho công việc tạo giá trị | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-012 | Tên ý tưởng: Miệng hứng hồi bi cửa máy | Đơn vị: PX Cơ điện | Người đề xuất: Phùng Lương | Thực trạng: Bi làm sạch sản phẩm rò rỉ qua kẽ cửa vào hàng rơi ra phía trước máy, người vận hành phải quét và thu hồi bi đổ vào trong máy mỗi ngày khoảng 30 phút | Giải pháp: Làm miệng hứng bên dưới cửa để khi bi rơi qua kẽ cửa sẽ rơi lại vào buồng vít tải | Lợi ích: Cải tiến giúp người vận hành không phải quét dọn, tập trung cho công việc tạo giá trị | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-013",
     "nam": 2021,
     "ten_y_tuong": "Cải tiến quang treo cẩu di chuyển khuôn",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Nhóm làm thao khuôn Iteko",
     "nguoi_de_xuat": "Hoàng Ngọc Hà",
     "thuc_trang": "Không dùng quang treo, chỉ dùng xích với khong xích thông thường dẫn đến các điểm móc bị kéo chéo làm hư hại bề mặt SP phải vá lại",
@@ -12819,13 +12819,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-013 | Tên ý tưởng: Cải tiến quang treo cẩu di chuyển khuôn | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Không dùng quang treo, chỉ dùng xích với khong xích thông thường dẫn đến các điểm móc bị kéo chéo làm hư hại bề mặt SP phải vá lại | Giải pháp: Thiết kế quang treo giúp các điểm móc treo thẳng theo phương trọng lực để không làm hỏng bề mặt sản phẩm | Lợi ích: Sản phẩm không bị hỏng, không mất thời gian vá bề mặt | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-013 | Tên ý tưởng: Cải tiến quang treo cẩu di chuyển khuôn | Đơn vị: Phòng R&D | Người đề xuất: Hoàng Ngọc Hà | Thực trạng: Không dùng quang treo, chỉ dùng xích với khong xích thông thường dẫn đến các điểm móc bị kéo chéo làm hư hại bề mặt SP phải vá lại | Giải pháp: Thiết kế quang treo giúp các điểm móc treo thẳng theo phương trọng lực để không làm hỏng bề mặt sản phẩm | Lợi ích: Sản phẩm không bị hỏng, không mất thời gian vá bề mặt | Nhân rộng: Cải tiến đơn giản đạt hiệu quả | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-014",
     "nam": 2021,
     "ten_y_tuong": "Thiết kế dưỡng kẹp đầu búa khi đập đậu",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm mài/cắt đậu",
     "nguoi_de_xuat": "Nguyễn Văn Duy",
     "thuc_trang": "Để nghiên quả búa dựa vào thùng đậu, thả quả đập rơi tự do vào đậu làm gẫy đậu.\nNhược điển khó gẫy đậu ( đập 2-3 lần mới gẫy, có quả không gẫy phải cắt hơi.) Đầu búa bị va chạm với quả đập ảnh hưởng đến chất lượng sản phẩm.",
@@ -12842,13 +12842,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-014 | Tên ý tưởng: Thiết kế dưỡng kẹp đầu búa khi đập đậu | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Để nghiên quả búa dựa vào thùng đậu, thả quả đập rơi tự do vào đậu làm gẫy đậu.\nNhược điển khó gẫy đậu ( đập 2-3 lần mới gẫy, có quả không gẫy phải cắt hơi.) Đầu búa bị va chạm với quả đập ảnh hưởng đến chất lượng sản phẩm. | Giải pháp: Dùng hàm nghiền cũ khoét 1 miếng vừa với đầu búa, nhô phần đậu ra ngoài. Thả quả đập làm gẫy đậu búa | Lợi ích: - Không mất thời gian kê kích, \n- Đập 1 lần là được, năng suất tăng gấp đôi.\n- Không ảnh hưởng đến chất lượng sản phẩm.\n- Không tốn chi phí cắt hơi | Nhân rộng:  | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-014 | Tên ý tưởng: Thiết kế dưỡng kẹp đầu búa khi đập đậu | Đơn vị: PX NL1 | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Để nghiên quả búa dựa vào thùng đậu, thả quả đập rơi tự do vào đậu làm gẫy đậu.\nNhược điển khó gẫy đậu ( đập 2-3 lần mới gẫy, có quả không gẫy phải cắt hơi.) Đầu búa bị va chạm với quả đập ảnh hưởng đến chất lượng sản phẩm. | Giải pháp: Dùng hàm nghiền cũ khoét 1 miếng vừa với đầu búa, nhô phần đậu ra ngoài. Thả quả đập làm gẫy đậu búa | Lợi ích: - Không mất thời gian kê kích, \n- Đập 1 lần là được, năng suất tăng gấp đôi.\n- Không ảnh hưởng đến chất lượng sản phẩm.\n- Không tốn chi phí cắt hơi | Nhân rộng:  | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2021-015",
     "nam": 2021,
     "ten_y_tuong": "Thiết kế bàn gông, dùng nêm nắn sản phẩm vấu kẹp TMD",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm mài/cắt đậu",
     "nguoi_de_xuat": "Nguyễn Văn Duy",
     "thuc_trang": "Sảm phẩm sau đúc bị vặn 1 đầu 5-6mm không cho vào máy nắn để nắn trở lại được.",
@@ -12865,13 +12865,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2021-015 | Tên ý tưởng: Thiết kế bàn gông, dùng nêm nắn sản phẩm vấu kẹp TMD | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Sảm phẩm sau đúc bị vặn 1 đầu 5-6mm không cho vào máy nắn để nắn trở lại được. | Giải pháp: Dùng bàn máp hàn vấu kẹp 1 đầu, đầu kia hơ đèn hỏa công dùng nêm nắn lại. | Lợi ích: - Thử dưỡng đạt khi đang nắn, khi sản phẩm gỡ ra đạt kích thước, không phải nắn lại.\n- Phương án dễ sử dụng, an toàn, năng suất cao. | Nhân rộng:  | Nguồn lực: "
+    "full_text_search": "Mã: KZ2021-015 | Tên ý tưởng: Thiết kế bàn gông, dùng nêm nắn sản phẩm vấu kẹp TMD | Đơn vị: PX NL1 | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Sảm phẩm sau đúc bị vặn 1 đầu 5-6mm không cho vào máy nắn để nắn trở lại được. | Giải pháp: Dùng bàn máp hàn vấu kẹp 1 đầu, đầu kia hơ đèn hỏa công dùng nêm nắn lại. | Lợi ích: - Thử dưỡng đạt khi đang nắn, khi sản phẩm gỡ ra đạt kích thước, không phải nắn lại.\n- Phương án dễ sử dụng, an toàn, năng suất cao. | Nhân rộng:  | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2022-001",
     "nam": 2022,
     "ten_y_tuong": "Chặt đậu thanh ghi giữa xe ghi thiêu kết",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Nhóm chặt đậu",
     "nguoi_de_xuat": "Lê Xuân Tuyên",
     "thuc_trang": "Sản phẩm thanh ghi giữa xe ghi thiêu kết đập đậu bằng búa gây mẻ sản phẩm phải đúc bù. Tỉ lệ lỗi ~1.2% = 44/3668 sp bị lỗi phải đúc bù.",
@@ -12888,13 +12888,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-001 | Tên ý tưởng: Chặt đậu thanh ghi giữa xe ghi thiêu kết | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Sản phẩm thanh ghi giữa xe ghi thiêu kết đập đậu bằng búa gây mẻ sản phẩm phải đúc bù. Tỉ lệ lỗi ~1.2% = 44/3668 sp bị lỗi phải đúc bù. | Giải pháp: Dùng đục hơi cải tiến chặt đậu | Lợi ích: Giảm tỉ lệ hỏng về 0%: đơn hàng 15000 sp. Dự kiến cải tiến sẽ tránh lỗi ~1,2% số lượng hàng còn lại (15000-3668 = 11332 sp) tương đương 136 sản phẩm * 4,9 kg/sp * 10.000/1 Kg = 6.661.000 đ | Nhân rộng: Cải tiến đơn giản đạt hiệu quả. | Nguồn lực: Thép phế liệu + que hàn + công thợ. Tạm tính = 100.000đ"
+    "full_text_search": "Mã: KZ2022-001 | Tên ý tưởng: Chặt đậu thanh ghi giữa xe ghi thiêu kết | Đơn vị: PX NL2 | Người đề xuất: Lê Xuân Tuyên | Thực trạng: Sản phẩm thanh ghi giữa xe ghi thiêu kết đập đậu bằng búa gây mẻ sản phẩm phải đúc bù. Tỉ lệ lỗi ~1.2% = 44/3668 sp bị lỗi phải đúc bù. | Giải pháp: Dùng đục hơi cải tiến chặt đậu | Lợi ích: Giảm tỉ lệ hỏng về 0%: đơn hàng 15000 sp. Dự kiến cải tiến sẽ tránh lỗi ~1,2% số lượng hàng còn lại (15000-3668 = 11332 sp) tương đương 136 sản phẩm * 4,9 kg/sp * 10.000/1 Kg = 6.661.000 đ | Nhân rộng: Cải tiến đơn giản đạt hiệu quả. | Nguồn lực: Thép phế liệu + que hàn + công thợ. Tạm tính = 100.000đ"
   },
   {
     "ma_kaizen": "KZ2022-002",
     "nam": 2022,
     "ten_y_tuong": "Đồ gá cắt đậu sản phẩm cánh xoắn Vautid",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm mài/cắt đậu",
     "nguoi_de_xuat": "Trần Anh Tùng",
     "thuc_trang": "Chất lượng: Sản phẩm đổ dưới nền xưởng người cắt phải cúi gây đau lưng, tư thế cắt khó khăn khiến vết cắt có nguy cơ lõm vào sản phẩm, tỷ lệ hỏng hàng lỗi Rỗ đậu, bẫy sỉ rãnh dẫn = 15/1667 sp ~ 0.9%\nNăng suất: 48 sp/công",
@@ -12911,13 +12911,13 @@
     "ngay_gui": "24/03/2022",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-002 | Tên ý tưởng: Đồ gá cắt đậu sản phẩm cánh xoắn Vautid | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Trần Anh Tùng | Thực trạng: Chất lượng: Sản phẩm đổ dưới nền xưởng người cắt phải cúi gây đau lưng, tư thế cắt khó khăn khiến vết cắt có nguy cơ lõm vào sản phẩm, tỷ lệ hỏng hàng lỗi Rỗ đậu, bẫy sỉ rãnh dẫn = 15/1667 sp ~ 0.9%\nNăng suất: 48 sp/công | Giải pháp: Thiết kế bàn có má kẹp để kẹp sản phẩm | Lợi ích: Chất lượng: Sản phẩm không lung lay trong quá trình cắt, mạch cắt chuẩn, không lõm đậu, không đau lưng, người lao động làm việc năng suất hơn, an toàn hơn. không có sản phẩm phải bỏ do nguyên nhân lõm chân đậu do quá trình cắt, tỉ lệ sản phẩm hỏng do lỗi Rỗ đậu, bẫy xỉ rãnh dẫn = 0%\nNăng suất: 103 sp/công, tăng năng suất lao động tăng lên 2.14 lần.\nSố lượng sản phẩm được áp dụng PP mới = 4274 SP\nCắt với pp cũ cần 4274 /48 (sp/công) = 89 công\nCắt với PP mới cần 4274/103 (sp/công) = 41 công\nLàm lợi cho công ty 89 - 41 = 48 công\nChi phí làm đồ gá (tạm tính) = 300.000đ\nLàm lợi cho công ty = 48*317.300đ - 300.000đ = 14.930.400 đ | Nhân rộng: Cải tiến mang lại hiệu quả về năng suất, chất lượng, an toàn và sức khỏe của người lao động | Nguồn lực: 1 khung kết cấu tận dụng + 1  khớp nối liệu + 1 bulong +1 ecu. Tổng giá trị tạm tính = 300.000đ"
+    "full_text_search": "Mã: KZ2022-002 | Tên ý tưởng: Đồ gá cắt đậu sản phẩm cánh xoắn Vautid | Đơn vị: PX NL1 | Người đề xuất: Trần Anh Tùng | Thực trạng: Chất lượng: Sản phẩm đổ dưới nền xưởng người cắt phải cúi gây đau lưng, tư thế cắt khó khăn khiến vết cắt có nguy cơ lõm vào sản phẩm, tỷ lệ hỏng hàng lỗi Rỗ đậu, bẫy sỉ rãnh dẫn = 15/1667 sp ~ 0.9%\nNăng suất: 48 sp/công | Giải pháp: Thiết kế bàn có má kẹp để kẹp sản phẩm | Lợi ích: Chất lượng: Sản phẩm không lung lay trong quá trình cắt, mạch cắt chuẩn, không lõm đậu, không đau lưng, người lao động làm việc năng suất hơn, an toàn hơn. không có sản phẩm phải bỏ do nguyên nhân lõm chân đậu do quá trình cắt, tỉ lệ sản phẩm hỏng do lỗi Rỗ đậu, bẫy xỉ rãnh dẫn = 0%\nNăng suất: 103 sp/công, tăng năng suất lao động tăng lên 2.14 lần.\nSố lượng sản phẩm được áp dụng PP mới = 4274 SP\nCắt với pp cũ cần 4274 /48 (sp/công) = 89 công\nCắt với PP mới cần 4274/103 (sp/công) = 41 công\nLàm lợi cho công ty 89 - 41 = 48 công\nChi phí làm đồ gá (tạm tính) = 300.000đ\nLàm lợi cho công ty = 48*317.300đ - 300.000đ = 14.930.400 đ | Nhân rộng: Cải tiến mang lại hiệu quả về năng suất, chất lượng, an toàn và sức khỏe của người lao động | Nguồn lực: 1 khung kết cấu tận dụng + 1  khớp nối liệu + 1 bulong +1 ecu. Tổng giá trị tạm tính = 300.000đ"
   },
   {
     "ma_kaizen": "KZ2022-003",
     "nam": 2022,
     "ten_y_tuong": "Thay đổi phương pháp cắt, mài đậu bẫy xỉ khớp nối HT114.2",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm mài/cắt đậu",
     "nguoi_de_xuat": "Phùng Tiến Sỹ",
     "thuc_trang": "Năng suất: Cắt đậu bằng đèn hơi => mài chân đậu bằng đá mài, thời gian hoàn thành 1 sản phẩm ~ 90 giây\nChất lượng: sản phẩm có nguy cơ lõm chân đậu do quá trình cắt hơi, phải phát sinh thêm công hàn - mài sửa\nMôi trường: Phát sinh nhiều khói bụi do phải cắt hơi",
@@ -12934,13 +12934,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-003 | Tên ý tưởng: Thay đổi phương pháp cắt, mài đậu bẫy xỉ khớp nối HT114.2 | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Năng suất: Cắt đậu bằng đèn hơi => mài chân đậu bằng đá mài, thời gian hoàn thành 1 sản phẩm ~ 90 giây\nChất lượng: sản phẩm có nguy cơ lõm chân đậu do quá trình cắt hơi, phải phát sinh thêm công hàn - mài sửa\nMôi trường: Phát sinh nhiều khói bụi do phải cắt hơi | Giải pháp: Dùng máy cắt cầm tay để cắt chân đậu | Lợi ích: Năng suất: Thời gian hoàn thành 1 sản phẩm = 11 giây, tăng hiệu suất cắt đậu lên 8 lần, tiết kiệm được 79 giây cho mỗi sản phẩm áp dụng cho 178 sản phẩm còn lại của đơn hàng (đúc trong 2 ngày) tương đương tiết kiệm được 79*178/3600 = 3.9 giờ công\n(phương pháp cũ cần 90*178/3600 = 4.45 giờ công\nphương pháp mới cần 11*178/3600 ~ 0.54 giờ công)\nChất lượng: Chân đậu không phải mài lại, không mất thời gian hàn sửa vết lõm chân đậu\nMôi trường: Giảm khói bụi do không phải cắt hơi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao, cần xem xét hoàn thiện tính an toàn và nhân rộng phương pháp cho các sản phẩm tương tự | Nguồn lực: "
+    "full_text_search": "Mã: KZ2022-003 | Tên ý tưởng: Thay đổi phương pháp cắt, mài đậu bẫy xỉ khớp nối HT114.2 | Đơn vị: PX NL1 | Người đề xuất: Phùng Tiến Sỹ | Thực trạng: Năng suất: Cắt đậu bằng đèn hơi => mài chân đậu bằng đá mài, thời gian hoàn thành 1 sản phẩm ~ 90 giây\nChất lượng: sản phẩm có nguy cơ lõm chân đậu do quá trình cắt hơi, phải phát sinh thêm công hàn - mài sửa\nMôi trường: Phát sinh nhiều khói bụi do phải cắt hơi | Giải pháp: Dùng máy cắt cầm tay để cắt chân đậu | Lợi ích: Năng suất: Thời gian hoàn thành 1 sản phẩm = 11 giây, tăng hiệu suất cắt đậu lên 8 lần, tiết kiệm được 79 giây cho mỗi sản phẩm áp dụng cho 178 sản phẩm còn lại của đơn hàng (đúc trong 2 ngày) tương đương tiết kiệm được 79*178/3600 = 3.9 giờ công\n(phương pháp cũ cần 90*178/3600 = 4.45 giờ công\nphương pháp mới cần 11*178/3600 ~ 0.54 giờ công)\nChất lượng: Chân đậu không phải mài lại, không mất thời gian hàn sửa vết lõm chân đậu\nMôi trường: Giảm khói bụi do không phải cắt hơi | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao, cần xem xét hoàn thiện tính an toàn và nhân rộng phương pháp cho các sản phẩm tương tự | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2022-005",
     "nam": 2022,
     "ten_y_tuong": "Khuôn âm bản cho tấm thân thùng số 2 và tấm đầu hồi 2, 3 - Nhiệt điện Uông Bí",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Nhóm làm mẫu xốp",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "Sản xuất mẫu bằng phương pháp cắt dán xốp khối. \nNăng suất: 1 công nhân/ 1 ngày làm được trung bình 10 sp\nSố công đoạn: Nhiều công đoạn nhỏ\nVật tư tiêu hao/1012 sp: Keo nến = 253 que\n6.8 m3 xốp Hanel",
@@ -12957,13 +12957,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-005 | Tên ý tưởng: Khuôn âm bản cho tấm thân thùng số 2 và tấm đầu hồi 2, 3 - Nhiệt điện Uông Bí | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: Sản xuất mẫu bằng phương pháp cắt dán xốp khối. \nNăng suất: 1 công nhân/ 1 ngày làm được trung bình 10 sp\nSố công đoạn: Nhiều công đoạn nhỏ\nVật tư tiêu hao/1012 sp: Keo nến = 253 que\n6.8 m3 xốp Hanel | Giải pháp: Sản xuất bằng phương pháp làm khuôn âm bản. | Lợi ích: Sản lượng cao, đạt tiến độ kế hoạch, không cần nhiều công đoạn, vật tư xốp không bị tiêu hao trong quá trình sản xuất.\n- 1 công nhân/ ngày bóc 60 tấm.   - Mài bề mặt đẹp   - Đảm bảo tiến độ theo kế hoạch\nKhông phải sử dụng keo nến từ đó tiết kiệm được = 253*2,8k/que = 714.000 vnđ\nTiết kiệm được 6.8 m3 xốp Hanil = 1.360.000*6.8 = 9.248.000 vnđ\nTăng năng suất lên 6 lần\nÁp dụng được cho 1012 sp gồm 820 tấm thân thùng số 2 và 192 sp tấm đầu hồi 2 và 3 | Nhân rộng: Cải tiến mang lại giá trị lớn cho đơn hàng, cần có cơ chế xem xét áp dụng mở rộng cho các sản phẩm có số lượng lớn để giảm chi phí sản xuất | Nguồn lực: Công làm mẫu âm bản  = 5 công\nChi phí nhôm làm khuôn âm bản = 90.000 vnđ/kg * 54 Kg = 4.860.000 vnđ"
+    "full_text_search": "Mã: KZ2022-005 | Tên ý tưởng: Khuôn âm bản cho tấm thân thùng số 2 và tấm đầu hồi 2, 3 - Nhiệt điện Uông Bí | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: Sản xuất mẫu bằng phương pháp cắt dán xốp khối. \nNăng suất: 1 công nhân/ 1 ngày làm được trung bình 10 sp\nSố công đoạn: Nhiều công đoạn nhỏ\nVật tư tiêu hao/1012 sp: Keo nến = 253 que\n6.8 m3 xốp Hanel | Giải pháp: Sản xuất bằng phương pháp làm khuôn âm bản. | Lợi ích: Sản lượng cao, đạt tiến độ kế hoạch, không cần nhiều công đoạn, vật tư xốp không bị tiêu hao trong quá trình sản xuất.\n- 1 công nhân/ ngày bóc 60 tấm.   - Mài bề mặt đẹp   - Đảm bảo tiến độ theo kế hoạch\nKhông phải sử dụng keo nến từ đó tiết kiệm được = 253*2,8k/que = 714.000 vnđ\nTiết kiệm được 6.8 m3 xốp Hanil = 1.360.000*6.8 = 9.248.000 vnđ\nTăng năng suất lên 6 lần\nÁp dụng được cho 1012 sp gồm 820 tấm thân thùng số 2 và 192 sp tấm đầu hồi 2 và 3 | Nhân rộng: Cải tiến mang lại giá trị lớn cho đơn hàng, cần có cơ chế xem xét áp dụng mở rộng cho các sản phẩm có số lượng lớn để giảm chi phí sản xuất | Nguồn lực: Công làm mẫu âm bản  = 5 công\nChi phí nhôm làm khuôn âm bản = 90.000 vnđ/kg * 54 Kg = 4.860.000 vnđ"
   },
   {
     "ma_kaizen": "KZ2022-006",
     "nam": 2022,
     "ten_y_tuong": "Giá xoay sản phẩm",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Nhóm sơn mẫu",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "làm thủ công : trải nilon trên nền xưởng  => đặt ống côn lên để mông. Toàn bộ bề mặt trong ngoài ống côn được quét mông bằng chổi cán dài, cán ngắn, người làm phải cúi khó quan sát khuyết tật toàn bộ bề mặt trong/ngoài, không làm việc được lâu gây giảm năng suất lao động; về lâu dài có nguy cơ dẫn đến bệnh nghề nghiệp; phải dùng tay bê lật sản phẩm nhiều lần dẫn đến thường bị vỡ miệng làm cho sản phẩm hỏng: một số sản phẩm phải bỏ sau đúc hoặc sửa chữa hoặc làm lại do gãy vỡ sau sơn.\nThời gian thao sơn mông  = 13 phút/sp",
@@ -12980,13 +12980,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-006 | Tên ý tưởng: Giá xoay sản phẩm | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: làm thủ công : trải nilon trên nền xưởng  => đặt ống côn lên để mông. Toàn bộ bề mặt trong ngoài ống côn được quét mông bằng chổi cán dài, cán ngắn, người làm phải cúi khó quan sát khuyết tật toàn bộ bề mặt trong/ngoài, không làm việc được lâu gây giảm năng suất lao động; về lâu dài có nguy cơ dẫn đến bệnh nghề nghiệp; phải dùng tay bê lật sản phẩm nhiều lần dẫn đến thường bị vỡ miệng làm cho sản phẩm hỏng: một số sản phẩm phải bỏ sau đúc hoặc sửa chữa hoặc làm lại do gãy vỡ sau sơn.\nThời gian thao sơn mông  = 13 phút/sp | Giải pháp: Làm bệ con lăn bằng vòng bi cũ để dễ xoay các góc sản phẩm để sơn, kiểm tra bề mặt sơn và chuyển thao tác ngồi sang thao tác đứng làm việc | Lợi ích: _ thao tác dễ dàng, gọn nhẹ \n_ sản phẩm đạt chất lượng khi sơn\n_  không gây vỡ sản phẩm \n_ giá xoay dễ chế tạo \n_ chi phí chế tạo thấp, gọn nhẹ, mọi người cũng có thể sử dụng           \n_ giá xoay áp dụng được cho tất cả các sản phẩm có bề mặt tròn có khối lượng và kích thước lớn. \nSản phẩm không phải bê lật nhiều lần nên không bị bể vỡ, thời gian rút ngắn từ 13 phút xuống 8 phút, tiết kiệm được 5 phút áp dụng được trên ~ 1100 sp. | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao và có thể áp dụng mở rộng trên các sản phẩm có hình dạng trụ tròn khác | Nguồn lực: Vòng bi cũ tận dụng = 4 vòng\nSắt 6 xây dựng dài 100mm = 4 đoạn\nXốp khối kt 1000*1000*400 = 1 khối\nGỗ thông kt 50*50*400 = 2 thanh\nCông làm: ~2 giờ công ~ 0.25 công"
+    "full_text_search": "Mã: KZ2022-006 | Tên ý tưởng: Giá xoay sản phẩm | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: làm thủ công : trải nilon trên nền xưởng  => đặt ống côn lên để mông. Toàn bộ bề mặt trong ngoài ống côn được quét mông bằng chổi cán dài, cán ngắn, người làm phải cúi khó quan sát khuyết tật toàn bộ bề mặt trong/ngoài, không làm việc được lâu gây giảm năng suất lao động; về lâu dài có nguy cơ dẫn đến bệnh nghề nghiệp; phải dùng tay bê lật sản phẩm nhiều lần dẫn đến thường bị vỡ miệng làm cho sản phẩm hỏng: một số sản phẩm phải bỏ sau đúc hoặc sửa chữa hoặc làm lại do gãy vỡ sau sơn.\nThời gian thao sơn mông  = 13 phút/sp | Giải pháp: Làm bệ con lăn bằng vòng bi cũ để dễ xoay các góc sản phẩm để sơn, kiểm tra bề mặt sơn và chuyển thao tác ngồi sang thao tác đứng làm việc | Lợi ích: _ thao tác dễ dàng, gọn nhẹ \n_ sản phẩm đạt chất lượng khi sơn\n_  không gây vỡ sản phẩm \n_ giá xoay dễ chế tạo \n_ chi phí chế tạo thấp, gọn nhẹ, mọi người cũng có thể sử dụng           \n_ giá xoay áp dụng được cho tất cả các sản phẩm có bề mặt tròn có khối lượng và kích thước lớn. \nSản phẩm không phải bê lật nhiều lần nên không bị bể vỡ, thời gian rút ngắn từ 13 phút xuống 8 phút, tiết kiệm được 5 phút áp dụng được trên ~ 1100 sp. | Nhân rộng: Cải tiến đơn giản đạt hiệu quả cao và có thể áp dụng mở rộng trên các sản phẩm có hình dạng trụ tròn khác | Nguồn lực: Vòng bi cũ tận dụng = 4 vòng\nSắt 6 xây dựng dài 100mm = 4 đoạn\nXốp khối kt 1000*1000*400 = 1 khối\nGỗ thông kt 50*50*400 = 2 thanh\nCông làm: ~2 giờ công ~ 0.25 công"
   },
   {
     "ma_kaizen": "KZ2022-007",
     "nam": 2022,
     "ten_y_tuong": "Đúc liền dây xích bằng công nghệ đúc xốp",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "",
@@ -13003,7 +13003,7 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-007 | Tên ý tưởng: Đúc liền dây xích bằng công nghệ đúc xốp | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng:  | Giải pháp:  | Lợi ích:  | Nhân rộng:  | Nguồn lực: "
+    "full_text_search": "Mã: KZ2022-007 | Tên ý tưởng: Đúc liền dây xích bằng công nghệ đúc xốp | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng:  | Giải pháp:  | Lợi ích:  | Nhân rộng:  | Nguồn lực: "
   },
   {
     "ma_kaizen": "KZ2022-008",
@@ -13055,7 +13055,7 @@
     "ma_kaizen": "KZ2022-010",
     "nam": 2022,
     "ten_y_tuong": "Giỏ cẩu phuy bi giúp tăng độ an toàn khi cẩu phuy bi lên sàng phân loại",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "PX NL2",
     "vi_tri": "Phân loại bi trước nhiệt luyện",
     "nguoi_de_xuat": "Tân",
     "thuc_trang": "Người lao động dùng vật dụng nhọn đục thủng tôn cạnh vành thùng phuy để lấy lỗ móc trực tiếp móc cẩu vào vành để cẩu phuy lên sàng phân loại bi, sau một thời gian sử dụng thì vành bị đứt trong quá trình cẩu khiến cho móc cẩu bị văng lên có thể gây tai nạn cho người đứng xung quanh, thùng phuy bị móp méo do quá trình cẩu và nghiêng đổ bi trên sàng phân loại",
@@ -13072,13 +13072,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2022-010 | Tên ý tưởng: Giỏ cẩu phuy bi giúp tăng độ an toàn khi cẩu phuy bi lên sàng phân loại | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Tân | Thực trạng: Người lao động dùng vật dụng nhọn đục thủng tôn cạnh vành thùng phuy để lấy lỗ móc trực tiếp móc cẩu vào vành để cẩu phuy lên sàng phân loại bi, sau một thời gian sử dụng thì vành bị đứt trong quá trình cẩu khiến cho móc cẩu bị văng lên có thể gây tai nạn cho người đứng xung quanh, thùng phuy bị móp méo do quá trình cẩu và nghiêng đổ bi trên sàng phân loại | Giải pháp: Làm giỏ chứa thùng phuy có sẵn tai cẩu để đặt thùng phuy vào giỏ đảm bảo an toàn trong công tác cẩu kéo. Thùng phuy không bị móp méo, giảm số thùng phuy bị hỏng | Lợi ích: Giảm số lượng thùng phuy hỏng từ ~30 thùng/tháng xuống 1~2 thùng phuy hỏng/ tháng, không còn hiện tượng đứt vành thùng phuy, văng móc cẩu gây mất an toàn | Nhân rộng: Cải tiến đạt được lợi ích về an toàn lao động và giảm được chi phí do thùng phuy hỏng | Nguồn lực: 2 công thợ. 42Kg sắt Liệu, 20 que hàn"
+    "full_text_search": "Mã: KZ2022-010 | Tên ý tưởng: Giỏ cẩu phuy bi giúp tăng độ an toàn khi cẩu phuy bi lên sàng phân loại | Đơn vị: PX NL2 | Người đề xuất: Tân | Thực trạng: Người lao động dùng vật dụng nhọn đục thủng tôn cạnh vành thùng phuy để lấy lỗ móc trực tiếp móc cẩu vào vành để cẩu phuy lên sàng phân loại bi, sau một thời gian sử dụng thì vành bị đứt trong quá trình cẩu khiến cho móc cẩu bị văng lên có thể gây tai nạn cho người đứng xung quanh, thùng phuy bị móp méo do quá trình cẩu và nghiêng đổ bi trên sàng phân loại | Giải pháp: Làm giỏ chứa thùng phuy có sẵn tai cẩu để đặt thùng phuy vào giỏ đảm bảo an toàn trong công tác cẩu kéo. Thùng phuy không bị móp méo, giảm số thùng phuy bị hỏng | Lợi ích: Giảm số lượng thùng phuy hỏng từ ~30 thùng/tháng xuống 1~2 thùng phuy hỏng/ tháng, không còn hiện tượng đứt vành thùng phuy, văng móc cẩu gây mất an toàn | Nhân rộng: Cải tiến đạt được lợi ích về an toàn lao động và giảm được chi phí do thùng phuy hỏng | Nguồn lực: 2 công thợ. 42Kg sắt Liệu, 20 que hàn"
   },
   {
     "ma_kaizen": "KZ2023-002",
     "nam": 2022,
     "ten_y_tuong": "Chế tạo máy mài đậu bi bán tự động",
-    "don_vi": "PX NHIỆT LUYỆN DISA",
+    "don_vi": "Phòng R&D",
     "vi_tri": "Nhóm mài đậu bi thí nghiệm",
     "nguoi_de_xuat": "Vũ Văn Trường",
     "thuc_trang": "Người thợ mài đậu bi bằng máy mài 2 đá thủ công",
@@ -13095,13 +13095,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2023-002 | Tên ý tưởng: Chế tạo máy mài đậu bi bán tự động | Đơn vị: PX NHIỆT LUYỆN DISA | Người đề xuất: Vũ Văn Trường | Thực trạng: Người thợ mài đậu bi bằng máy mài 2 đá thủ công | Giải pháp: Thiết kế máy mài 2 đá sử dụng chương trình điều khiển tự động có người cấp bi | Lợi ích: Cải tiến giúp nâng cao năng suất lao động lên 2~3 lần, giảm được rủi ro về mất an toàn lao động | Nhân rộng: Về năng suất lao động: Cải tiến giúp giảm thời gian mài 1 viên bi (bi 80) từ 2.7 p/viên/người về 0.88 /viên/người.\nVề Hao phí đá mài: với phương pháp cũ phải thay đá khi đường kính đá giảm xuống dưới 280mm hoặc khi bề mặt đá bị lõm, sau cải tiến chỉ phải thay đá khi đường kính đá giảm xuống dưới 190mm\n Về an toàn lao động: PP cũ cho mức độ Rủi ro mất an toàn cao do thường xuyên phải tiếp cận với phương quay của đá mài, PP mới Giảm rủi ro do không phải đứng vào phương quay của đá mài\nVề hao phí sức lao động: pp cũ, phải ngồi mài ảnh hưởng đến sức khỏe, phải ghì mài mất an toàn và gây mệt mỏi; người làm việc phải có thời gian nghỉ ngơi phù hợp; pp mới, người LĐ có thể đứng và di chuyển linh hoạt để thay bi sau khi mài hoàn thiện, không mất sức ghì mài, người thực hiện có thể làm việc liên tục, cắt giảm được 2 người/ngày so với PP cũ\nVề VSMT: PP cũ phát sinh nhiều bụi mài ra môi trường xung quanh, không có giải pháp thu bụi hiệu quả, PP mới Có thể lắp hệ thống thu bụi mài không để bụi phát tán ra môi trường xung quanh\nVề khả năng định lượng chu kỳ làm việc: PP cũ Không đo được do phụ thuộc vào trạng thái sức khỏe của người làm việc do đó khó chủ động được kế hoạch sản xuất, PP mới Có thể đo đếm do điều khiển bằng thông số đặt trên máy do đó có thể hoạch định được cụ thể kế hoạch sản xuất | Nguồn lực: Vũ Văn Trường : Chủ trì dự án - Tác giả ý tưởng thiết kế \nNguyễn Văn Hiếu : Thiết kế phần cơ khí - Phụ trách thi công phần cơ khí .\nTrần Việt Tiệp : Thiết kế phần điện , điều khiển - Phụ trách thi công phần điện.\nĐóng góp hoàn thiện ý tưởng: Nhóm Cải tiến.\nPx Cơ điện : Phụ trách thi công lắp ráp"
+    "full_text_search": "Mã: KZ2023-002 | Tên ý tưởng: Chế tạo máy mài đậu bi bán tự động | Đơn vị: Phòng R&D | Người đề xuất: Vũ Văn Trường | Thực trạng: Người thợ mài đậu bi bằng máy mài 2 đá thủ công | Giải pháp: Thiết kế máy mài 2 đá sử dụng chương trình điều khiển tự động có người cấp bi | Lợi ích: Cải tiến giúp nâng cao năng suất lao động lên 2~3 lần, giảm được rủi ro về mất an toàn lao động | Nhân rộng: Về năng suất lao động: Cải tiến giúp giảm thời gian mài 1 viên bi (bi 80) từ 2.7 p/viên/người về 0.88 /viên/người.\nVề Hao phí đá mài: với phương pháp cũ phải thay đá khi đường kính đá giảm xuống dưới 280mm hoặc khi bề mặt đá bị lõm, sau cải tiến chỉ phải thay đá khi đường kính đá giảm xuống dưới 190mm\n Về an toàn lao động: PP cũ cho mức độ Rủi ro mất an toàn cao do thường xuyên phải tiếp cận với phương quay của đá mài, PP mới Giảm rủi ro do không phải đứng vào phương quay của đá mài\nVề hao phí sức lao động: pp cũ, phải ngồi mài ảnh hưởng đến sức khỏe, phải ghì mài mất an toàn và gây mệt mỏi; người làm việc phải có thời gian nghỉ ngơi phù hợp; pp mới, người LĐ có thể đứng và di chuyển linh hoạt để thay bi sau khi mài hoàn thiện, không mất sức ghì mài, người thực hiện có thể làm việc liên tục, cắt giảm được 2 người/ngày so với PP cũ\nVề VSMT: PP cũ phát sinh nhiều bụi mài ra môi trường xung quanh, không có giải pháp thu bụi hiệu quả, PP mới Có thể lắp hệ thống thu bụi mài không để bụi phát tán ra môi trường xung quanh\nVề khả năng định lượng chu kỳ làm việc: PP cũ Không đo được do phụ thuộc vào trạng thái sức khỏe của người làm việc do đó khó chủ động được kế hoạch sản xuất, PP mới Có thể đo đếm do điều khiển bằng thông số đặt trên máy do đó có thể hoạch định được cụ thể kế hoạch sản xuất | Nguồn lực: Vũ Văn Trường : Chủ trì dự án - Tác giả ý tưởng thiết kế \nNguyễn Văn Hiếu : Thiết kế phần cơ khí - Phụ trách thi công phần cơ khí .\nTrần Việt Tiệp : Thiết kế phần điện , điều khiển - Phụ trách thi công phần điện.\nĐóng góp hoàn thiện ý tưởng: Nhóm Cải tiến.\nPx Cơ điện : Phụ trách thi công lắp ráp"
   },
   {
     "ma_kaizen": "KZ2025-001",
     "nam": 2025,
     "ten_y_tuong": "Mài logo Volvo sp Auger 48-629 để xuất hàng không yêu cầu logo",
-    "don_vi": "PHÒNG KHVT",
+    "don_vi": "P. Kế hoạch",
     "vi_tri": "Kế hoạch sản xuất",
     "nguoi_de_xuat": "Nguyễn Thị Hương",
     "thuc_trang": "Sản phẩm sp Auger 48-629 logo Volvo phải lưu kho chờ hủy do công ty sản xuất dự phòng sẵn sàng cấp cho khách hàng khi có đơn nhưng vì khách hàng đổi mẫu mã nên không xuất được gây lãng phí về tồn kho và chi phí sản xuất. Khách hàng gửi PO mới sản phẩm cùng kích thước như sản phẩm có logo Volvo đã sản xuất nhưng không có logo\nVấn đề: Hàng tồn kho do sản xuất trước có khả năng phải hủy (nấu lại) gây lãng phí chi phí sản xuất và quản lý lưu trữ",
@@ -13118,13 +13118,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-001_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-001_after.png",
-    "full_text_search": "Mã: KZ2025-001 | Tên ý tưởng: Mài logo Volvo sp Auger 48-629 để xuất hàng không yêu cầu logo | Đơn vị: PHÒNG KHVT | Người đề xuất: Nguyễn Thị Hương | Thực trạng: Sản phẩm sp Auger 48-629 logo Volvo phải lưu kho chờ hủy do công ty sản xuất dự phòng sẵn sàng cấp cho khách hàng khi có đơn nhưng vì khách hàng đổi mẫu mã nên không xuất được gây lãng phí về tồn kho và chi phí sản xuất. Khách hàng gửi PO mới sản phẩm cùng kích thước như sản phẩm có logo Volvo đã sản xuất nhưng không có logo\nVấn đề: Hàng tồn kho do sản xuất trước có khả năng phải hủy (nấu lại) gây lãng phí chi phí sản xuất và quản lý lưu trữ | Giải pháp: Đề xuất ý tưởng mài bỏ logo Volvo để xuất hàng - chi phí thêm 1 công thợ để sửa hàng tồn thành hàng đủ điều kiện theo PO giúp cắt giảm chi phí sản xuất lại đồng thời xử lý lãng phí sản xuất thừa và tồn kho của đơn hàng trước đó | Lợi ích: - Cắt giảm toàn bộ chi phí sản xuất đã lãng phí cho lượng hàng theo PO: Cắt giảm được chi phí sản xuất cho 1 tấn sản phẩm ≈ 10 triệu đồng\n- Cắt giảm lãng phí tồn kho đang tích lũy | Nhân rộng: Ý tưởng thể hiện tư duy nhanh nhạy trong quản lý | Nguồn lực: 1 công thợ mài"
+    "full_text_search": "Mã: KZ2025-001 | Tên ý tưởng: Mài logo Volvo sp Auger 48-629 để xuất hàng không yêu cầu logo | Đơn vị: P. Kế hoạch | Người đề xuất: Nguyễn Thị Hương | Thực trạng: Sản phẩm sp Auger 48-629 logo Volvo phải lưu kho chờ hủy do công ty sản xuất dự phòng sẵn sàng cấp cho khách hàng khi có đơn nhưng vì khách hàng đổi mẫu mã nên không xuất được gây lãng phí về tồn kho và chi phí sản xuất. Khách hàng gửi PO mới sản phẩm cùng kích thước như sản phẩm có logo Volvo đã sản xuất nhưng không có logo\nVấn đề: Hàng tồn kho do sản xuất trước có khả năng phải hủy (nấu lại) gây lãng phí chi phí sản xuất và quản lý lưu trữ | Giải pháp: Đề xuất ý tưởng mài bỏ logo Volvo để xuất hàng - chi phí thêm 1 công thợ để sửa hàng tồn thành hàng đủ điều kiện theo PO giúp cắt giảm chi phí sản xuất lại đồng thời xử lý lãng phí sản xuất thừa và tồn kho của đơn hàng trước đó | Lợi ích: - Cắt giảm toàn bộ chi phí sản xuất đã lãng phí cho lượng hàng theo PO: Cắt giảm được chi phí sản xuất cho 1 tấn sản phẩm ≈ 10 triệu đồng\n- Cắt giảm lãng phí tồn kho đang tích lũy | Nhân rộng: Ý tưởng thể hiện tư duy nhanh nhạy trong quản lý | Nguồn lực: 1 công thợ mài"
   },
   {
     "ma_kaizen": "KZ2025-002",
     "nam": 2025,
     "ten_y_tuong": "Cải tiến đầm lò giảm khối lượng sạn sử dụng, tăng nước thép",
-    "don_vi": "PX ĐÚC",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Lò nấu kim loại",
     "nguoi_de_xuat": "Lê Văn Anh",
     "thuc_trang": "Vấn đề: Hệ thống lò nấu PX Đúc 1đang quy định chiều dày lớp sạn đáy lò là 300mm - Khối lượng sạn sử dụng để đầm lò/ vòng đời lò: 1150 kg/lò\n- Áp dụng cho 4 lò của Đúc 1: ( Lò 3,4,5,6).\n- Phương pháp đầm lò cũ, dùng dưỡng cũ: số lượng 1500kg/mẻ; tuổi thọ lò 100~120 mẻ.\n- Đáy lò cũ dày 300 mm.",
@@ -13141,7 +13141,7 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-002_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-002_after.png",
-    "full_text_search": "Mã: KZ2025-002 | Tên ý tưởng: Cải tiến đầm lò giảm khối lượng sạn sử dụng, tăng nước thép | Đơn vị: PX ĐÚC | Người đề xuất: Lê Văn Anh | Thực trạng: Vấn đề: Hệ thống lò nấu PX Đúc 1đang quy định chiều dày lớp sạn đáy lò là 300mm - Khối lượng sạn sử dụng để đầm lò/ vòng đời lò: 1150 kg/lò\n- Áp dụng cho 4 lò của Đúc 1: ( Lò 3,4,5,6).\n- Phương pháp đầm lò cũ, dùng dưỡng cũ: số lượng 1500kg/mẻ; tuổi thọ lò 100~120 mẻ.\n- Đáy lò cũ dày 300 mm. | Giải pháp: - Áp dụng cho 4 lò của Đúc 1: ( Lò 3,4,5,6).\n- Phương pháp đầm lò mới, sử dụng dưỡng mới: 1700 kg/mẻ; tuổi thọ lò giữ nguyên 100~120 mẻ.\n- Hạ chiều dày đáy lò còn 240 ~ 250 mm, hạ dưỡng vào lòng lò nấu thêm 50 mm.\n- Khối lượng sạn sử dụng để đầm lò/ vòng đời lò: 1075 kg/lò\n- Tận dụng từ trường của vòng đồng phía đáy giảm thời gian nấu thép. | Lợi ích: - Phương pháp đầm lò mới tăng năng suất 200 kg thép/mẻ ≈ 21,5 tấn/ vòng đời 1 lò (~110 mẻ nấu)\n- Giảm thời giảm thời gian nấu luyện do tận dụng được từ trường của những vòng đồng phía đáy.\n- Tiết kiệm 50~75 kg sạn/1 vòng đời 1 lò\n- Tận dụng dưỡng sẵn có.\n- Giữ nguyên tuổi thọ lò. \n- Giảm lượng điện tiêu thụ. | Nhân rộng: Cần xem xét nghiên cứu ý tưởng để áp dụng mở rộng sang các thiết bị tương tự để tối ưu chi phí sản xuất | Nguồn lực: Không."
+    "full_text_search": "Mã: KZ2025-002 | Tên ý tưởng: Cải tiến đầm lò giảm khối lượng sạn sử dụng, tăng nước thép | Đơn vị: PX Cơ điện | Người đề xuất: Lê Văn Anh | Thực trạng: Vấn đề: Hệ thống lò nấu PX Đúc 1đang quy định chiều dày lớp sạn đáy lò là 300mm - Khối lượng sạn sử dụng để đầm lò/ vòng đời lò: 1150 kg/lò\n- Áp dụng cho 4 lò của Đúc 1: ( Lò 3,4,5,6).\n- Phương pháp đầm lò cũ, dùng dưỡng cũ: số lượng 1500kg/mẻ; tuổi thọ lò 100~120 mẻ.\n- Đáy lò cũ dày 300 mm. | Giải pháp: - Áp dụng cho 4 lò của Đúc 1: ( Lò 3,4,5,6).\n- Phương pháp đầm lò mới, sử dụng dưỡng mới: 1700 kg/mẻ; tuổi thọ lò giữ nguyên 100~120 mẻ.\n- Hạ chiều dày đáy lò còn 240 ~ 250 mm, hạ dưỡng vào lòng lò nấu thêm 50 mm.\n- Khối lượng sạn sử dụng để đầm lò/ vòng đời lò: 1075 kg/lò\n- Tận dụng từ trường của vòng đồng phía đáy giảm thời gian nấu thép. | Lợi ích: - Phương pháp đầm lò mới tăng năng suất 200 kg thép/mẻ ≈ 21,5 tấn/ vòng đời 1 lò (~110 mẻ nấu)\n- Giảm thời giảm thời gian nấu luyện do tận dụng được từ trường của những vòng đồng phía đáy.\n- Tiết kiệm 50~75 kg sạn/1 vòng đời 1 lò\n- Tận dụng dưỡng sẵn có.\n- Giữ nguyên tuổi thọ lò. \n- Giảm lượng điện tiêu thụ. | Nhân rộng: Cần xem xét nghiên cứu ý tưởng để áp dụng mở rộng sang các thiết bị tương tự để tối ưu chi phí sản xuất | Nguồn lực: Không."
   },
   {
     "ma_kaizen": "KZ2025-003",
@@ -13170,7 +13170,7 @@
     "ma_kaizen": "KZ2025-004",
     "nam": 2025,
     "ten_y_tuong": "Thanh chắn máng điện cẩu",
-    "don_vi": "PX ĐÚC",
+    "don_vi": "Phòng Thiết bị",
     "vi_tri": "Cẩu trục xoay",
     "nguoi_de_xuat": "Vũ Tiến Dũng",
     "thuc_trang": "- Quá trình làm việc cẩu trục xoay, máng điện va chạm với cẩu trục. Gây hỏng hóc máng điện cẩu trục, dừng cẩu trục để sửa chữa\n- Tần suất sửa chữa : 2 lần / năm/ cẩu xoay, cẩu chữ A.\n- 3 cẩu xoay( Đúc 1), 2 cẩu chữ A (Khuôn nền)\nVấn đề: Rủi ro hỏng máng điện sẽ còn tiếp diễn gây ảnh hưởng doanh thu và hoạt động sản xuất nếu không triển khai cải tiến",
@@ -13187,7 +13187,7 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-004_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-004_after.png",
-    "full_text_search": "Mã: KZ2025-004 | Tên ý tưởng: Thanh chắn máng điện cẩu | Đơn vị: PX ĐÚC | Người đề xuất: Vũ Tiến Dũng | Thực trạng: - Quá trình làm việc cẩu trục xoay, máng điện va chạm với cẩu trục. Gây hỏng hóc máng điện cẩu trục, dừng cẩu trục để sửa chữa\n- Tần suất sửa chữa : 2 lần / năm/ cẩu xoay, cẩu chữ A.\n- 3 cẩu xoay( Đúc 1), 2 cẩu chữ A (Khuôn nền)\nVấn đề: Rủi ro hỏng máng điện sẽ còn tiếp diễn gây ảnh hưởng doanh thu và hoạt động sản xuất nếu không triển khai cải tiến | Giải pháp: - Lắp đặt thanh chắn bảo vệ cẩu tránh va chạm trực tiếp giữa cẩu trục và máng điện cẩu trục xoay.\n- Loại bỏ trình trạng hỏng hóc máng điện khi vận hành cẩu trục quay từ nguyên nhân va chạm. | Lợi ích: - Triệt để loại bỏ hỏng hóc máng điện do nguyên nhân va chạm.\n- Đảm bảo an toàn điện khi vận hành cẩu trục.\n- Giảm tần suất, khối lượng công việc phát sinh cho đội sửa chữa | Nhân rộng: Cải tiến có chi phí đầu tư thấp nhưng hiệu quả mang lại cao\n- An toàn\n- Tăng năng suất\nCó nhiều cơ hộ nhân rộng ra các cẩu trục. | Nguồn lực: -Phân xưởng lên ý tưởng thiết kế, hoàn thiện che máng điện.\n- Chi phí cho 1 cây V70 = 500.000đ\n- Công thợ: 1 công = 350.000 đ"
+    "full_text_search": "Mã: KZ2025-004 | Tên ý tưởng: Thanh chắn máng điện cẩu | Đơn vị: Phòng Thiết bị | Người đề xuất: Vũ Tiến Dũng | Thực trạng: - Quá trình làm việc cẩu trục xoay, máng điện va chạm với cẩu trục. Gây hỏng hóc máng điện cẩu trục, dừng cẩu trục để sửa chữa\n- Tần suất sửa chữa : 2 lần / năm/ cẩu xoay, cẩu chữ A.\n- 3 cẩu xoay( Đúc 1), 2 cẩu chữ A (Khuôn nền)\nVấn đề: Rủi ro hỏng máng điện sẽ còn tiếp diễn gây ảnh hưởng doanh thu và hoạt động sản xuất nếu không triển khai cải tiến | Giải pháp: - Lắp đặt thanh chắn bảo vệ cẩu tránh va chạm trực tiếp giữa cẩu trục và máng điện cẩu trục xoay.\n- Loại bỏ trình trạng hỏng hóc máng điện khi vận hành cẩu trục quay từ nguyên nhân va chạm. | Lợi ích: - Triệt để loại bỏ hỏng hóc máng điện do nguyên nhân va chạm.\n- Đảm bảo an toàn điện khi vận hành cẩu trục.\n- Giảm tần suất, khối lượng công việc phát sinh cho đội sửa chữa | Nhân rộng: Cải tiến có chi phí đầu tư thấp nhưng hiệu quả mang lại cao\n- An toàn\n- Tăng năng suất\nCó nhiều cơ hộ nhân rộng ra các cẩu trục. | Nguồn lực: -Phân xưởng lên ý tưởng thiết kế, hoàn thiện che máng điện.\n- Chi phí cho 1 cây V70 = 500.000đ\n- Công thợ: 1 công = 350.000 đ"
   },
   {
     "ma_kaizen": "KZ2025-005",
@@ -13216,7 +13216,7 @@
     "ma_kaizen": "KZ2025-006",
     "nam": 2025,
     "ten_y_tuong": "Thay đổi phương pháp sơn nhúng đổi với các loại thao/lõi vừa và nhỏ",
-    "don_vi": "PX KHUÔN NỀN",
+    "don_vi": "PX Khuôn",
     "vi_tri": "Sơn thao",
     "nguoi_de_xuat": "Phùng Thị Hoàn",
     "thuc_trang": "Sơn sản phẩm Item thysen bằng chổi quét sơn\nVấn đề: Thao tác sơn sản phẩm có hình dáng phức tạp hoặc nhiều hốc nhỏ sẽ gặp khó khăn và tốn nhiều thời gian, yêu cầu thợ khéo tay và có kinh nghiệm",
@@ -13233,13 +13233,13 @@
     "ngay_gui": "16/04/2025",
     "hinh_anh_truoc": "excel_images/KZ2025-006_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-006_after.png",
-    "full_text_search": "Mã: KZ2025-006 | Tên ý tưởng: Thay đổi phương pháp sơn nhúng đổi với các loại thao/lõi vừa và nhỏ | Đơn vị: PX KHUÔN NỀN | Người đề xuất: Phùng Thị Hoàn | Thực trạng: Sơn sản phẩm Item thysen bằng chổi quét sơn\nVấn đề: Thao tác sơn sản phẩm có hình dáng phức tạp hoặc nhiều hốc nhỏ sẽ gặp khó khăn và tốn nhiều thời gian, yêu cầu thợ khéo tay và có kinh nghiệm | Giải pháp: Nhúng sản phẩm vào chậu sơn\nCác không bị chi phối nhiều bởi hình dáng của chi tiết, không yêu cầu thợ có tay nghề cao hoặc kinh nghiệm lâu năm | Lợi ích: Năng suất: Có khả năng tăng NS lên 300% (CT ≈ 15s so với phương pháp cũ CT ≈ 45s)\nChất lượng: Sơn bám đều hơn | Nhân rộng: Cải tiến mang lại hiệu quả cao về cả năng suất và chất lượng, có thể áp dụng với các sản phẩm có kích thước nhỏ, làm cơ sở nhận thức cho các giải pháp tự động hóa | Nguồn lực: Không phát sinh chi phí đầu tư"
+    "full_text_search": "Mã: KZ2025-006 | Tên ý tưởng: Thay đổi phương pháp sơn nhúng đổi với các loại thao/lõi vừa và nhỏ | Đơn vị: PX Khuôn | Người đề xuất: Phùng Thị Hoàn | Thực trạng: Sơn sản phẩm Item thysen bằng chổi quét sơn\nVấn đề: Thao tác sơn sản phẩm có hình dáng phức tạp hoặc nhiều hốc nhỏ sẽ gặp khó khăn và tốn nhiều thời gian, yêu cầu thợ khéo tay và có kinh nghiệm | Giải pháp: Nhúng sản phẩm vào chậu sơn\nCác không bị chi phối nhiều bởi hình dáng của chi tiết, không yêu cầu thợ có tay nghề cao hoặc kinh nghiệm lâu năm | Lợi ích: Năng suất: Có khả năng tăng NS lên 300% (CT ≈ 15s so với phương pháp cũ CT ≈ 45s)\nChất lượng: Sơn bám đều hơn | Nhân rộng: Cải tiến mang lại hiệu quả cao về cả năng suất và chất lượng, có thể áp dụng với các sản phẩm có kích thước nhỏ, làm cơ sở nhận thức cho các giải pháp tự động hóa | Nguồn lực: Không phát sinh chi phí đầu tư"
   },
   {
     "ma_kaizen": "KZ2025-007",
     "nam": 2025,
     "ten_y_tuong": "Phương pháp đóng tem thùng hàng",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "PX Hoàn thiện",
     "vi_tri": "Bao gói",
     "nguoi_de_xuat": "Bùi Đình Hùng",
     "thuc_trang": "Mua tem bán sẵn trên thị trường dán lên thùng (4 tem = 10k/thùng), chi phí tem trung bình năm 2023-2024 là 10.000 tem ≈ 25triệu/năm; tem có thể bị bong và nhăn khi thùng gỗ bị giãn nở, phải bắn ghim để đảm bảo tem không bị rơi, thời gian thao tác =90 giây/thùng, phải thu dọn giấy dán\nVấn đề: Chi phí tem lớn, tem bị ảnh hưởng của thời tiết nên không bền vững, thao tác dán dem lâu, phát sinh thêm chi phí sửa tem nếu tem hỏng",
@@ -13256,13 +13256,13 @@
     "ngay_gui": "18/04/2025",
     "hinh_anh_truoc": "excel_images/KZ2025-007_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-007_after.png",
-    "full_text_search": "Mã: KZ2025-007 | Tên ý tưởng: Phương pháp đóng tem thùng hàng | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Bùi Đình Hùng | Thực trạng: Mua tem bán sẵn trên thị trường dán lên thùng (4 tem = 10k/thùng), chi phí tem trung bình năm 2023-2024 là 10.000 tem ≈ 25triệu/năm; tem có thể bị bong và nhăn khi thùng gỗ bị giãn nở, phải bắn ghim để đảm bảo tem không bị rơi, thời gian thao tác =90 giây/thùng, phải thu dọn giấy dán\nVấn đề: Chi phí tem lớn, tem bị ảnh hưởng của thời tiết nên không bền vững, thao tác dán dem lâu, phát sinh thêm chi phí sửa tem nếu tem hỏng | Giải pháp: Đặt chế tạo con dấu đóng dấu trực tiếp lên thùng, thời gian thao tác cho mỗi thùng ≈ 33 giây, chi phí vật tư mực = 45k/lọ 0.5 lít/năm, không cần đóng ghim, không phát sinh công thu dọn rác\nCải tiến giúp: Cắt giảm chi phí mua tem, đơn giản hóa thao tác, cải thiện độ bền của thông tin trên thùng hàng, cắt giảm chi phí công thợ và bảo quản tem | Lợi ích: Năng suất: Tăng năng lực của công đoạn lên 300% , giảm được 60 giây thao tác cho 1 thùng hàng\nChất lượng: Sản phẩm đạt chất lượng ổn định hơn phương pháp cũ, không bị hư hỏng bong tróc như tem giấy\nChi phí nguyên vật liệu tiêu hao tiết kiệm được hàng năm (ước tính) : (Chi phí mua tem TB 2 năm 23-24) - (Chi phí mua mực) = 25.000.000 - 45.000 = 24.955.000 đ\nCắt giảm chi phí quản lý, lưu trữ tem | Nhân rộng: Cải tiến đơn giản mang lại giá trị lớn có thể mở rộng áp dụng với các loại tem khác | Nguồn lực: Bộ khuôn đóng số 1.100.000 đ + chi phí mua mực 45.000 đ"
+    "full_text_search": "Mã: KZ2025-007 | Tên ý tưởng: Phương pháp đóng tem thùng hàng | Đơn vị: PX Hoàn thiện | Người đề xuất: Bùi Đình Hùng | Thực trạng: Mua tem bán sẵn trên thị trường dán lên thùng (4 tem = 10k/thùng), chi phí tem trung bình năm 2023-2024 là 10.000 tem ≈ 25triệu/năm; tem có thể bị bong và nhăn khi thùng gỗ bị giãn nở, phải bắn ghim để đảm bảo tem không bị rơi, thời gian thao tác =90 giây/thùng, phải thu dọn giấy dán\nVấn đề: Chi phí tem lớn, tem bị ảnh hưởng của thời tiết nên không bền vững, thao tác dán dem lâu, phát sinh thêm chi phí sửa tem nếu tem hỏng | Giải pháp: Đặt chế tạo con dấu đóng dấu trực tiếp lên thùng, thời gian thao tác cho mỗi thùng ≈ 33 giây, chi phí vật tư mực = 45k/lọ 0.5 lít/năm, không cần đóng ghim, không phát sinh công thu dọn rác\nCải tiến giúp: Cắt giảm chi phí mua tem, đơn giản hóa thao tác, cải thiện độ bền của thông tin trên thùng hàng, cắt giảm chi phí công thợ và bảo quản tem | Lợi ích: Năng suất: Tăng năng lực của công đoạn lên 300% , giảm được 60 giây thao tác cho 1 thùng hàng\nChất lượng: Sản phẩm đạt chất lượng ổn định hơn phương pháp cũ, không bị hư hỏng bong tróc như tem giấy\nChi phí nguyên vật liệu tiêu hao tiết kiệm được hàng năm (ước tính) : (Chi phí mua tem TB 2 năm 23-24) - (Chi phí mua mực) = 25.000.000 - 45.000 = 24.955.000 đ\nCắt giảm chi phí quản lý, lưu trữ tem | Nhân rộng: Cải tiến đơn giản mang lại giá trị lớn có thể mở rộng áp dụng với các loại tem khác | Nguồn lực: Bộ khuôn đóng số 1.100.000 đ + chi phí mua mực 45.000 đ"
   },
   {
     "ma_kaizen": "KZ2025-008",
     "nam": 2025,
     "ten_y_tuong": "Thùng bơm dầu khép kín cho sản phẩm auger",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "PX Hoàn thiện",
     "vi_tri": "Nhúng dầu sp",
     "nguoi_de_xuat": "Trần Xuân Lập",
     "thuc_trang": "- Sử dụng thùng dầu thiết kế kiểu nhúng sản phẩm vào dầu\n- Thực hiện trình tự 4 bước: nhúng dầu, để lên mặt thùng dầu cho ráo dầu, xếp lên pallet, xếp vào thùng. (≈4 lượt vận chuyển)\n- Trong quá trình thực hiện làm rơi vãi dầu ra xưởng, quần áo gây lãng phí dầu và giẻ lau, tiếp xúc trực tiếp với dầu, hại da tay.\n- Phải sử dụng giẻ lau để lau khô sản phẩm dẫn đến hao phí dầu ngấm trên giẻ (cứ 200sp phải bổ sung 1~1.5 lít dầu~2 phi dầu ~32 triệu/ năm. Giẻ đem đốt gây ô nhiễm môi trường.\n- Chờ đợi khô dầu từ 4- 8 tiếng, phụ thuộc nhiệt độ/độ ẩm không khí.\n- Đóng được 100-150 cái/2 công thợ\n- Sản phẩm được xếp chờ khô tốn diện tích xưởng, có rủi ro nhầm lẫn khi sắp sếp chủng loại, mã hàng.\nVấn đề: Dầu tiêu hao lớn, môi trường làm việc độc hại, năng suất hạn chế, rủi ro nhầm sản phẩm",
@@ -13279,13 +13279,13 @@
     "ngay_gui": "22/10/2024",
     "hinh_anh_truoc": "excel_images/KZ2025-008_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-008_after.png",
-    "full_text_search": "Mã: KZ2025-008 | Tên ý tưởng: Thùng bơm dầu khép kín cho sản phẩm auger | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Trần Xuân Lập | Thực trạng: - Sử dụng thùng dầu thiết kế kiểu nhúng sản phẩm vào dầu\n- Thực hiện trình tự 4 bước: nhúng dầu, để lên mặt thùng dầu cho ráo dầu, xếp lên pallet, xếp vào thùng. (≈4 lượt vận chuyển)\n- Trong quá trình thực hiện làm rơi vãi dầu ra xưởng, quần áo gây lãng phí dầu và giẻ lau, tiếp xúc trực tiếp với dầu, hại da tay.\n- Phải sử dụng giẻ lau để lau khô sản phẩm dẫn đến hao phí dầu ngấm trên giẻ (cứ 200sp phải bổ sung 1~1.5 lít dầu~2 phi dầu ~32 triệu/ năm. Giẻ đem đốt gây ô nhiễm môi trường.\n- Chờ đợi khô dầu từ 4- 8 tiếng, phụ thuộc nhiệt độ/độ ẩm không khí.\n- Đóng được 100-150 cái/2 công thợ\n- Sản phẩm được xếp chờ khô tốn diện tích xưởng, có rủi ro nhầm lẫn khi sắp sếp chủng loại, mã hàng.\nVấn đề: Dầu tiêu hao lớn, môi trường làm việc độc hại, năng suất hạn chế, rủi ro nhầm sản phẩm | Giải pháp: - Thiết kế bàn xếp sản phẩm sau đó tưới dầu tuần hoàn, dùng khí nén xịt dầu thừa lại thùng hồi dầu\n-Thực hiện 4 bước: bốc hàng, bơm dầu, dùng khí nén xì khô, đóng thùng.\n- 2 lần bốc dỡ hàng.\n- Bơm dầu trong thùng kín nên không bị rơi vãi, sp được xì khô \n- Thời gian đợi khô rút gọn còn 45 phút 1 mẻ.\n- Đóng được 350 - 400 cái/ 2 công thợ\n- Môi trường làm việc sạch sẽ, không bám dầu lên quân áo, không ảnh hưởng độc hại đến sức khỏe người lao động.\n- Sản phẩm được đặt trong thùng riêng biệt không nhầm lẫn, không tốn diện tích đặt để chờ khô dầu. | Lợi ích: - Cải tiến giúp tăng năng lực công đoạn lên 2.3 ~ 4 lần\n- Giảm lãng phí dầu (dự kiến 50%) 1 phi/năm ~ 16.6 triệu/năm (Thống kê 2 quý đầu năm 2025 mua bổ sung 104 lít dầu ngày 7/1/25, thống kê tiêu hao dầu năm 2023 và 2024 là 6 tháng/phi dầu bổ sung)\n- Cải thiện môi trường làm việc: dầu không bắn tóe ra nền xưởng, công nhân cải thiện được thao tác làm việc đứng không phải bê vác sản phẩm còn chưa khô dầu gây hại da, ám mùi quần áo, nhanh hỏng quần áo, tối nhiều găng tay\n- Thời gian loại bỏ dầu thừa nhanh giúp giảm chi phí diện tích đặt để, tránh nhầm lẫn mã hàng.\n- Khách hàng đánh giá tốt. | Nhân rộng: Cải tiến mang lại các hiệu quả bao gồm:\n- Năng suất: Nâng cao năng lực công đoạn lên 2~4 lần\n- Chất lượng: đảm bảo chất lượng công đoạn\n- An toàn: thao tác an toàn hơn nhờ giảm bớt thao tác và tư thế làm việc đứng, không bị dính dầu lên người và quần áo\n- Giảm giá thành: Giảm được chi phí vật tư dầu chống gỉ, giẻ lau\n- Môi trường: sạch sẽ hơn do dầu không văng ra nền xưởng, không phát sinh giẻ dầu phải đốt | Nguồn lực: Thiết kế bàn kết hợp thùng dầu có bơm dầu tuần hoàn (xếp tối đa 56sp auger 13)\nCông thiết kế: 1 công (phòng Cải tiến)  ≈ 400.000 đ\nCông lắp đặt: 1 công (phòng thiết bị) ≈ 400.000 đ\nGiá kết cấu: 30.000đ/kg kết cấu (tạm tính) *245 Kg ≈ 7.350.000đ\nĐộng cơ bơm dầu cũ: 3.000.000 đ (tạm tính)\nTổng: ≈ 11 triệu"
+    "full_text_search": "Mã: KZ2025-008 | Tên ý tưởng: Thùng bơm dầu khép kín cho sản phẩm auger | Đơn vị: PX Hoàn thiện | Người đề xuất: Trần Xuân Lập | Thực trạng: - Sử dụng thùng dầu thiết kế kiểu nhúng sản phẩm vào dầu\n- Thực hiện trình tự 4 bước: nhúng dầu, để lên mặt thùng dầu cho ráo dầu, xếp lên pallet, xếp vào thùng. (≈4 lượt vận chuyển)\n- Trong quá trình thực hiện làm rơi vãi dầu ra xưởng, quần áo gây lãng phí dầu và giẻ lau, tiếp xúc trực tiếp với dầu, hại da tay.\n- Phải sử dụng giẻ lau để lau khô sản phẩm dẫn đến hao phí dầu ngấm trên giẻ (cứ 200sp phải bổ sung 1~1.5 lít dầu~2 phi dầu ~32 triệu/ năm. Giẻ đem đốt gây ô nhiễm môi trường.\n- Chờ đợi khô dầu từ 4- 8 tiếng, phụ thuộc nhiệt độ/độ ẩm không khí.\n- Đóng được 100-150 cái/2 công thợ\n- Sản phẩm được xếp chờ khô tốn diện tích xưởng, có rủi ro nhầm lẫn khi sắp sếp chủng loại, mã hàng.\nVấn đề: Dầu tiêu hao lớn, môi trường làm việc độc hại, năng suất hạn chế, rủi ro nhầm sản phẩm | Giải pháp: - Thiết kế bàn xếp sản phẩm sau đó tưới dầu tuần hoàn, dùng khí nén xịt dầu thừa lại thùng hồi dầu\n-Thực hiện 4 bước: bốc hàng, bơm dầu, dùng khí nén xì khô, đóng thùng.\n- 2 lần bốc dỡ hàng.\n- Bơm dầu trong thùng kín nên không bị rơi vãi, sp được xì khô \n- Thời gian đợi khô rút gọn còn 45 phút 1 mẻ.\n- Đóng được 350 - 400 cái/ 2 công thợ\n- Môi trường làm việc sạch sẽ, không bám dầu lên quân áo, không ảnh hưởng độc hại đến sức khỏe người lao động.\n- Sản phẩm được đặt trong thùng riêng biệt không nhầm lẫn, không tốn diện tích đặt để chờ khô dầu. | Lợi ích: - Cải tiến giúp tăng năng lực công đoạn lên 2.3 ~ 4 lần\n- Giảm lãng phí dầu (dự kiến 50%) 1 phi/năm ~ 16.6 triệu/năm (Thống kê 2 quý đầu năm 2025 mua bổ sung 104 lít dầu ngày 7/1/25, thống kê tiêu hao dầu năm 2023 và 2024 là 6 tháng/phi dầu bổ sung)\n- Cải thiện môi trường làm việc: dầu không bắn tóe ra nền xưởng, công nhân cải thiện được thao tác làm việc đứng không phải bê vác sản phẩm còn chưa khô dầu gây hại da, ám mùi quần áo, nhanh hỏng quần áo, tối nhiều găng tay\n- Thời gian loại bỏ dầu thừa nhanh giúp giảm chi phí diện tích đặt để, tránh nhầm lẫn mã hàng.\n- Khách hàng đánh giá tốt. | Nhân rộng: Cải tiến mang lại các hiệu quả bao gồm:\n- Năng suất: Nâng cao năng lực công đoạn lên 2~4 lần\n- Chất lượng: đảm bảo chất lượng công đoạn\n- An toàn: thao tác an toàn hơn nhờ giảm bớt thao tác và tư thế làm việc đứng, không bị dính dầu lên người và quần áo\n- Giảm giá thành: Giảm được chi phí vật tư dầu chống gỉ, giẻ lau\n- Môi trường: sạch sẽ hơn do dầu không văng ra nền xưởng, không phát sinh giẻ dầu phải đốt | Nguồn lực: Thiết kế bàn kết hợp thùng dầu có bơm dầu tuần hoàn (xếp tối đa 56sp auger 13)\nCông thiết kế: 1 công (phòng Cải tiến)  ≈ 400.000 đ\nCông lắp đặt: 1 công (phòng thiết bị) ≈ 400.000 đ\nGiá kết cấu: 30.000đ/kg kết cấu (tạm tính) *245 Kg ≈ 7.350.000đ\nĐộng cơ bơm dầu cũ: 3.000.000 đ (tạm tính)\nTổng: ≈ 11 triệu"
   },
   {
     "ma_kaizen": "KZ2025-009",
     "nam": 2025,
     "ten_y_tuong": "Tool nối dài đầu mài",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "PX Hoàn thiện",
     "vi_tri": "Mài hoàn thiện",
     "nguoi_de_xuat": "Phạm Duy Quỳnh",
     "thuc_trang": "- Sản phẩm TRS 6030-500 có hốc sản phẩm sâu không thể mài bằng dụng cụ có sẵn tại công ty\nVấn đề: Thiết bị sản xuất của công ty không mài được hốc sâu, có thể phải thuê ngoài hoặc mua thêm dụng cụ để sản xuất",
@@ -13302,13 +13302,13 @@
     "ngay_gui": "15/05/2025",
     "hinh_anh_truoc": "excel_images/KZ2025-009_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-009_after.png",
-    "full_text_search": "Mã: KZ2025-009 | Tên ý tưởng: Tool nối dài đầu mài | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Phạm Duy Quỳnh | Thực trạng: - Sản phẩm TRS 6030-500 có hốc sản phẩm sâu không thể mài bằng dụng cụ có sẵn tại công ty\nVấn đề: Thiết bị sản xuất của công ty không mài được hốc sâu, có thể phải thuê ngoài hoặc mua thêm dụng cụ để sản xuất | Giải pháp: - Lấy đầu kẹp máy mài chai hỏng làm thành đầu nối dài cho máy mài chai của phân xưởng giúp tiếp cận mài lỗ sâu của sản phẩm | Lợi ích: - Công cụ hỗ trợ giải quyết triệt để việc mài lỗ chi tiết chưa thể mài với các công cụ có sẵn.\n- Giảm bớt chi phí gia công do chưa có công cụ. | Nhân rộng: Cải tiến mang lại các hiệu quả bao gồm:\n- Chất lượng: Sản phẩm đạt được yêu cầu khách hàng mong đợi\n- Giảm giá thành: Giảm chi phí thuê ngoài hoặc đầu tư thiết bị dụng cụ mới\nCó nhiều cơ hộ nhân rộng ra các sản phẩm khác | Nguồn lực: - Đầu máy mài chai từ các máy đã hỏng không thể sửa chữa\n- 15 phút công thợ."
+    "full_text_search": "Mã: KZ2025-009 | Tên ý tưởng: Tool nối dài đầu mài | Đơn vị: PX Hoàn thiện | Người đề xuất: Phạm Duy Quỳnh | Thực trạng: - Sản phẩm TRS 6030-500 có hốc sản phẩm sâu không thể mài bằng dụng cụ có sẵn tại công ty\nVấn đề: Thiết bị sản xuất của công ty không mài được hốc sâu, có thể phải thuê ngoài hoặc mua thêm dụng cụ để sản xuất | Giải pháp: - Lấy đầu kẹp máy mài chai hỏng làm thành đầu nối dài cho máy mài chai của phân xưởng giúp tiếp cận mài lỗ sâu của sản phẩm | Lợi ích: - Công cụ hỗ trợ giải quyết triệt để việc mài lỗ chi tiết chưa thể mài với các công cụ có sẵn.\n- Giảm bớt chi phí gia công do chưa có công cụ. | Nhân rộng: Cải tiến mang lại các hiệu quả bao gồm:\n- Chất lượng: Sản phẩm đạt được yêu cầu khách hàng mong đợi\n- Giảm giá thành: Giảm chi phí thuê ngoài hoặc đầu tư thiết bị dụng cụ mới\nCó nhiều cơ hộ nhân rộng ra các sản phẩm khác | Nguồn lực: - Đầu máy mài chai từ các máy đã hỏng không thể sửa chữa\n- 15 phút công thợ."
   },
   {
     "ma_kaizen": "KZ2025-010",
     "nam": 2025,
     "ten_y_tuong": "Hàn cắt nối cánh van",
-    "don_vi": "PX HOÀN THIỆN",
+    "don_vi": "PX Hoàn thiện",
     "vi_tri": "nhóm mài cắt",
     "nguoi_de_xuat": "Bùi Đình Hùng",
     "thuc_trang": "- Sản phẩm cánh van sau đúc xuất hiện nhiều lỗi ko thể sửa chữa. Phải đúc mới sản phẩm để đảm bảo chất lượng sản phẩm.\n- Chậm thời gian giao hàng, không thể giao hàng cho khách hàng.\n- Số lượng sản phảm bị coi là phế thải nhiều, tổn thất lớn: vật liệu do khả năng nấu chảy tái chế hạn chế trong 1 vài sản phẩm, đúc lại sản phẩm bị lỗi khả năng thành công không cao, công làm việc cho các công đoạn trước.\n- Sản phẩm bị bỏ đi có giá thành sản suất lớn. \n- Khu vực đặt để sản phẩm hỏng chiếm diện tích phân xưởng, kho lưu trữ.\nVấn đề: Sản phẩm đúc hỏng nhiều, không đạt được chất lượng để giao cho khách hàng, không thể sửa theo phương pháp thông thường, nguy cơ hủy đơn hàng và phát sinh chi phí sản xuất lại.",
@@ -13325,13 +13325,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-010_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-010_after.png",
-    "full_text_search": "Mã: KZ2025-010 | Tên ý tưởng: Hàn cắt nối cánh van | Đơn vị: PX HOÀN THIỆN | Người đề xuất: Bùi Đình Hùng | Thực trạng: - Sản phẩm cánh van sau đúc xuất hiện nhiều lỗi ko thể sửa chữa. Phải đúc mới sản phẩm để đảm bảo chất lượng sản phẩm.\n- Chậm thời gian giao hàng, không thể giao hàng cho khách hàng.\n- Số lượng sản phảm bị coi là phế thải nhiều, tổn thất lớn: vật liệu do khả năng nấu chảy tái chế hạn chế trong 1 vài sản phẩm, đúc lại sản phẩm bị lỗi khả năng thành công không cao, công làm việc cho các công đoạn trước.\n- Sản phẩm bị bỏ đi có giá thành sản suất lớn. \n- Khu vực đặt để sản phẩm hỏng chiếm diện tích phân xưởng, kho lưu trữ.\nVấn đề: Sản phẩm đúc hỏng nhiều, không đạt được chất lượng để giao cho khách hàng, không thể sửa theo phương pháp thông thường, nguy cơ hủy đơn hàng và phát sinh chi phí sản xuất lại. | Giải pháp: - Cắt ghép 2 cánh van, hàn nối, hàn bổ sung. từ 2 sản phẩm hủy thành sản phẩm đạt chất lượng khách hàng yêu cầu.\n- Đảm bảo tiến độ, thời gian giao hàng, giảm chi phí sản suất cho đơn hàng do phát sinh hàng lỗi.\n- Giải quyết vật liệu khó tái chế.\n- Giải phóng khu vực tồn kho đặt để sản phẩm hỏng. | Lợi ích: - Cung cấp đơn hàng đúng thời gian, chất lượng.\n- Giảm lãng phí tồn kho\n- Giảm chi phí phát sinh phải chế tạo lại sản phẩm. | Nhân rộng: Ý tưởng giúp giải quyết giao hàng cho khách hàng đúng hạn định, giảm chi phí sản xuất cho công ty khi quy trình đúc sản phẩm chưa đảm bảo | Nguồn lực: 1 công thợ + Que hàn"
+    "full_text_search": "Mã: KZ2025-010 | Tên ý tưởng: Hàn cắt nối cánh van | Đơn vị: PX Hoàn thiện | Người đề xuất: Bùi Đình Hùng | Thực trạng: - Sản phẩm cánh van sau đúc xuất hiện nhiều lỗi ko thể sửa chữa. Phải đúc mới sản phẩm để đảm bảo chất lượng sản phẩm.\n- Chậm thời gian giao hàng, không thể giao hàng cho khách hàng.\n- Số lượng sản phảm bị coi là phế thải nhiều, tổn thất lớn: vật liệu do khả năng nấu chảy tái chế hạn chế trong 1 vài sản phẩm, đúc lại sản phẩm bị lỗi khả năng thành công không cao, công làm việc cho các công đoạn trước.\n- Sản phẩm bị bỏ đi có giá thành sản suất lớn. \n- Khu vực đặt để sản phẩm hỏng chiếm diện tích phân xưởng, kho lưu trữ.\nVấn đề: Sản phẩm đúc hỏng nhiều, không đạt được chất lượng để giao cho khách hàng, không thể sửa theo phương pháp thông thường, nguy cơ hủy đơn hàng và phát sinh chi phí sản xuất lại. | Giải pháp: - Cắt ghép 2 cánh van, hàn nối, hàn bổ sung. từ 2 sản phẩm hủy thành sản phẩm đạt chất lượng khách hàng yêu cầu.\n- Đảm bảo tiến độ, thời gian giao hàng, giảm chi phí sản suất cho đơn hàng do phát sinh hàng lỗi.\n- Giải quyết vật liệu khó tái chế.\n- Giải phóng khu vực tồn kho đặt để sản phẩm hỏng. | Lợi ích: - Cung cấp đơn hàng đúng thời gian, chất lượng.\n- Giảm lãng phí tồn kho\n- Giảm chi phí phát sinh phải chế tạo lại sản phẩm. | Nhân rộng: Ý tưởng giúp giải quyết giao hàng cho khách hàng đúng hạn định, giảm chi phí sản xuất cho công ty khi quy trình đúc sản phẩm chưa đảm bảo | Nguồn lực: 1 công thợ + Que hàn"
   },
   {
     "ma_kaizen": "KZ2025-011",
     "nam": 2025,
     "ten_y_tuong": "Phương pháp cắt chân đậu nan giường Đức Tài",
-    "don_vi": "PX NHIỆT LUYỆN",
+    "don_vi": "PX NL1",
     "vi_tri": "Nhóm Cắt đậu",
     "nguoi_de_xuat": "Nguyễn Văn Duy",
     "thuc_trang": "Để cắt đậu của sản phẩm nan giường Đức Tài, công nhân thực hiện các bước như sau:\n- Xếp sản phẩm ra nền xưởng\n- Cắt chân đậu bằng máy cắt cầm tay Ø230\n- Mài vết chân đậu còn thừa\n- Xếp sản phẩm lên pallet và cho chân đậu vào các thùng hồi liệu\nThao tác lao động:\n  + Cúi người gây mỏi, không làm việc liên tục, trong thời gian dài dễ gây các bệnh nghề nghiệp.\n- Năng suất: ~350 sp/ ca\n- Vật tư tiêu hao: đá mài Ø230\n- Chất lượng : \n  + Không đồng đều\n  + Để lại bavia\n- An toàn: sử dụng máy mài cầm tay nguy cơ về mất an toàn cao do máy nặng, rung , sản phẩm không được gá kẹp chắc chắn, tia mài văng ra các khu vực lân cận.\nVấn đề: Máy cắt đá 230 tư thế làm việc không thuận lợi, rủi ro mất an toàn cao, chất lượng vết cắt không đồng đều nên phát sinh thêm công việc mài gây tăng chi phí sản xuất",
@@ -13348,13 +13348,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-011_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-011_after.png",
-    "full_text_search": "Mã: KZ2025-011 | Tên ý tưởng: Phương pháp cắt chân đậu nan giường Đức Tài | Đơn vị: PX NHIỆT LUYỆN | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Để cắt đậu của sản phẩm nan giường Đức Tài, công nhân thực hiện các bước như sau:\n- Xếp sản phẩm ra nền xưởng\n- Cắt chân đậu bằng máy cắt cầm tay Ø230\n- Mài vết chân đậu còn thừa\n- Xếp sản phẩm lên pallet và cho chân đậu vào các thùng hồi liệu\nThao tác lao động:\n  + Cúi người gây mỏi, không làm việc liên tục, trong thời gian dài dễ gây các bệnh nghề nghiệp.\n- Năng suất: ~350 sp/ ca\n- Vật tư tiêu hao: đá mài Ø230\n- Chất lượng : \n  + Không đồng đều\n  + Để lại bavia\n- An toàn: sử dụng máy mài cầm tay nguy cơ về mất an toàn cao do máy nặng, rung , sản phẩm không được gá kẹp chắc chắn, tia mài văng ra các khu vực lân cận.\nVấn đề: Máy cắt đá 230 tư thế làm việc không thuận lợi, rủi ro mất an toàn cao, chất lượng vết cắt không đồng đều nên phát sinh thêm công việc mài gây tăng chi phí sản xuất | Giải pháp: - Sử dụng máy cắt bàn đá D350 thay máy mài cầm tay đá D230\n- Chế tạo đồ gá để định vị sản phẩm khi cắt.\n- Đậu cắt rơi xuống máng trượt vào thùng chờ sẵn-không mất công thu gom | Lợi ích: Năng suất:\n- Tăng năng suất từ 350 lên 500 sản phẩm/công ~ 43% năng lực công đoạn\nChất lượng:\n- Tăng chất lượng đầu ra của công đoạn: vết cắt 100% sản phẩm đạt chất lượng\nThao tác lao động: \n - Đứng thao tác giảm mệt mỏi, giảm bệnh nghề nghiệp.\n- Cắt giảm công đoạn mài hoàn thiện\n- Cắt giảm công đoạn thu gom sản phẩm và đậu (đậu tự rơi vào thùng chứa khi bị cắt rời)\nAn toàn:\n- Sử dụng máy mài bàn dùng lực tì xuống, giảm rung lắc, sản phẩm được gắn trên gá kẹp chắc chắn. \n- Hướng tia cắt cố định giúp giảm rủi ro gây mất an toàn lao động cho khu vực lân cận\n- Có khả năng thiết kế thêm hệ thống thu gom bụi | Nhân rộng: - Cải tiến có chi phí đầu tư thấp nhưng hiệu quả mang lại cao.\n- Có cơ hội nhân rộng đối với các sản phẩm kích thước nhỏ, có mặt cắt chân đậu thoáng đủ để lùa đá cắt\n- Cần xem xét các sản phẩm khác để đưa tiêu chí thiết kế chân đậu thuận tiện để áp dụng giải pháp cắt đá thay cho cắt hơi và mài\n- Loại bỏ được công đoạn mài phẳng chân đậu\n- Áp dụng vào đơn hàng dự kiến 25.000 sp/năm | Nguồn lực: - Tận dụng những vật liệu tái chế hàn cắt tạo hình dưỡng.\n- 1h công thợ."
+    "full_text_search": "Mã: KZ2025-011 | Tên ý tưởng: Phương pháp cắt chân đậu nan giường Đức Tài | Đơn vị: PX NL1 | Người đề xuất: Nguyễn Văn Duy | Thực trạng: Để cắt đậu của sản phẩm nan giường Đức Tài, công nhân thực hiện các bước như sau:\n- Xếp sản phẩm ra nền xưởng\n- Cắt chân đậu bằng máy cắt cầm tay Ø230\n- Mài vết chân đậu còn thừa\n- Xếp sản phẩm lên pallet và cho chân đậu vào các thùng hồi liệu\nThao tác lao động:\n  + Cúi người gây mỏi, không làm việc liên tục, trong thời gian dài dễ gây các bệnh nghề nghiệp.\n- Năng suất: ~350 sp/ ca\n- Vật tư tiêu hao: đá mài Ø230\n- Chất lượng : \n  + Không đồng đều\n  + Để lại bavia\n- An toàn: sử dụng máy mài cầm tay nguy cơ về mất an toàn cao do máy nặng, rung , sản phẩm không được gá kẹp chắc chắn, tia mài văng ra các khu vực lân cận.\nVấn đề: Máy cắt đá 230 tư thế làm việc không thuận lợi, rủi ro mất an toàn cao, chất lượng vết cắt không đồng đều nên phát sinh thêm công việc mài gây tăng chi phí sản xuất | Giải pháp: - Sử dụng máy cắt bàn đá D350 thay máy mài cầm tay đá D230\n- Chế tạo đồ gá để định vị sản phẩm khi cắt.\n- Đậu cắt rơi xuống máng trượt vào thùng chờ sẵn-không mất công thu gom | Lợi ích: Năng suất:\n- Tăng năng suất từ 350 lên 500 sản phẩm/công ~ 43% năng lực công đoạn\nChất lượng:\n- Tăng chất lượng đầu ra của công đoạn: vết cắt 100% sản phẩm đạt chất lượng\nThao tác lao động: \n - Đứng thao tác giảm mệt mỏi, giảm bệnh nghề nghiệp.\n- Cắt giảm công đoạn mài hoàn thiện\n- Cắt giảm công đoạn thu gom sản phẩm và đậu (đậu tự rơi vào thùng chứa khi bị cắt rời)\nAn toàn:\n- Sử dụng máy mài bàn dùng lực tì xuống, giảm rung lắc, sản phẩm được gắn trên gá kẹp chắc chắn. \n- Hướng tia cắt cố định giúp giảm rủi ro gây mất an toàn lao động cho khu vực lân cận\n- Có khả năng thiết kế thêm hệ thống thu gom bụi | Nhân rộng: - Cải tiến có chi phí đầu tư thấp nhưng hiệu quả mang lại cao.\n- Có cơ hội nhân rộng đối với các sản phẩm kích thước nhỏ, có mặt cắt chân đậu thoáng đủ để lùa đá cắt\n- Cần xem xét các sản phẩm khác để đưa tiêu chí thiết kế chân đậu thuận tiện để áp dụng giải pháp cắt đá thay cho cắt hơi và mài\n- Loại bỏ được công đoạn mài phẳng chân đậu\n- Áp dụng vào đơn hàng dự kiến 25.000 sp/năm | Nguồn lực: - Tận dụng những vật liệu tái chế hàn cắt tạo hình dưỡng.\n- 1h công thợ."
   },
   {
     "ma_kaizen": "KZ2025-012",
     "nam": 2025,
     "ten_y_tuong": "Sử dụng sạn Nhật (xanh) tái sử dụng đắp miệng rót lò nấu Đúc 1",
-    "don_vi": "PX CƠ ĐIỆN",
+    "don_vi": "PX Cơ điện",
     "vi_tri": "Tổ lò",
     "nguoi_de_xuat": "Lê Văn Anh",
     "thuc_trang": "Lò nấu thép PX Đúc 1 sửa dụng sạn CP86CR (71.000đ/kg) và sạn ZRP (38.000đ/kg) để đắp máng ra thép. Chi phí 75Kg/1 máng\nVấn đê đưa ra: Có thể dùng sạn nhật tái sử dụng để đắp máng thay cho sạn mới hay không",
@@ -13371,13 +13371,13 @@
     "ngay_gui": "01/01/2025",
     "hinh_anh_truoc": "",
     "hinh_anh_sau": "",
-    "full_text_search": "Mã: KZ2025-012 | Tên ý tưởng: Sử dụng sạn Nhật (xanh) tái sử dụng đắp miệng rót lò nấu Đúc 1 | Đơn vị: PX CƠ ĐIỆN | Người đề xuất: Lê Văn Anh | Thực trạng: Lò nấu thép PX Đúc 1 sửa dụng sạn CP86CR (71.000đ/kg) và sạn ZRP (38.000đ/kg) để đắp máng ra thép. Chi phí 75Kg/1 máng\nVấn đê đưa ra: Có thể dùng sạn nhật tái sử dụng để đắp máng thay cho sạn mới hay không | Giải pháp: Sử dụng sạn Nhật (xanh) trộn nước thủy tinh và sét (1.500đ/kg để tạo thành hỗn hợp đắp máng thay thế cho sạn mới (CP86CR và ZRP) | Lợi ích:  | Nhân rộng:  | Nguồn lực: Sạn nhật tái sử dụng = 75 kg/máng\nsét = Kg/máng\nnước thủy tinh = kg/máng"
+    "full_text_search": "Mã: KZ2025-012 | Tên ý tưởng: Sử dụng sạn Nhật (xanh) tái sử dụng đắp miệng rót lò nấu Đúc 1 | Đơn vị: PX Cơ điện | Người đề xuất: Lê Văn Anh | Thực trạng: Lò nấu thép PX Đúc 1 sửa dụng sạn CP86CR (71.000đ/kg) và sạn ZRP (38.000đ/kg) để đắp máng ra thép. Chi phí 75Kg/1 máng\nVấn đê đưa ra: Có thể dùng sạn nhật tái sử dụng để đắp máng thay cho sạn mới hay không | Giải pháp: Sử dụng sạn Nhật (xanh) trộn nước thủy tinh và sét (1.500đ/kg để tạo thành hỗn hợp đắp máng thay thế cho sạn mới (CP86CR và ZRP) | Lợi ích:  | Nhân rộng:  | Nguồn lực: Sạn nhật tái sử dụng = 75 kg/máng\nsét = Kg/máng\nnước thủy tinh = kg/máng"
   },
   {
     "ma_kaizen": "KZ2025-013",
     "nam": 2025,
     "ten_y_tuong": "Thay đổi khuôn cánh xoắn Ishizue",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Đúc mẫu",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "Sản phẩm ishiuze do thay đổi công nghệ có thêm yêu cầu hàn vành, mẫu trắng sau khi đúc xong phải qua phòng cắt để cắt ngắn sau đó dán viền để đap ứng yêu cầu hàn\nVấn đề: Tốn nhân công do phát sinh thêm 2 công đoạn, sản phẩm phát sinh thêm lỗi và thời gian xử lý lỗi\nNăng suất 1,5 tiếng hoàn thành 1 sản phẩm ~ 5sp/ngày/người",
@@ -13394,13 +13394,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-013_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-013_after.png",
-    "full_text_search": "Mã: KZ2025-013 | Tên ý tưởng: Thay đổi khuôn cánh xoắn Ishizue | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: Sản phẩm ishiuze do thay đổi công nghệ có thêm yêu cầu hàn vành, mẫu trắng sau khi đúc xong phải qua phòng cắt để cắt ngắn sau đó dán viền để đap ứng yêu cầu hàn\nVấn đề: Tốn nhân công do phát sinh thêm 2 công đoạn, sản phẩm phát sinh thêm lỗi và thời gian xử lý lỗi\nNăng suất 1,5 tiếng hoàn thành 1 sản phẩm ~ 5sp/ngày/người | Giải pháp: Chỉnh sửa khuôn đúc mẫu trắng để sản phẩm đuc xong đạt yêu cầu về hình dáng theo yêu cầu công nghệ\nGiải quyết : \nNăng suất 1,25 tiếng hoàn thành 1 sản phẩm ~ 6sp/ngày/người | Lợi ích: Cắt giảm được 2 công đoạn ~13 phút/sp + chi phí vật tư tiêu hao, giảm ~3 phút thời gian xử lý lỗi chất lượng ở công đoạn mông hàng | Nhân rộng: Đã áp dụng trên 10 loại sản phẩm Ishiuze: 165DW500, 190DW500, 216Dw650, 216Dw550, 267Dw700, 267Dw800, 318Dw800, 318Dw650, 355Dw750, 355Dw900. | Nguồn lực: Vật tư: Nhôm tấm 2mm khổ 2 mét vuông = 972.000đ\nCông cắt dây: 4 giờ/khuôn *10 khuôn = 3.000.000đ\nCông lắp vành nhôm cho 10 khuôn: 2 công*350.000đ  = 700.000đ\nTổng: 4.672.000đ"
+    "full_text_search": "Mã: KZ2025-013 | Tên ý tưởng: Thay đổi khuôn cánh xoắn Ishizue | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: Sản phẩm ishiuze do thay đổi công nghệ có thêm yêu cầu hàn vành, mẫu trắng sau khi đúc xong phải qua phòng cắt để cắt ngắn sau đó dán viền để đap ứng yêu cầu hàn\nVấn đề: Tốn nhân công do phát sinh thêm 2 công đoạn, sản phẩm phát sinh thêm lỗi và thời gian xử lý lỗi\nNăng suất 1,5 tiếng hoàn thành 1 sản phẩm ~ 5sp/ngày/người | Giải pháp: Chỉnh sửa khuôn đúc mẫu trắng để sản phẩm đuc xong đạt yêu cầu về hình dáng theo yêu cầu công nghệ\nGiải quyết : \nNăng suất 1,25 tiếng hoàn thành 1 sản phẩm ~ 6sp/ngày/người | Lợi ích: Cắt giảm được 2 công đoạn ~13 phút/sp + chi phí vật tư tiêu hao, giảm ~3 phút thời gian xử lý lỗi chất lượng ở công đoạn mông hàng | Nhân rộng: Đã áp dụng trên 10 loại sản phẩm Ishiuze: 165DW500, 190DW500, 216Dw650, 216Dw550, 267Dw700, 267Dw800, 318Dw800, 318Dw650, 355Dw750, 355Dw900. | Nguồn lực: Vật tư: Nhôm tấm 2mm khổ 2 mét vuông = 972.000đ\nCông cắt dây: 4 giờ/khuôn *10 khuôn = 3.000.000đ\nCông lắp vành nhôm cho 10 khuôn: 2 công*350.000đ  = 700.000đ\nTổng: 4.672.000đ"
   },
   {
     "ma_kaizen": "KZ2025-014",
     "nam": 2025,
     "ten_y_tuong": "Thay đổi khuôn cánh xoắn TMD",
-    "don_vi": "PX MẪU XỐP",
+    "don_vi": "PX Mẫu xốp",
     "vi_tri": "Đúc mẫu",
     "nguoi_de_xuat": "Phùng Đình Chiến",
     "thuc_trang": "Mẫu trắng được đúc thành 2 nửa, qua công đoạn gắn sẽ ghép thành sản phẩm hoàn chỉnh\nVấn đề: Năng suất đạt 20~25sp/ca, sp dễ bị lỗi cong, lồi lõm, sơn không dính ở bị trí bôi keo dẫn đến phát sinh thời gian sửa hàng cho công đoạn mông sản phẩm\nTrước 25 sp/ngày",
@@ -13417,13 +13417,13 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-014_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-014_after.png",
-    "full_text_search": "Mã: KZ2025-014 | Tên ý tưởng: Thay đổi khuôn cánh xoắn TMD | Đơn vị: PX MẪU XỐP | Người đề xuất: Phùng Đình Chiến | Thực trạng: Mẫu trắng được đúc thành 2 nửa, qua công đoạn gắn sẽ ghép thành sản phẩm hoàn chỉnh\nVấn đề: Năng suất đạt 20~25sp/ca, sp dễ bị lỗi cong, lồi lõm, sơn không dính ở bị trí bôi keo dẫn đến phát sinh thời gian sửa hàng cho công đoạn mông sản phẩm\nTrước 25 sp/ngày | Giải pháp: Làm lại khuôn để định hình sản phẩm đúng yêu cầu khách hàng, vị trí ghép nối không làm ảnh hưởng đến hình dáng của sản phẩm\nGiải quyết\n- Giảm 1 nhân công ngồi gắn \n- Giảm vật tư tiêu hao 2 thanh keo nến / 1 sp\n- Năng suất 150 sp/ ngày. | Lợi ích: Tăng năng suất lao động từ 20-25 sản phẩm lên 150 sản phẩm, loại bỏ hết các lỗi chất lượng liên quan đến hình dáng kích thước sản phẩm của phương pháp cũ đồng thời giảm thời gian phát sinh cho công đoạn sau | Nhân rộng: Đã áp dụng trên 4 bộ khuôn cho các sản phẩm: 1012196, 1012197R, 1021059-03, 1021060-03 | Nguồn lực: Chi phí sửa khuôn (6 bộ) = 102 triệu"
+    "full_text_search": "Mã: KZ2025-014 | Tên ý tưởng: Thay đổi khuôn cánh xoắn TMD | Đơn vị: PX Mẫu xốp | Người đề xuất: Phùng Đình Chiến | Thực trạng: Mẫu trắng được đúc thành 2 nửa, qua công đoạn gắn sẽ ghép thành sản phẩm hoàn chỉnh\nVấn đề: Năng suất đạt 20~25sp/ca, sp dễ bị lỗi cong, lồi lõm, sơn không dính ở bị trí bôi keo dẫn đến phát sinh thời gian sửa hàng cho công đoạn mông sản phẩm\nTrước 25 sp/ngày | Giải pháp: Làm lại khuôn để định hình sản phẩm đúng yêu cầu khách hàng, vị trí ghép nối không làm ảnh hưởng đến hình dáng của sản phẩm\nGiải quyết\n- Giảm 1 nhân công ngồi gắn \n- Giảm vật tư tiêu hao 2 thanh keo nến / 1 sp\n- Năng suất 150 sp/ ngày. | Lợi ích: Tăng năng suất lao động từ 20-25 sản phẩm lên 150 sản phẩm, loại bỏ hết các lỗi chất lượng liên quan đến hình dáng kích thước sản phẩm của phương pháp cũ đồng thời giảm thời gian phát sinh cho công đoạn sau | Nhân rộng: Đã áp dụng trên 4 bộ khuôn cho các sản phẩm: 1012196, 1012197R, 1021059-03, 1021060-03 | Nguồn lực: Chi phí sửa khuôn (6 bộ) = 102 triệu"
   },
   {
     "ma_kaizen": "KZ2025-015",
     "nam": 2025,
     "ten_y_tuong": "Sửa đổi chương trình hàn để tăng chiều dày đắp",
-    "don_vi": "BAN QLTB",
+    "don_vi": "Phòng Thiết bị",
     "vi_tri": "Hàn vành Ishizue",
     "nguoi_de_xuat": "Lê Văn Khương",
     "thuc_trang": "Hàn 2 lớp (lặp lại chương trình hàn 2 lần) để hoàn thiện 1 sp",
@@ -13440,7 +13440,7 @@
     "ngay_gui": "",
     "hinh_anh_truoc": "excel_images/KZ2025-015_before.png",
     "hinh_anh_sau": "excel_images/KZ2025-015_after.png",
-    "full_text_search": "Mã: KZ2025-015 | Tên ý tưởng: Sửa đổi chương trình hàn để tăng chiều dày đắp | Đơn vị: BAN QLTB | Người đề xuất: Lê Văn Khương | Thực trạng: Hàn 2 lớp (lặp lại chương trình hàn 2 lần) để hoàn thiện 1 sp | Giải pháp: Sửa chương trình, hàn 1 lần hoàn thành, đi chậm hơn để đạt được chiều dày đắp trong 1 chương trình hàn | Lợi ích: Tăng năng lực sản xuất lên 1.5 lần (sp 457A95 từ 8 sp/ nửa ca lên 12 sp/ nửa ca) | Nhân rộng: Có thể áp dụng được trên tất cả các sản phẩm cánh xoắn Ishizue | Nguồn lực: không"
+    "full_text_search": "Mã: KZ2025-015 | Tên ý tưởng: Sửa đổi chương trình hàn để tăng chiều dày đắp | Đơn vị: Phòng Thiết bị | Người đề xuất: Lê Văn Khương | Thực trạng: Hàn 2 lớp (lặp lại chương trình hàn 2 lần) để hoàn thiện 1 sp | Giải pháp: Sửa chương trình, hàn 1 lần hoàn thành, đi chậm hơn để đạt được chiều dày đắp trong 1 chương trình hàn | Lợi ích: Tăng năng lực sản xuất lên 1.5 lần (sp 457A95 từ 8 sp/ nửa ca lên 12 sp/ nửa ca) | Nhân rộng: Có thể áp dụng được trên tất cả các sản phẩm cánh xoắn Ishizue | Nguồn lực: không"
   },
   {
     "ma_kaizen": "KZ2025-016",

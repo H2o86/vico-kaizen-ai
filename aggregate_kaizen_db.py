@@ -125,6 +125,17 @@ if os.path.exists(json_raw_file):
 
 if os.path.exists(excel_file):
     wb = openpyxl.load_workbook(excel_file, read_only=True, data_only=True)
+
+    author_unit_map = {}
+    if 'DS Nguoi de xuat' in wb.sheetnames:
+        ws_author = wb['DS Nguoi de xuat']
+        for row in ws_author.iter_rows(values_only=True):
+            if row and len(row) >= 4 and row[2] and row[3]:
+                author_name = str(row[2]).strip()
+                work_unit = str(row[3]).strip()
+                if author_name and work_unit and work_unit != 'ĐVCT':
+                    author_unit_map[author_name] = work_unit
+
     ws = wb['DATABASE-KAIZEN']
 
     for row_idx, row in enumerate(ws.iter_rows(values_only=True), start=1):
@@ -141,7 +152,7 @@ if os.path.exists(excel_file):
             continue
 
         year = row[1] if len(row) > 1 and row[1] is not None else ''
-        unit = str(row[3]).strip() if len(row) > 3 and row[3] is not None else ''
+        dept_unit = str(row[3]).strip() if len(row) > 3 and row[3] is not None else ''
         location = str(row[4]).strip() if len(row) > 4 and row[4] is not None else ''
         title = str(row[5]).strip() if len(row) > 5 and row[5] is not None else ''
         status_quo = str(row[6]).strip() if len(row) > 6 and row[6] is not None else ''
@@ -162,8 +173,14 @@ if os.path.exists(excel_file):
         submitter = str(row[13]).strip() if len(row) > 13 and row[13] is not None else ''
         submitter_unit = str(row[14]).strip() if len(row) > 14 and row[14] is not None else ''
 
-        if not unit and submitter_unit:
+        # Cần lấy ĐƠN VỊ CÔNG TÁC (col 14 / author_unit_map) thay vì BỘ PHẬN/KHU VỰC (col 3)
+        unit = ''
+        if submitter_unit and not submitter_unit.startswith('='):
             unit = submitter_unit
+        elif submitter in author_unit_map:
+            unit = author_unit_map[submitter]
+        else:
+            unit = submitter_unit if submitter_unit else dept_unit
 
         expansion = str(row[18]).strip() if len(row) > 18 and row[18] is not None else ''
         calc_desc = str(row[22]).strip() if len(row) > 22 and row[22] is not None else ''
