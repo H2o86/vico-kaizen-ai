@@ -454,22 +454,46 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
   ]
 }`;
 
-        // Step 3: Call Gemini REST API directly
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
-        const geminiRes = await fetch(geminiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: promptText }] }]
-            })
-        });
+        // Step 3: Call Gemini REST API with automatic model fallback array
+        const GEMINI_MODELS = [
+            "gemini-1.5-flash",
+            "gemini-1.5-pro",
+            "gemini-2.0-flash-exp",
+            "gemini-2.5-flash"
+        ];
 
-        if (!geminiRes.ok) {
-            const errData = await geminiRes.json();
-            throw new Error(errData.error?.message || `Lỗi Gemini API (HTTP ${geminiRes.status})`);
+        let geminiJson = null;
+        let lastErrorMsg = "";
+        let usedModel = "";
+
+        for (const modelName of GEMINI_MODELS) {
+            try {
+                const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                const res = await fetch(geminiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptText }] }]
+                    })
+                });
+
+                if (res.ok) {
+                    geminiJson = await res.json();
+                    usedModel = modelName;
+                    break;
+                } else {
+                    const errData = await res.json();
+                    lastErrorMsg = errData.error?.message || `HTTP ${res.status}`;
+                }
+            } catch (mErr) {
+                lastErrorMsg = mErr.message;
+            }
         }
 
-        const geminiJson = await geminiRes.json();
+        if (!geminiJson) {
+            throw new Error(lastErrorMsg || "Tất cả các model Gemini API đều không khả dụng.");
+        }
+
         const rawText = geminiJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
         // Step 4: Parse LLM JSON
@@ -502,7 +526,7 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
             max_similarity_pct: parsedResult.max_similarity_pct || vectorResult.max_similarity_pct,
             risk_level: parsedResult.risk_level || vectorResult.risk_level,
             risk_code: parsedResult.risk_code || vectorResult.risk_code,
-            reward_policy: `🧠 [KẾT QUẢ ĐÁNH GIÁ CHUYÊN SÂU BỞI GEMINI 2.0 FLASH LLM AI]\n\n` + parsedResult.reward_policy,
+            reward_policy: `🧠 [KẾT QUẢ ĐÁNH GIÁ CHUYÊN SÂU BỞI GEMINI AI (${usedModel || 'LLM'})]\n\n` + parsedResult.reward_policy,
             matched_kaizens: mergedMatches
         };
 
