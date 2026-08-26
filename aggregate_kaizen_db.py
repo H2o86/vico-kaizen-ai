@@ -28,7 +28,7 @@ try:
     with urllib.request.urlopen(req, timeout=15) as response:
         csv_bytes = response.read()
 
-    df_gs = pd.read_csv(io.BytesIO(csv_bytes))
+    df_gs = pd.read_csv(io.BytesIO(csv_bytes), header=None)
     print(f"Downloaded Google Sheet: {len(df_gs)} raw rows.")
 
     for idx, row in df_gs.iterrows():
