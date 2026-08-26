@@ -97,6 +97,7 @@ class KaizenDuplicateChecker:
             matches.append({
                 'ma_kaizen': rec['ma_kaizen'],
                 'nam': rec['nam'],
+                'ngay_gui': rec.get('ngay_gui', ''),
                 'ten_y_tuong': rec['ten_y_tuong'],
                 'don_vi': rec['don_vi'],
                 'nguoi_de_xuat': rec['nguoi_de_xuat'],
@@ -104,6 +105,7 @@ class KaizenDuplicateChecker:
                 'giai_phap': rec['giai_phap'],
                 'danh_gia_hieu_qua': rec['danh_gia_hieu_qua'],
                 'tien_thuong_vnd': rec['tien_thuong_vnd'],
+                'trang_thai': rec.get('trang_thai', ''),
                 'overall_similarity_pct': round(score * 100, 1),
                 'solution_similarity_pct': round(sol_sim * 100, 1)
             })

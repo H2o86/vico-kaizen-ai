@@ -369,6 +369,7 @@ function evaluateClientSide(inputStr, topK = 5) {
             trang_thai: rec.trang_thai,
             trang_thai_trien_khai: rec.trang_thai_trien_khai,
             trang_thai_duy_tri: rec.trang_thai_duy_tri,
+            ngay_gui: rec.ngay_gui,
             overall_similarity_pct: Math.min(99.9, Math.round(sim * 220 * 10) / 10),
             solution_similarity_pct: Math.min(99.9, Math.round(solSim * 200 * 10) / 10)
         };
@@ -466,7 +467,19 @@ function renderEvaluationResult(data, contentText) {
 
         data.matched_kaizens.forEach((m, idx) => {
             const origRewardFmt = formatVND(m.tien_thuong_vnd);
-            let rewardTag = origRewardFmt ? `💰 Thưởng gốc: ${origRewardFmt}` : `💰 Thưởng: Theo quy chế VICO`;
+            const isCompleted = (m.trang_thai || '').includes('Hoàn thành') || (m.trang_thai || '').includes('A3') || (m.trang_thai || '').includes('triển khai') || (m.trang_thai || '').includes('Duy trì');
+
+            let rewardTag = "";
+            if (origRewardFmt) {
+                rewardTag = `💰 Thưởng thực tế: ${origRewardFmt}`;
+            } else if (isCompleted) {
+                rewardTag = `💰 Thưởng thực tế: Đã hoàn thành (Theo quy chế VICO)`;
+            } else {
+                rewardTag = `💰 Thưởng: Theo quy chế VICO`;
+            }
+
+            const dateStr = m.ngay_gui ? `Ngày ${m.ngay_gui}` : `Năm ${m.nam || '2026'}`;
+            const authorUnitStr = m.don_vi ? `${m.nguoi_de_xuat || 'Hệ thống'} (${m.don_vi})` : `${m.nguoi_de_xuat || 'Hệ thống'}`;
 
             const card = document.createElement("div");
             card.className = "match-item match-item-clickable";
@@ -479,8 +492,8 @@ function renderEvaluationResult(data, contentText) {
                 </div>
                 <div class="match-title">${idx + 1}. ${m.ten_y_tuong}</div>
                 <div class="match-meta">
-                    <i class="fa-solid fa-user"></i> ${m.nguoi_de_xuat || 'Hệ thống'} | 
-                    <i class="fa-solid fa-calendar"></i> Năm ${m.nam || '2026'} | 
+                    <i class="fa-solid fa-user"></i> ${authorUnitStr} | 
+                    <i class="fa-solid fa-calendar"></i> ${dateStr} | 
                     <span class="reward-badge">${rewardTag}</span>
                 </div>
                 <div class="match-details">
