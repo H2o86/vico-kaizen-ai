@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v558.3";
-const APP_BUILD_TIME = "26/08/2026 - 15:48";
+const APP_VERSION = "v558.4";
+const APP_BUILD_TIME = "26/08/2026 - 15:51";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);

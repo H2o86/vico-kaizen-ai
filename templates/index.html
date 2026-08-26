@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style.css?v=558.3">
+    <link rel="stylesheet" href="/static/style.css?v=558.4">
 </head>
 <body>
     <div class="app-container">
@@ -96,6 +96,21 @@
                                     <option value="5" selected>Top 5 Giải pháp gần nhất</option>
                                     <option value="10">Top 10 Giải pháp gần nhất</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <!-- Explanation Guide for the 2 AI Evaluation Methods -->
+                        <div class="ai-modes-guide">
+                            <div class="guide-title"><i class="fa-solid fa-circle-info"></i> Hướng dẫn phân biệt 2 công cụ AI đánh giá:</div>
+                            <div class="guide-grid">
+                                <div class="guide-item">
+                                    <span class="guide-badge badge-bolt"><i class="fa-solid fa-bolt"></i> 1. Vector AI (Đánh Giá Nhanh)</span>
+                                    <p>So sánh ma trận véc-tơ N-Gram siêu tốc (0.01s). Khớp chính xác cụm từ kỹ thuật, đối sách & giải pháp, chạy nội bộ không tốn chi phí.</p>
+                                </div>
+                                <div class="guide-item">
+                                    <span class="guide-badge badge-brain"><i class="fa-solid fa-brain"></i> 2. Gemini LLM (Đánh Giá Sâu)</span>
+                                    <p>Sử dụng AI Google Gemini đọc hiểu ngữ nghĩa sâu như chuyên gia. Tự động viết đoạn lập luận phân tích điểm giống/khác & tư vấn mức thưởng.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -221,6 +236,6 @@
         </div>
     </div>
 
-    <script src="/static/app.js?v=558.3"></script>
+    <script src="/static/app.js?v=558.4"></script>
 </body>
 </html>

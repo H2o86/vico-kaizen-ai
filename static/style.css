@@ -1000,3 +1000,74 @@ textarea:focus {
     color: #c084fc;
     margin-right: 4px;
 }
+
+/* AI Modes Explanation Guide Box */
+.ai-modes-guide {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.guide-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.guide-title i {
+    color: #60a5fa;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (max-width: 640px) {
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.guide-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.guide-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.badge-bolt {
+    background: rgba(59, 130, 246, 0.18);
+    color: #60a5fa;
+}
+
+.badge-brain {
+    background: rgba(147, 51, 234, 0.18);
+    color: #c084fc;
+}
+
+.guide-item p {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
