@@ -5,7 +5,12 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
+const APP_VERSION = "v558.2";
+const APP_BUILD_TIME = "26/08/2026 - 15:35";
+
 document.addEventListener("DOMContentLoaded", async () => {
+    setElementText("sys-version-tag", APP_VERSION);
+    setElementText("sys-build-time", APP_BUILD_TIME);
     loadGeminiKey();
     await initApp();
 });

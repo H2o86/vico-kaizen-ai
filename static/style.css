@@ -112,9 +112,23 @@ body {
     border: 1px solid var(--border-color);
     padding: 8px 16px;
     border-radius: 30px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-secondary);
+}
+
+.version-pill {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    color: #c084fc;
+}
+
+.version-pill strong {
+    color: #e9d5ff;
+}
+
+.version-pill span {
+    color: #a78bfa;
 }
 
 .btn-sync {
