@@ -29,10 +29,10 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json");
+        const res = await fetch("./kaizen_database.json?v=556.2");
         allKaizensCache = await res.json();
         
-        // Also fetch live updates from Google Sheet using accurate RFC4180 CSV parser
+        // Fetch live updates from Google Sheet with 100% strict deduplication
         await fetchLiveGoogleSheetUpdates();
 
         updateUIStats();
@@ -78,10 +78,10 @@ function parseRFC4180CSV(text) {
     return rows;
 }
 
-// Fetch live updates from Google Sheet directly in browser
+// Fetch live updates from Google Sheet directly in browser with 100% exact deduplication
 async function fetchLiveGoogleSheetUpdates() {
     try {
-        const res = await fetch(LIVE_GS_CSV_URL);
+        const res = await fetch(LIVE_GS_CSV_URL + "&_t=" + Date.now());
         if (!res.ok) return;
 
         const csvText = await res.text();
@@ -89,12 +89,15 @@ async function fetchLiveGoogleSheetUpdates() {
         const parsedGS = parseGoogleSheetRows(csvRows);
 
         if (parsedGS && parsedGS.length > 0) {
+            const existingTitles = new Set(allKaizensCache.map(k => (k.ten_y_tuong || '').toLowerCase().trim()));
             const existingCodes = new Set(allKaizensCache.map(k => k.ma_kaizen));
             let newAdded = 0;
 
             parsedGS.forEach(item => {
-                if (!existingCodes.has(item.ma_kaizen)) {
+                const normTitle = (item.ten_y_tuong || '').toLowerCase().trim();
+                if (normTitle && !existingTitles.has(normTitle) && !existingCodes.has(item.ma_kaizen)) {
                     allKaizensCache.unshift(item);
+                    existingTitles.add(normTitle);
                     existingCodes.add(item.ma_kaizen);
                     newAdded++;
                 }
@@ -158,11 +161,9 @@ function updateUIStats() {
     document.getElementById("stat-total-count").innerText = allKaizensCache.length;
 
     let a3Count = 0;
-    const unitsSet = new Set();
     const statusCounts = {};
 
     allKaizensCache.forEach(k => {
-        if (k.don_vi) unitsSet.add(k.don_vi);
         const st = k.trang_thai || 'Báo cáo mới';
         statusCounts[st] = (statusCounts[st] || 0) + 1;
 
@@ -172,25 +173,17 @@ function updateUIStats() {
     });
 
     document.getElementById("stat-a3").innerText = a3Count;
-    document.getElementById("stat-units").innerText = unitsSet.size;
-
-    const unitSelect = document.getElementById("db-filter-unit");
-    unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
-    unitsSet.forEach(u => {
-        const opt = document.createElement("option");
-        opt.value = u;
-        opt.textContent = u;
-        unitSelect.appendChild(opt);
-    });
 
     const statusSelect = document.getElementById("db-filter-status");
-    statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
-    Object.keys(statusCounts).forEach(st => {
-        const opt = document.createElement("option");
-        opt.value = st;
-        opt.textContent = st;
-        statusSelect.appendChild(opt);
-    });
+    if (statusSelect) {
+        statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
+        Object.keys(statusCounts).forEach(st => {
+            const opt = document.createElement("option");
+            opt.value = st;
+            opt.textContent = st;
+            statusSelect.appendChild(opt);
+        });
+    }
 }
 
 // Tab Switcher
@@ -246,27 +239,17 @@ async function fetchStats() {
             }
         }
         document.getElementById("stat-a3").innerText = a3Count || 320;
-        document.getElementById("stat-units").innerText = Object.keys(data.unit_counts || {}).length || 15;
-
-        const unitSelect = document.getElementById("db-filter-unit");
-        unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
-        for (const [unitName, _] of Object.entries(data.unit_counts || {})) {
-            if (unitName && unitName !== "None") {
-                const opt = document.createElement("option");
-                opt.value = unitName;
-                opt.textContent = unitName;
-                unitSelect.appendChild(opt);
-            }
-        }
 
         const statusSelect = document.getElementById("db-filter-status");
-        statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
-        for (const [stName, _] of Object.entries(data.status_counts || {})) {
-            if (stName && stName !== "None") {
-                const opt = document.createElement("option");
-                opt.value = stName;
-                opt.textContent = stName;
-                statusSelect.appendChild(opt);
+        if (statusSelect) {
+            statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
+            for (const [stName, _] of Object.entries(data.status_counts || {})) {
+                if (stName && stName !== "None") {
+                    const opt = document.createElement("option");
+                    opt.value = stName;
+                    opt.textContent = stName;
+                    statusSelect.appendChild(opt);
+                }
             }
         }
     } catch (err) {}
@@ -376,7 +359,7 @@ function evaluateClientSide(inputStr, topK = 5) {
     } else if (maxScore >= 35) {
         risk_level = "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)";
         risk_code = "EXPANDED_SOLUTION";
-        reward_policy = `⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (50%): Đề tài có giải pháp tương tự hoặc nhân rộng từ Kaizen gốc [${topMatch.ma_kaizen}]. Theo quy định công ty, mức khen thưởng tính bằng 50% mức thưởng của giải pháp gốc.`;
+        reward_policy = `⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (50%): Đề tài có giải pháp tương tự hoặc nhân rộng từ Kaizen gốc [${topMatch.ma_kaizen}]. Mức khen thưởng tính bằng 50% mức thưởng của giải pháp gốc.`;
         recommendation = `Đề tài có giải pháp tương tự đề tài gốc [${topMatch.ma_kaizen}] (${topMatch.ten_y_tuong}). Ban Cải Tiến xét duyệt khen thưởng ở mức 50% so với giải pháp gốc.`;
     } else {
         risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)";
@@ -444,7 +427,6 @@ function renderEvaluationResult(data, contentText) {
             <div class="match-title">${idx + 1}. ${m.ten_y_tuong}</div>
             <div class="match-meta">
                 <i class="fa-solid fa-user"></i> ${m.nguoi_de_xuat || 'Hệ thống'} | 
-                <i class="fa-solid fa-building"></i> ${m.don_vi || 'VICO'} | 
                 <i class="fa-solid fa-calendar"></i> Năm ${m.nam || '2026'}
             </div>
             <div class="match-details">
@@ -471,11 +453,11 @@ async function fetchDatabase(page = 1) {
 
     currentPage = page;
     const q = document.getElementById("db-search-input").value.trim();
-    const unit = document.getElementById("db-filter-unit").value;
-    const status = document.getElementById("db-filter-status").value;
+    const statusSelect = document.getElementById("db-filter-status");
+    const status = statusSelect ? statusSelect.value : "";
 
     try {
-        const url = `/api/kaizens?q=${encodeURIComponent(q)}&unit=${encodeURIComponent(unit)}&status=${encodeURIComponent(status)}&page=${page}&limit=15`;
+        const url = `/api/kaizens?q=${encodeURIComponent(q)}&status=${encodeURIComponent(status)}&page=${page}&limit=15`;
         const res = await fetch(url);
         const data = await res.json();
 
@@ -493,11 +475,10 @@ async function fetchDatabase(page = 1) {
 function renderStaticTable(page = 1) {
     currentPage = page;
     const q = document.getElementById("db-search-input").value.trim().toLowerCase();
-    const unit = document.getElementById("db-filter-unit").value;
-    const status = document.getElementById("db-filter-status").value;
+    const statusSelect = document.getElementById("db-filter-status");
+    const status = statusSelect ? statusSelect.value : "";
 
     let filtered = allKaizensCache.filter(k => {
-        if (unit && k.don_vi !== unit) return false;
         if (status && k.trang_thai !== status) return false;
         if (q) {
             const combined = `${k.ma_kaizen} ${k.ten_y_tuong} ${k.thuc_trang} ${k.giai_phap} ${k.nguoi_de_xuat}`.toLowerCase();
@@ -522,7 +503,7 @@ function renderTable(kaizens) {
     tbody.innerHTML = "";
 
     if (!kaizens || kaizens.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 30px;">Không tìm thấy đề tài Kaizen nào.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Không tìm thấy đề tài Kaizen nào.</td></tr>`;
         return;
     }
 
@@ -532,7 +513,6 @@ function renderTable(kaizens) {
             <td><strong style="color: #60a5fa;">${k.ma_kaizen}</strong></td>
             <td>${k.nam || ''}</td>
             <td><strong>${k.ten_y_tuong}</strong></td>
-            <td>${k.don_vi || '-'}</td>
             <td>${k.nguoi_de_xuat || '-'}</td>
             <td><span class="match-code" style="background: rgba(255,255,255,0.08); color: #cbd5e1;">${k.trang_thai || 'Báo cáo mới'}</span></td>
             <td>
@@ -594,7 +574,7 @@ function openDetailModal(maKaizen) {
     const body = document.getElementById("modal-body");
 
     body.innerHTML = `
-        <p style="margin-bottom: 12px;"><strong>Đơn vị:</strong> ${k.don_vi || 'N/A'} | <strong>Tác giả:</strong> ${k.nguoi_de_xuat || 'N/A'} | <strong>Trạng thái:</strong> ${k.trang_thai || 'N/A'}</p>
+        <p style="margin-bottom: 12px;"><strong>Tác giả:</strong> ${k.nguoi_de_xuat || 'N/A'} | <strong>Trạng thái:</strong> ${k.trang_thai || 'N/A'}</p>
         <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; margin-bottom: 14px;">
             <h4 style="color: #60a5fa; margin-bottom: 6px;">⚠️ Thực Trạng & Vấn Đề Hiện Tại:</h4>
             <p style="line-height: 1.5;">${k.thuc_trang || 'Chưa cập nhật'}</p>

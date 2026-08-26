@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./static/style.css?v=556">
+    <link rel="stylesheet" href="./static/style.css?v=556.2">
 </head>
 <body>
     <div class="app-container">
@@ -20,7 +20,7 @@
                 <div class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></div>
                 <div class="logo-text">
                     <span class="brand-title">VICO KAIZEN AI</span>
-                    <span class="brand-subtitle">Hệ Thống Đánh Giá Trùng Lặp & Quy Định Khen Thưởng (50% Giải Pháp Mở Rộng)</span>
+                    <span class="brand-subtitle">Hệ Thống Đánh Giá Trùng Lặp Ý Tưởng Cải Tiến</span>
                 </div>
             </div>
             
@@ -34,12 +34,12 @@
             </div>
         </header>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
+        <!-- Stats Bar (Simplified to 2 accurate Cards) -->
+        <div class="stats-bar stats-bar-2cols">
             <div class="stat-card">
                 <div class="stat-icon icon-blue"><i class="fa-solid fa-lightbulb"></i></div>
                 <div class="stat-info">
-                    <span class="stat-val" id="stat-total">556</span>
+                    <span class="stat-val" id="stat-total">...</span>
                     <span class="stat-lbl">Tổng Đề Tài Cải Tiến</span>
                 </div>
             </div>
@@ -50,20 +50,6 @@
                     <span class="stat-lbl">Báo Cáo A3 / Hoàn Thành</span>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon icon-amber"><i class="fa-solid fa-scale-balanced"></i></div>
-                <div class="stat-info">
-                    <span class="stat-val">50%</span>
-                    <span class="stat-lbl">Tỷ Lệ Thưởng Giải Pháp Mở Rộng</span>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon icon-purple"><i class="fa-solid fa-layer-group"></i></div>
-                <div class="stat-info">
-                    <span class="stat-val" id="stat-units">...</span>
-                    <span class="stat-lbl">Phân Xưởng / Đơn Vị</span>
-                </div>
-            </div>
         </div>
 
         <!-- Main Navigation Tabs -->
@@ -72,7 +58,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles"></i> 1. AI Đánh Giá Ý Tưởng (1 Khung Nhập Duy Nhất)
             </button>
             <button class="tab-btn" onclick="switchTab('database-tab')">
-                <i class="fa-solid fa-boxes-stacked"></i> 2. Tra Cứu Kho Kaizen (556 Đề Tài)
+                <i class="fa-solid fa-boxes-stacked"></i> 2. Tra Cứu Kho Kaizen (CSDL Hệ Thống)
             </button>
         </div>
 
@@ -83,7 +69,7 @@
                 <div class="card form-card">
                     <div class="card-header">
                         <h2><i class="fa-solid fa-pen-to-square"></i> Nhập Nội Dung Ý Tưởng Cải Tiến Mới</h2>
-                        <p>Dán hoặc nhập toàn bộ nội dung đề tài cải tiến vào khung bên dưới để AI tự động phân tích và đối chiếu trên 556 đề tài toàn hệ thống.</p>
+                        <p>Dán hoặc nhập toàn bộ nội dung đề tài cải tiến vào khung bên dưới để AI tự động phân tích và đối chiếu trên toàn bộ kho đề tài hệ thống.</p>
                     </div>
 
                     <!-- Quick Sample Buttons -->
@@ -97,7 +83,7 @@
                     <form id="eval-form" onsubmit="handleEvaluate(event)">
                         <div class="form-group">
                             <label for="input-content">Nội Dung Đề Tài Cải Tiến <span class="required">*</span></label>
-                            <textarea id="input-content" rows="12" placeholder="Dán toàn bộ nội dung cải tiến (Tên đề tài, Thực trạng/Vấn đề, Giải pháp đề xuất, Đơn vị áp dụng)..." required></textarea>
+                            <textarea id="input-content" rows="12" placeholder="Dán toàn bộ nội dung cải tiến (Tên đề tài, Thực trạng/Vấn đề, Giải pháp đề xuất)..." required></textarea>
                         </div>
 
                         <div class="form-row">
@@ -128,14 +114,14 @@
                     <div class="empty-state" id="empty-state">
                         <div class="empty-icon"><i class="fa-solid fa-microchip"></i></div>
                         <h3>Sẵn Sàng Đánh Giá Ý Tưởng</h3>
-                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả phân tích trùng lặp & khuyến nghị thưởng 50% thời gian thực.</p>
+                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả phân tích độ trùng lặp thời gian thực.</p>
                     </div>
 
                     <!-- Loading State -->
                     <div class="loading-state hidden" id="loading-state">
                         <div class="spinner"></div>
                         <h3>AI Đang Phân Tích & Đối Chiếu Toàn Bộ Hệ Thống...</h3>
-                        <p>Đang so sánh ngữ nghĩa với 556 đề tài cải tiến trong CSDL VICO</p>
+                        <p>Đang so sánh ngữ nghĩa với các đề tài cải tiến trong CSDL VICO</p>
                     </div>
 
                     <!-- Active Results -->
@@ -154,7 +140,7 @@
 
                         <!-- Reward Policy Rule Box -->
                         <div class="reward-policy-box" id="res-policy-box">
-                            <div class="policy-header"><i class="fa-solid fa-coins"></i> ĐÁNH GIÁ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (QUY ĐỊNH 50% MỞ RỘNG):</div>
+                            <div class="policy-header"><i class="fa-solid fa-coins"></i> ĐÁNH GIÁ KHEN THƯỞNG:</div>
                             <div class="policy-body" id="res-policy-text">...</div>
                         </div>
 
@@ -186,10 +172,6 @@
                     </div>
 
                     <div class="filter-group">
-                        <select id="db-filter-unit" onchange="fetchDatabase(1)">
-                            <option value="">Tất cả Đơn vị / Phân xưởng</option>
-                        </select>
-
                         <select id="db-filter-status" onchange="fetchDatabase(1)">
                             <option value="">Tất cả Trạng thái</option>
                         </select>
@@ -204,7 +186,6 @@
                                 <th>Mã Kaizen</th>
                                 <th>Năm</th>
                                 <th>Tên Ý Tưởng Cải Tiến</th>
-                                <th>Đơn Vị</th>
                                 <th>Người Đề Xuất</th>
                                 <th>Trạng Thái</th>
                                 <th>Thao Tác</th>
@@ -240,6 +221,6 @@
         </div>
     </div>
 
-    <script src="./static/app.js?v=556"></script>
+    <script src="./static/app.js?v=556.2"></script>
 </body>
 </html>

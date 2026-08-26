@@ -145,6 +145,16 @@ body {
     margin-bottom: 24px;
 }
 
+.stats-bar-2cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 640px) {
+    .stats-bar-2cols {
+        grid-template-columns: 1fr;
+    }
+}
+
 .stat-card {
     background: var(--bg-card);
     backdrop-filter: blur(12px);
