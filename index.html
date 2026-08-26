@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VICO KAIZEN AI - Hệ Thống Đánh Giá Trùng Lặp Cải Tiến</title>
+    <!-- Google Fonts Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navbar Header -->
+        <header class="navbar">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></div>
+                <div class="logo-text">
+                    <span class="brand-title">VICO KAIZEN AI</span>
+                    <span class="brand-subtitle">Hệ Thống Đánh Giá Trùng Lặp & Quy Định Khen Thưởng (50% Giải Pháp Mở Rộng)</span>
+                </div>
+            </div>
+            
+            <div class="navbar-actions">
+                <div class="stat-pill" id="stat-total-pill">
+                    <i class="fa-solid fa-database"></i> <span id="stat-total-count">...</span> Kaizens
+                </div>
+                <button class="btn-sync" id="btn-sync" onclick="syncGoogleSheet()">
+                    <i class="fa-solid fa-rotate"></i> Đồng Bộ Sheet
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-icon icon-blue"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="stat-info">
+                    <span class="stat-val" id="stat-total">556</span>
+                    <span class="stat-lbl">Tổng Đề Tài Cải Tiến</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-green"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="stat-info">
+                    <span class="stat-val" id="stat-a3">...</span>
+                    <span class="stat-lbl">Báo Cáo A3 / Hoàn Thành</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-amber"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="stat-info">
+                    <span class="stat-val">50%</span>
+                    <span class="stat-lbl">Tỷ Lệ Thưởng Giải Pháp Mở Rộng</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-purple"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="stat-info">
+                    <span class="stat-val" id="stat-units">...</span>
+                    <span class="stat-lbl">Phân Xưởng / Đơn Vị</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Tabs -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('evaluator-tab')">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> 1. AI Đánh Giá Ý Tưởng (1 Khung Nhập Duy Nhất)
+            </button>
+            <button class="tab-btn" onclick="switchTab('database-tab')">
+                <i class="fa-solid fa-boxes-stacked"></i> 2. Tra Cứu Kho Kaizen (556 Đề Tài)
+            </button>
+        </div>
+
+        <!-- TAB 1: AI EVALUATOR (SINGLE INPUT BOX) -->
+        <div id="evaluator-tab" class="tab-content active">
+            <div class="eval-grid">
+                <!-- Left Column: Single Input Form -->
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-pen-to-square"></i> Nhập Nội Dung Ý Tưởng Cải Tiến Mới</h2>
+                        <p>Dán hoặc nhập toàn bộ nội dung đề tài cải tiến vào khung bên dưới để AI tự động phân tích và đối chiếu trên 556 đề tài toàn hệ thống.</p>
+                    </div>
+
+                    <!-- Quick Sample Buttons -->
+                    <div class="sample-btn-group">
+                        <span class="sample-label"><i class="fa-solid fa-lightbulb"></i> Ý tưởng mẫu:</span>
+                        <button class="btn-sample" onclick="loadSample(1)">📋 Máng điện cẩu trục</button>
+                        <button class="btn-sample" onclick="loadSample(2)">📋 Mài cưa tự động</button>
+                        <button class="btn-sample" onclick="loadSample(3)">📋 Ý tưởng AI mới</button>
+                    </div>
+
+                    <form id="eval-form" onsubmit="handleEvaluate(event)">
+                        <div class="form-group">
+                            <label for="input-content">Nội Dung Đề Tài Cải Tiến <span class="required">*</span></label>
+                            <textarea id="input-content" rows="12" placeholder="Dán toàn bộ nội dung cải tiến (Tên đề tài, Thực trạng/Vấn đề, Giải pháp đề xuất, Đơn vị áp dụng)..." required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-half">
+                                <label for="input-topk">Số Giải Pháp Tương Tự Cần So Sánh</label>
+                                <select id="input-topk">
+                                    <option value="3">Top 3 Giải pháp gần nhất</option>
+                                    <option value="5" selected>Top 5 Giải pháp gần nhất</option>
+                                    <option value="10">Top 10 Giải pháp gần nhất</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-eval" id="btn-eval">
+                                <i class="fa-solid fa-robot"></i> 🤖 Đánh Giá Mức Độ Trùng Lặp Bằng AI
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="resetForm()">
+                                <i class="fa-solid fa-eraser"></i> Làm Mới
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: AI Results Display -->
+                <div class="card result-card" id="result-container">
+                    <!-- Placeholder initial state -->
+                    <div class="empty-state" id="empty-state">
+                        <div class="empty-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3>Sẵn Sàng Đánh Giá Ý Tưởng</h3>
+                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả phân tích trùng lặp & khuyến nghị thưởng 50% thời gian thực.</p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-state hidden" id="loading-state">
+                        <div class="spinner"></div>
+                        <h3>AI Đang Phân Tích & Đối Chiếu Toàn Bộ Hệ Thống...</h3>
+                        <p>Đang so sánh ngữ nghĩa với 556 đề tài cải tiến trong CSDL VICO</p>
+                    </div>
+
+                    <!-- Active Results -->
+                    <div class="eval-result hidden" id="eval-result">
+                        <!-- Score Banner -->
+                        <div class="score-banner" id="score-banner">
+                            <div class="score-gauge">
+                                <span class="score-num" id="res-score">0%</span>
+                                <span class="score-label">Độ Tương Đồng</span>
+                            </div>
+                            <div class="score-details">
+                                <div class="risk-badge" id="res-risk-badge">...</div>
+                                <div class="res-title-text" id="res-idea-title">...</div>
+                            </div>
+                        </div>
+
+                        <!-- Reward Policy Rule Box -->
+                        <div class="reward-policy-box" id="res-policy-box">
+                            <div class="policy-header"><i class="fa-solid fa-coins"></i> ĐÁNH GIÁ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (QUY ĐỊNH 50% MỞ RỘNG):</div>
+                            <div class="policy-body" id="res-policy-text">...</div>
+                        </div>
+
+                        <!-- Recommendation Box -->
+                        <div class="recommendation-box" id="res-rec-box">
+                            <div class="rec-header"><i class="fa-solid fa-circle-info"></i> KHUYẾN NGHỊ CHO BAN CẢI TIẾN:</div>
+                            <div class="rec-body" id="res-rec-text">...</div>
+                        </div>
+
+                        <!-- Matched Historical Kaizens Section -->
+                        <div class="matched-section">
+                            <h3><i class="fa-solid fa-clock-rotate-left"></i> Các Đề Tài Có Giải Pháp Tương Tự Trong Hệ Thống</h3>
+                            <div class="matched-list" id="res-matched-list">
+                                <!-- Matched items dynamically injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: DATABASE EXPLORER -->
+        <div id="database-tab" class="tab-content">
+            <div class="card db-card">
+                <div class="db-controls">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="db-search-input" placeholder="Tìm kiếm theo Mã Kaizen, Tên ý tưởng, Thực trạng, Giải pháp, Người đề xuất..." onkeyup="debounceSearch()">
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="db-filter-unit" onchange="fetchDatabase(1)">
+                            <option value="">Tất cả Đơn vị / Phân xưởng</option>
+                        </select>
+
+                        <select id="db-filter-status" onchange="fetchDatabase(1)">
+                            <option value="">Tất cả Trạng thái</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Table View -->
+                <div class="table-responsive">
+                    <table class="kaizen-table">
+                        <thead>
+                            <tr>
+                                <th>Mã Kaizen</th>
+                                <th>Năm</th>
+                                <th>Tên Ý Tưởng Cải Tiến</th>
+                                <th>Đơn Vị</th>
+                                <th>Người Đề Xuất</th>
+                                <th>Trạng Thái</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="db-table-body">
+                            <!-- Table rows dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="pagination-bar">
+                    <div class="page-info" id="db-page-info">Hiển thị 0 / 0 bản ghi</div>
+                    <div class="page-btns" id="db-page-btns">
+                        <!-- Pagination buttons -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal-backdrop hidden" id="detail-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-code">KZ-XXXX</h3>
+                <button class="btn-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/app.js"></script>
+</body>
+</html>

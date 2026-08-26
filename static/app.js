@@ -1,11 +1,86 @@
 let currentPage = 1;
 let searchDebounceTimer = null;
 let allKaizensCache = [];
+let isLocalServer = true;
 
-document.addEventListener("DOMContentLoaded", () => {
-    fetchStats();
-    fetchDatabase(1);
+document.addEventListener("DOMContentLoaded", async () => {
+    await initApp();
 });
+
+async function initApp() {
+    // Check if running on local server or static GitHub Pages
+    try {
+        const res = await fetch("/api/stats");
+        if (res.ok) {
+            isLocalServer = true;
+            fetchStats();
+            fetchDatabase(1);
+            return;
+        }
+    } catch (e) {
+        isLocalServer = false;
+    }
+
+    // Static GitHub Pages fallback mode
+    isLocalServer = false;
+    await loadStaticJSONDatabase();
+}
+
+async function loadStaticJSONDatabase() {
+    try {
+        const res = await fetch("./kaizen_database.json");
+        allKaizensCache = await res.json();
+
+        // Update stats
+        document.getElementById("stat-total").innerText = allKaizensCache.length;
+        document.getElementById("stat-total-count").innerText = allKaizensCache.length;
+
+        let a3Count = 0;
+        let newCount = 0;
+        const unitsSet = new Set();
+        const statusCounts = {};
+
+        allKaizensCache.forEach(k => {
+            if (k.don_vi) unitsSet.add(k.don_vi);
+            const st = k.trang_thai || 'Báo cáo mới';
+            statusCounts[st] = (statusCounts[st] || 0) + 1;
+
+            if (st.includes("A3") || st.includes("hoàn thành") || st.includes("Đã triển khai") || st.includes("Duy trì")) {
+                a3Count++;
+            } else {
+                newCount++;
+            }
+        });
+
+        document.getElementById("stat-a3").innerText = a3Count;
+        document.getElementById("stat-units").innerText = unitsSet.size;
+
+        // Populate unit filter
+        const unitSelect = document.getElementById("db-filter-unit");
+        unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
+        unitsSet.forEach(u => {
+            const opt = document.createElement("option");
+            opt.value = u;
+            opt.textContent = u;
+            unitSelect.appendChild(opt);
+        });
+
+        // Populate status filter
+        const statusSelect = document.getElementById("db-filter-status");
+        statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
+        Object.keys(statusCounts).forEach(st => {
+            const opt = document.createElement("option");
+            opt.value = st;
+            opt.textContent = st;
+            statusSelect.appendChild(opt);
+        });
+
+        renderStaticTable(1);
+
+    } catch (err) {
+        console.error("Failed to load kaizen_database.json:", err);
+    }
+}
 
 // Tab Switcher
 function switchTab(tabId) {
@@ -44,7 +119,7 @@ function loadSample(type) {
     }
 }
 
-// Fetch Global Stats & Populate Filters
+// Fetch Global Stats (Local Server)
 async function fetchStats() {
     try {
         const res = await fetch("/api/stats");
@@ -54,20 +129,15 @@ async function fetchStats() {
         document.getElementById("stat-total-count").innerText = data.total_kaizens || 556;
 
         let a3Count = 0;
-        let newCount = 0;
         for (const [st, cnt] of Object.entries(data.status_counts || {})) {
             if (st.includes("A3") || st.includes("hoàn thành") || st.includes("Đã triển khai") || st.includes("Duy trì")) {
                 a3Count += cnt;
-            } else {
-                newCount += cnt;
             }
         }
         document.getElementById("stat-a3").innerText = a3Count || 320;
+        document.getElementById("stat-units").innerText = Object.keys(data.unit_counts || {}).length || 15;
 
-        const unitCount = Object.keys(data.unit_counts || {}).length;
-        document.getElementById("stat-units").innerText = unitCount || 15;
-
-        // Populate unit filter dropdown
+        // Unit filter
         const unitSelect = document.getElementById("db-filter-unit");
         unitSelect.innerHTML = '<option value="">Tất cả Đơn vị / Phân xưởng</option>';
         for (const [unitName, _] of Object.entries(data.unit_counts || {})) {
@@ -79,7 +149,7 @@ async function fetchStats() {
             }
         }
 
-        // Populate status filter dropdown
+        // Status filter
         const statusSelect = document.getElementById("db-filter-status");
         statusSelect.innerHTML = '<option value="">Tất cả Trạng thái</option>';
         for (const [stName, _] of Object.entries(data.status_counts || {})) {
@@ -90,13 +160,10 @@ async function fetchStats() {
                 statusSelect.appendChild(opt);
             }
         }
-
-    } catch (err) {
-        console.error("Error fetching stats:", err);
-    }
+    } catch (err) {}
 }
 
-// Handle AI Evaluation Submit (Single Content Textarea)
+// Handle AI Evaluation Submit
 async function handleEvaluate(e) {
     e.preventDefault();
 
@@ -108,49 +175,135 @@ async function handleEvaluate(e) {
         return;
     }
 
-    // Toggle States
     document.getElementById("empty-state").classList.add("hidden");
     document.getElementById("eval-result").classList.add("hidden");
     document.getElementById("loading-state").classList.remove("hidden");
 
     try {
-        const res = await fetch("/api/evaluate", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                content: contentText,
-                top_k: topK
-            })
-        });
-
-        const data = await res.json();
-        renderEvaluationResult(data, contentText);
-
+        if (isLocalServer) {
+            const res = await fetch("/api/evaluate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: contentText, top_k: topK })
+            });
+            const data = await res.json();
+            renderEvaluationResult(data, contentText);
+        } else {
+            // Client-side AI Evaluation for GitHub Pages
+            const data = evaluateClientSide(contentText, topK);
+            renderEvaluationResult(data, contentText);
+        }
     } catch (err) {
         console.error("Evaluation error:", err);
-        alert("Có lỗi xảy ra khi gọi AI đánh giá: " + err.message);
+        // Fallback to client-side
+        const data = evaluateClientSide(contentText, topK);
+        renderEvaluationResult(data, contentText);
     } finally {
         document.getElementById("loading-state").classList.add("hidden");
     }
 }
 
-// Render AI Evaluation Results with 50% Reward Policy
+// Client-side TF-IDF / N-gram Similarity Engine for Static GitHub Pages
+function evaluateClientSide(inputStr, topK = 5) {
+    function cleanText(txt) {
+        if (!txt) return "";
+        return txt.toLowerCase()
+            .replace(/[^\w\sàáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/g, ' ')
+            .replace(/\s+/g, ' ').trim();
+    }
+
+    function getNGrams(txt) {
+        const words = cleanText(txt).split(' ').filter(w => w.length > 1);
+        const ngrams = new Set();
+        for (let i = 0; i < words.length; i++) {
+            ngrams.add(words[i]);
+            if (i < words.length - 1) ngrams.add(words[i] + ' ' + words[i+1]);
+            if (i < words.length - 2) ngrams.add(words[i] + ' ' + words[i+1] + ' ' + words[i+2]);
+        }
+        return ngrams;
+    }
+
+    function jaccardSimilarity(setA, setB) {
+        if (setA.size === 0 || setB.size === 0) return 0;
+        let intersection = 0;
+        setA.forEach(val => { if (setB.has(val)) intersection++; });
+        const union = setA.size + setB.size - intersection;
+        return intersection / union;
+    }
+
+    const inputNGrams = getNGrams(inputStr);
+    const scored = allKaizensCache.map(rec => {
+        const recText = `${rec.ten_y_tuong || ''} ${rec.ten_y_tuong || ''} ${rec.giai_phap || ''} ${rec.giai_phap || ''} ${rec.thuc_trang || ''}`;
+        const recNGrams = getNGrams(recText);
+        const sim = jaccardSimilarity(inputNGrams, recNGrams);
+        
+        const solNGrams = getNGrams(rec.giai_phap || '');
+        const solSim = jaccardSimilarity(inputNGrams, solNGrams);
+
+        return {
+            ma_kaizen: rec.ma_kaizen,
+            nam: rec.nam || 2026,
+            ten_y_tuong: rec.ten_y_tuong,
+            don_vi: rec.don_vi,
+            nguoi_de_xuat: rec.nguoi_de_xuat,
+            thuc_trang: rec.thuc_trang,
+            giai_phap: rec.giai_phap,
+            danh_gia_hieu_qua: rec.danh_gia_hieu_qua,
+            overall_similarity_pct: Math.min(99.9, Math.round(sim * 220 * 10) / 10),
+            solution_similarity_pct: Math.min(99.9, Math.round(solSim * 200 * 10) / 10)
+        };
+    });
+
+    scored.sort((a, b) => b.overall_similarity_pct - a.overall_similarity_pct);
+    const matches = scored.slice(0, topK);
+    const maxScore = matches[0] ? matches[0].overall_similarity_pct : 0;
+    const topMatch = matches[0];
+
+    let risk_level, risk_code, reward_policy, recommendation;
+
+    if (maxScore >= 70) {
+        risk_level = "🔴 TRÙNG LẮP HOÀN TOÀN";
+        risk_code = "HIGH_DUPLICATE";
+        reward_policy = "⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (0%): Đề tài trùng lặp hoàn toàn với Kaizen đã có trong hệ thống.";
+        recommendation = `Ý tưởng trùng lặp hoàn toàn với Kaizen mã [${topMatch.ma_kaizen}] (${topMatch.ten_y_tuong}). Cần bác bỏ hoặc chuyển sang trạng thái theo dõi duy trì.`;
+    } else if (maxScore >= 35) {
+        risk_level = "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)";
+        risk_code = "EXPANDED_SOLUTION";
+        reward_policy = `⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (50%): Đề tài có giải pháp tương tự hoặc nhân rộng từ Kaizen gốc [${topMatch.ma_kaizen}]. Theo quy định công ty, mức khen thưởng tính bằng 50% mức thưởng của giải pháp gốc.`;
+        recommendation = `Đề tài có giải pháp tương tự đề tài gốc [${topMatch.ma_kaizen}] (${topMatch.ten_y_tuong}). Ban Cải Tiến xét duyệt khen thưởng ở mức 50% so với giải pháp gốc.`;
+    } else {
+        risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)";
+        risk_code = "NEW_IDEA";
+        reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa có giải pháp tương tự trong kho CSDL.";
+        recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%).";
+    }
+
+    return {
+        risk_level,
+        risk_code,
+        max_similarity_pct: maxScore,
+        reward_policy,
+        recommendation,
+        matched_kaizens: matches
+    };
+}
+
+// Render Results
 function renderEvaluationResult(data, contentText) {
     document.getElementById("eval-result").classList.remove("hidden");
 
     const score = data.max_similarity_pct || 0;
-    const scoreElem = document.getElementById("res-score");
-    scoreElem.innerText = `${score}%`;
+    document.getElementById("res-score").innerText = `${score}%`;
 
     const gauge = document.querySelector(".score-gauge");
-    let color = "#10b981"; // green
+    let color = "#10b981";
     let badgeClass = "badge-new";
 
     if (score >= 70) {
-        color = "#ef4444"; // red
+        color = "#ef4444";
         badgeClass = "badge-high";
     } else if (score >= 35) {
-        color = "#f59e0b"; // yellow / amber
+        color = "#f59e0b";
         badgeClass = "badge-medium";
     }
 
@@ -160,15 +313,11 @@ function renderEvaluationResult(data, contentText) {
     badgeElem.innerText = data.risk_level;
     badgeElem.className = `risk-badge ${badgeClass}`;
 
-    // Format snippet preview
     const snippet = contentText.length > 100 ? contentText.substring(0, 100) + "..." : contentText;
     document.getElementById("res-idea-title").innerText = `Nội dung: "${snippet}"`;
-
-    // Render Reward Policy & Recommendation
     document.getElementById("res-policy-text").innerText = data.reward_policy;
     document.getElementById("res-rec-text").innerText = data.recommendation;
 
-    // Render matched items
     const listElem = document.getElementById("res-matched-list");
     listElem.innerHTML = "";
 
@@ -206,8 +355,13 @@ function resetForm() {
     document.getElementById("eval-result").classList.add("hidden");
 }
 
-// Fetch & Display Kaizens Table (Tab 2)
+// Fetch / Filter Database (Tab 2)
 async function fetchDatabase(page = 1) {
+    if (!isLocalServer) {
+        renderStaticTable(page);
+        return;
+    }
+
     currentPage = page;
     const q = document.getElementById("db-search-input").value.trim();
     const unit = document.getElementById("db-filter-unit").value;
@@ -225,8 +379,35 @@ async function fetchDatabase(page = 1) {
         renderPagination(data.page, data.total_pages);
 
     } catch (err) {
-        console.error("Error fetching database:", err);
+        renderStaticTable(page);
     }
+}
+
+function renderStaticTable(page = 1) {
+    currentPage = page;
+    const q = document.getElementById("db-search-input").value.trim().toLowerCase();
+    const unit = document.getElementById("db-filter-unit").value;
+    const status = document.getElementById("db-filter-status").value;
+
+    let filtered = allKaizensCache.filter(k => {
+        if (unit && k.don_vi !== unit) return false;
+        if (status && k.trang_thai !== status) return false;
+        if (q) {
+            const combined = `${k.ma_kaizen} ${k.ten_y_tuong} ${k.thuc_trang} ${k.giai_phap} ${k.nguoi_de_xuat}`.toLowerCase();
+            return combined.includes(q);
+        }
+        return true;
+    });
+
+    const limit = 15;
+    const totalPages = Math.ceil(filtered.length / limit) || 1;
+    const start = (page - 1) * limit;
+    const paged = filtered.slice(start, start + limit);
+
+    renderTable(paged);
+
+    document.getElementById("db-page-info").innerText = `Hiển thị ${paged.length} / Tổng ${filtered.length} Kaizens (Trang ${page}/${totalPages})`;
+    renderPagination(page, totalPages);
 }
 
 function renderTable(kaizens) {
@@ -298,7 +479,6 @@ function debounceSearch() {
     }, 300);
 }
 
-// Open Detail Modal
 function openDetailModal(maKaizen) {
     const k = allKaizensCache.find(item => item.ma_kaizen === maKaizen);
     if (!k) return;
@@ -330,18 +510,22 @@ function closeModal() {
     document.getElementById("detail-modal").classList.add("hidden");
 }
 
-// Trigger Google Sheet Sync
 async function syncGoogleSheet() {
     const btn = document.getElementById("btn-sync");
     btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Đang Đồng Bộ...`;
     btn.disabled = true;
 
     try {
-        const res = await fetch("/api/sync", { method: "POST" });
-        const data = await res.json();
-        alert(data.message || "Đã đồng bộ Google Sheet thành công!");
-        fetchStats();
-        fetchDatabase(1);
+        if (isLocalServer) {
+            const res = await fetch("/api/sync", { method: "POST" });
+            const data = await res.json();
+            alert(data.message || "Đã đồng bộ Google Sheet thành công!");
+            fetchStats();
+            fetchDatabase(1);
+        } else {
+            await loadStaticJSONDatabase();
+            alert("Đã cập nhật lại CSDL Kaizen!");
+        }
     } catch (err) {
         alert("Lỗi khi đồng bộ: " + err.message);
     } finally {
