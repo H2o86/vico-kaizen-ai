@@ -545,8 +545,9 @@ textarea:focus {
 .conclusion-body {
     font-size: 14px;
     color: var(--text-primary);
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: 500;
+    white-space: pre-line;
 }
 
 /* Matched List */

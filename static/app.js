@@ -369,20 +369,23 @@ function evaluateClientSide(inputStr, topK = 5) {
         }
     }
 
+    const relatedCount = matches.filter(m => m.overall_similarity_pct > 3.0).length;
+    const countNotice = `🔍 Tìm thấy ${relatedCount} đề tài cải tiến có nội dung/từ khóa liên quan trong CSDL hệ thống.`;
+
     if (maxScore >= 70) {
         risk_level = "🔴 TRÙNG LẮP HOÀN TOÀN";
         risk_code = "HIGH_DUPLICATE";
-        reward_policy = `⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (Mức thưởng: 0 VNĐ): Đề tài trùng lặp hoàn toàn (tương đồng ${maxScore}%) với Kaizen gốc [${topMatch.ma_kaizen}].`;
+        reward_policy = `${countNotice}\n\n⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯẢNG (Mức thưởng: 0 VNĐ): Đề tài trùng lặp hoàn toàn (tương đồng ${maxScore}%) với Kaizen gốc [${topMatch.ma_kaizen}].`;
         recommendation = `Ý tưởng trùng lặp hoàn toàn với Kaizen mã [${topMatch.ma_kaizen}] (${topMatch.ten_y_tuong}). Ban Cải Tiến bác bỏ hoặc ghi nhận duy trì.`;
     } else if (maxScore >= 35) {
         risk_level = "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)";
         risk_code = "EXPANDED_SOLUTION";
-        reward_policy = `⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (THƯỞNG 50%): Đề tài có giải pháp tương tự/nhân rộng từ Kaizen gốc [${topMatch.ma_kaizen}]. Mức khen thưởng = 50% mức thưởng gốc${orig_reward_str}.`;
+        reward_policy = `${countNotice}\n\n⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (THƯỞNG 50%): Đề tài có giải pháp tương tự/nhân rộng từ Kaizen gốc [${topMatch.ma_kaizen}]. Mức khen thưởng = 50% mức thưởng gốc${orig_reward_str}.`;
         recommendation = `Đề tài có giải pháp tương tự đề tài gốc [${topMatch.ma_kaizen}] (${topMatch.ten_y_tuong}). Ban Cải Tiến xét duyệt khen thưởng ở mức 50% so với giải pháp gốc.`;
     } else {
         risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)";
         risk_code = "NEW_IDEA";
-        reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa từng có giải pháp tương tự trong CSDL công ty. Đủ điều kiện hưởng 100% mức thưởng tối đa.";
+        reward_policy = `${countNotice}\n\n✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa từng có giải pháp tương tự trong CSDL công ty. Đủ điều kiện hưởng 100% mức thưởng tối đa.`;
         recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%).";
     }
 
@@ -390,6 +393,7 @@ function evaluateClientSide(inputStr, topK = 5) {
         risk_level,
         risk_code,
         max_similarity_pct: maxScore,
+        related_count: relatedCount,
         reward_policy,
         recommendation,
         matched_kaizens: matches
@@ -423,7 +427,12 @@ function renderEvaluationResult(data, contentText) {
 
     const snippet = contentText.length > 100 ? contentText.substring(0, 100) + "..." : contentText;
     setElementText("res-idea-title", `Nội dung: "${snippet}"`);
-    setElementText("res-policy-text", data.reward_policy);
+    
+    // Parse policy text to preserve line breaks
+    const policyElem = document.getElementById("res-policy-text");
+    if (policyElem) {
+        policyElem.innerText = data.reward_policy;
+    }
 
     const listElem = document.getElementById("res-matched-list");
     if (listElem) {
