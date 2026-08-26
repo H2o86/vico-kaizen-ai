@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     await initApp();
 });
 
+function setElementText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+}
+
 async function initApp() {
     try {
         const res = await fetch("/api/stats");
@@ -29,7 +34,7 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json?v=556.3");
+        const res = await fetch("./kaizen_database.json?v=556.4");
         allKaizensCache = await res.json();
         
         // Fetch live updates from Google Sheet with 100% strict deduplication
@@ -157,8 +162,8 @@ function parseGoogleSheetRows(csvRows) {
 }
 
 function updateUIStats() {
-    document.getElementById("stat-total").innerText = allKaizensCache.length;
-    document.getElementById("stat-total-count").innerText = allKaizensCache.length;
+    setElementText("stat-total", allKaizensCache.length);
+    setElementText("stat-total-count", allKaizensCache.length);
 
     let a3Count = 0;
     const statusCounts = {};
@@ -172,7 +177,7 @@ function updateUIStats() {
         }
     });
 
-    document.getElementById("stat-a3").innerText = a3Count;
+    setElementText("stat-a3", a3Count);
 
     const statusSelect = document.getElementById("db-filter-status");
     if (statusSelect) {
@@ -229,8 +234,8 @@ async function fetchStats() {
         const res = await fetch("/api/stats");
         const data = await res.json();
 
-        document.getElementById("stat-total").innerText = data.total_kaizens || 556;
-        document.getElementById("stat-total-count").innerText = data.total_kaizens || 556;
+        setElementText("stat-total", data.total_kaizens || 556);
+        setElementText("stat-total-count", data.total_kaizens || 556);
 
         let a3Count = 0;
         for (const [st, cnt] of Object.entries(data.status_counts || {})) {
@@ -238,7 +243,7 @@ async function fetchStats() {
                 a3Count += cnt;
             }
         }
-        document.getElementById("stat-a3").innerText = a3Count || 320;
+        setElementText("stat-a3", a3Count || 320);
 
         const statusSelect = document.getElementById("db-filter-status");
         if (statusSelect) {
@@ -267,9 +272,12 @@ async function handleEvaluate(e) {
         return;
     }
 
-    document.getElementById("empty-state").classList.add("hidden");
-    document.getElementById("eval-result").classList.add("hidden");
-    document.getElementById("loading-state").classList.remove("hidden");
+    const emptyElem = document.getElementById("empty-state");
+    if (emptyElem) emptyElem.classList.add("hidden");
+    const resElem = document.getElementById("eval-result");
+    if (resElem) resElem.classList.add("hidden");
+    const loadElem = document.getElementById("loading-state");
+    if (loadElem) loadElem.classList.remove("hidden");
 
     try {
         if (isLocalServer) {
@@ -289,7 +297,8 @@ async function handleEvaluate(e) {
         const data = evaluateClientSide(contentText, topK);
         renderEvaluationResult(data, contentText);
     } finally {
-        document.getElementById("loading-state").classList.add("hidden");
+        const loadElem = document.getElementById("loading-state");
+        if (loadElem) loadElem.classList.add("hidden");
     }
 }
 
@@ -365,7 +374,7 @@ function evaluateClientSide(inputStr, topK = 5) {
         risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)";
         risk_code = "NEW_IDEA";
         reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa có giải pháp tương tự trong kho CSDL.";
-        recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%).";
+        recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. ĐỦ điều kiện đánh giá khen thưởng mức tối đa (100%).";
     }
 
     return {
@@ -380,68 +389,81 @@ function evaluateClientSide(inputStr, topK = 5) {
 
 // Render Results
 function renderEvaluationResult(data, contentText) {
-    document.getElementById("eval-result").classList.remove("hidden");
+    const resElem = document.getElementById("eval-result");
+    if (resElem) resElem.classList.remove("hidden");
 
     const score = data.max_similarity_pct || 0;
-    document.getElementById("res-score").innerText = `${score}%`;
+    setElementText("res-score", `${score}%`);
 
     const gauge = document.querySelector(".score-gauge");
-    let color = "#10b981";
-    let badgeClass = "badge-new";
+    if (gauge) {
+        let color = "#10b981";
+        let badgeClass = "badge-new";
 
-    if (score >= 70) {
-        color = "#ef4444";
-        badgeClass = "badge-high";
-    } else if (score >= 35) {
-        color = "#f59e0b";
-        badgeClass = "badge-medium";
+        if (score >= 70) {
+            color = "#ef4444";
+            badgeClass = "badge-high";
+        } else if (score >= 35) {
+            color = "#f59e0b";
+            badgeClass = "badge-medium";
+        }
+
+        gauge.style.background = `radial-gradient(circle at center, #0f172a 60%, transparent 61%), conic-gradient(${color} ${score}%, rgba(255, 255, 255, 0.1) ${score}%)`;
     }
-
-    gauge.style.background = `radial-gradient(circle at center, #0f172a 60%, transparent 61%), conic-gradient(${color} ${score}%, rgba(255, 255, 255, 0.1) ${score}%)`;
 
     const badgeElem = document.getElementById("res-risk-badge");
-    badgeElem.innerText = data.risk_level;
-    badgeElem.className = `risk-badge ${badgeClass}`;
-
-    const snippet = contentText.length > 100 ? contentText.substring(0, 100) + "..." : contentText;
-    document.getElementById("res-idea-title").innerText = `Nội dung: "${snippet}"`;
-    document.getElementById("res-policy-text").innerText = data.reward_policy;
-    document.getElementById("res-rec-text").innerText = data.recommendation;
-
-    const listElem = document.getElementById("res-matched-list");
-    listElem.innerHTML = "";
-
-    if (!data.matched_kaizens || data.matched_kaizens.length === 0) {
-        listElem.innerHTML = "<p>Không tìm thấy giải pháp tương tự nào trong CSDL.</p>";
-        return;
+    if (badgeElem) {
+        badgeElem.innerText = data.risk_level;
+        let badgeClass = "badge-new";
+        if (score >= 70) badgeClass = "badge-high";
+        else if (score >= 35) badgeClass = "badge-medium";
+        badgeElem.className = `risk-badge ${badgeClass}`;
     }
 
-    data.matched_kaizens.forEach((m, idx) => {
-        const card = document.createElement("div");
-        card.className = "match-item";
-        card.innerHTML = `
-            <div class="match-item-header">
-                <span class="match-code">${m.ma_kaizen}</span>
-                <span class="match-scores">Tương đồng: ${m.overall_similarity_pct}% (Giải pháp: ${m.solution_similarity_pct}%)</span>
-            </div>
-            <div class="match-title">${idx + 1}. ${m.ten_y_tuong}</div>
-            <div class="match-meta">
-                <i class="fa-solid fa-user"></i> ${m.nguoi_de_xuat || 'Hệ thống'} | 
-                <i class="fa-solid fa-calendar"></i> Năm ${m.nam || '2026'}
-            </div>
-            <div class="match-details">
-                <strong>Giải pháp gốc trong CSDL:</strong> ${m.giai_phap || 'N/A'}<br>
-                <strong>Thực trạng gốc:</strong> ${m.thuc_trang || 'N/A'}
-            </div>
-        `;
-        listElem.appendChild(card);
-    });
+    const snippet = contentText.length > 100 ? contentText.substring(0, 100) + "..." : contentText;
+    setElementText("res-idea-title", `Nội dung: "${snippet}"`);
+    setElementText("res-policy-text", data.reward_policy);
+    setElementText("res-rec-text", data.recommendation);
+
+    const listElem = document.getElementById("res-matched-list");
+    if (listElem) {
+        listElem.innerHTML = "";
+
+        if (!data.matched_kaizens || data.matched_kaizens.length === 0) {
+            listElem.innerHTML = "<p>Không tìm thấy giải pháp tương tự nào trong CSDL.</p>";
+            return;
+        }
+
+        data.matched_kaizens.forEach((m, idx) => {
+            const card = document.createElement("div");
+            card.className = "match-item";
+            card.innerHTML = `
+                <div class="match-item-header">
+                    <span class="match-code">${m.ma_kaizen}</span>
+                    <span class="match-scores">Tương đồng: ${m.overall_similarity_pct}% (Giải pháp: ${m.solution_similarity_pct}%)</span>
+                </div>
+                <div class="match-title">${idx + 1}. ${m.ten_y_tuong}</div>
+                <div class="match-meta">
+                    <i class="fa-solid fa-user"></i> ${m.nguoi_de_xuat || 'Hệ thống'} | 
+                    <i class="fa-solid fa-calendar"></i> Năm ${m.nam || '2026'}
+                </div>
+                <div class="match-details">
+                    <strong>Giải pháp gốc trong CSDL:</strong> ${m.giai_phap || 'N/A'}<br>
+                    <strong>Thực trạng gốc:</strong> ${m.thuc_trang || 'N/A'}
+                </div>
+            `;
+            listElem.appendChild(card);
+        });
+    }
 }
 
 function resetForm() {
-    document.getElementById("eval-form").reset();
-    document.getElementById("empty-state").classList.remove("hidden");
-    document.getElementById("eval-result").classList.add("hidden");
+    const formElem = document.getElementById("eval-form");
+    if (formElem) formElem.reset();
+    const emptyElem = document.getElementById("empty-state");
+    if (emptyElem) emptyElem.classList.remove("hidden");
+    const resElem = document.getElementById("eval-result");
+    if (resElem) resElem.classList.add("hidden");
 }
 
 // Fetch / Filter Database (Tab 2)
@@ -452,7 +474,8 @@ async function fetchDatabase(page = 1) {
     }
 
     currentPage = page;
-    const q = document.getElementById("db-search-input").value.trim();
+    const qInput = document.getElementById("db-search-input");
+    const q = qInput ? qInput.value.trim() : "";
     const statusSelect = document.getElementById("db-filter-status");
     const status = statusSelect ? statusSelect.value : "";
 
@@ -464,7 +487,7 @@ async function fetchDatabase(page = 1) {
         allKaizensCache = data.kaizens || [];
         renderTable(data.kaizens);
 
-        document.getElementById("db-page-info").innerText = `Hiển thị ${data.kaizens.length} / Tổng ${data.total} Kaizens (Trang ${data.page}/${data.total_pages})`;
+        setElementText("db-page-info", `Hiển thị ${data.kaizens.length} / Tổng ${data.total} Kaizens (Trang ${data.page}/${data.total_pages})`);
         renderPagination(data.page, data.total_pages);
 
     } catch (err) {
@@ -474,7 +497,8 @@ async function fetchDatabase(page = 1) {
 
 function renderStaticTable(page = 1) {
     currentPage = page;
-    const q = document.getElementById("db-search-input").value.trim().toLowerCase();
+    const qInput = document.getElementById("db-search-input");
+    const q = qInput ? qInput.value.trim().toLowerCase() : "";
     const statusSelect = document.getElementById("db-filter-status");
     const status = statusSelect ? statusSelect.value : "";
 
@@ -494,12 +518,13 @@ function renderStaticTable(page = 1) {
 
     renderTable(paged);
 
-    document.getElementById("db-page-info").innerText = `Hiển thị ${paged.length} / Tổng ${filtered.length} Kaizens (Trang ${page}/${totalPages})`;
+    setElementText("db-page-info", `Hiển thị ${paged.length} / Tổng ${filtered.length} Kaizens (Trang ${page}/${totalPages})`);
     renderPagination(page, totalPages);
 }
 
 function renderTable(kaizens) {
     const tbody = document.getElementById("db-table-body");
+    if (!tbody) return;
     tbody.innerHTML = "";
 
     if (!kaizens || kaizens.length === 0) {
@@ -527,6 +552,7 @@ function renderTable(kaizens) {
 
 function renderPagination(current, totalPages) {
     const container = document.getElementById("db-page-btns");
+    if (!container) return;
     container.innerHTML = "";
 
     if (totalPages <= 1) return;
@@ -570,8 +596,9 @@ function openDetailModal(maKaizen) {
     const k = allKaizensCache.find(item => item.ma_kaizen === maKaizen);
     if (!k) return;
 
-    document.getElementById("modal-code").innerText = `MÃ KAIZEN: ${k.ma_kaizen} - ${k.ten_y_tuong}`;
+    setElementText("modal-code", `MÃ KAIZEN: ${k.ma_kaizen} - ${k.ten_y_tuong}`);
     const body = document.getElementById("modal-body");
+    if (!body) return;
 
     body.innerHTML = `
         <p style="margin-bottom: 12px;"><strong>Tác giả:</strong> ${k.nguoi_de_xuat || 'N/A'} | <strong>Trạng thái:</strong> ${k.trang_thai || 'N/A'}</p>
@@ -590,17 +617,21 @@ function openDetailModal(maKaizen) {
         </div>
     `;
 
-    document.getElementById("detail-modal").classList.remove("hidden");
+    const modalElem = document.getElementById("detail-modal");
+    if (modalElem) modalElem.classList.remove("hidden");
 }
 
 function closeModal() {
-    document.getElementById("detail-modal").classList.add("hidden");
+    const modalElem = document.getElementById("detail-modal");
+    if (modalElem) modalElem.classList.add("hidden");
 }
 
 async function syncGoogleSheet() {
     const btn = document.getElementById("btn-sync");
-    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Đang Đồng Bộ...`;
-    btn.disabled = true;
+    if (btn) {
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Đang Đồng Bộ...`;
+        btn.disabled = true;
+    }
 
     try {
         if (isLocalServer) {
@@ -618,7 +649,9 @@ async function syncGoogleSheet() {
     } catch (err) {
         alert("Lỗi khi đồng bộ: " + err.message);
     } finally {
-        btn.innerHTML = `<i class="fa-solid fa-rotate"></i> Đồng Bộ Sheet`;
-        btn.disabled = false;
+        if (btn) {
+            btn.innerHTML = `<i class="fa-solid fa-rotate"></i> Đồng Bộ Sheet`;
+            btn.disabled = false;
+        }
     }
 }
