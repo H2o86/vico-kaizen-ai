@@ -27,6 +27,19 @@ class EvaluateRequest(BaseModel):
     unit: str = ""
     top_k: int = 5
 
+def get_env_gemini_key():
+    key = os.getenv("GEMINI_API_KEY", "")
+    if not key and os.path.exists(".env"):
+        try:
+            with open(".env", "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("GEMINI_API_KEY="):
+                        key = line.split("=", 1)[1].strip()
+                        break
+        except Exception:
+            pass
+    return key
+
 @app.get("/", response_class=FileResponse)
 async def serve_index():
     return FileResponse("templates/index.html")
@@ -147,6 +160,112 @@ async def evaluate_kaizen(req: EvaluateRequest):
         top_k=req.top_k
     )
     return res
+
+@app.post("/api/evaluate_gemini")
+async def evaluate_gemini(req: EvaluateRequest):
+    content_text = req.content.strip()
+    if not content_text:
+        return JSONResponse(status_code=400, content={"error": "Nội dung không được để trống."})
+
+    api_key = get_env_gemini_key()
+    if not api_key:
+        return JSONResponse(status_code=500, content={"error": "Chưa tìm thấy GEMINI_API_KEY trong file .env trên server."})
+
+    res_vec = ai_checker.evaluate_proposal(content_text=content_text, top_k=req.top_k)
+    candidates = res_vec.get("matched_kaizens", [])
+
+    cand_text = ""
+    for idx, c in enumerate(candidates):
+        cand_text += f"\n{idx+1}. Mã Kaizen: [{c['ma_kaizen']}] | Năm: {c['nam']} | Tác giả: {c['nguoi_de_xuat']} ({c.get('don_vi', 'VICO')})\n   Tên ý tưởng: {c['ten_y_tuong']}\n   Thực trạng: {c.get('thuc_trang', 'N/A')}\n   Giải pháp: {c.get('giai_phap', 'N/A')}\n   Thưởng gốc: {c.get('tien_thuong_vnd', 'Theo quy chế VICO')}\n"
+
+    prompt_text = f"""Bạn là Chuyên gia Cao cấp Đánh giá Cải tiến (Senior Kaizen Specialist) của Công ty VICO.
+Nhiệm vụ của bạn là đọc hiểu bản chất kỹ thuật, thực trạng và giải pháp của đề tài mới, sau đó đối chiếu ngữ nghĩa sâu với danh sách các đề tài đã có trong CSDL VICO bên dưới.
+
+NỘI DUNG ĐỀ TÀI CẢI TIẾN MỚI CẦN ĐÁNH GIÁ:
+\"\"\"
+{content_text}
+\"\"\"
+
+DANH SÁCH {len(candidates)} ĐỀ TÀI LỊCH SỬ CÓ KHẢ NĂNG TƯƠNG ĐỒNG CAO NHẤT TRONG CSDL VICO:
+{cand_text}
+
+QUY TẮC ĐÁNH GIÁ & KHEN THƯỞNG CỦA VICO:
+1. Trùng lặp hoàn toàn (>= 70%): Phân loại "🔴 TRÙNG LẮP HOÀN TOÀN" (Mức thưởng: 0 VNĐ - Bác bỏ).
+2. Giải pháp mở rộng/nhân rộng (35% - 69%): Phân loại "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)" (Mức thưởng = 50% mức thưởng gốc).
+3. Ý tưởng mới độc lập (< 35%): Phân loại "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)".
+
+YÊU CẦU TRẢ VỀ:
+Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown code block hay text thừa) theo đúng cấu trúc:
+{{
+  "max_similarity_pct": 45.0,
+  "risk_level": "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)",
+  "risk_code": "EXPANDED_SOLUTION",
+  "reward_policy": "Viết kết luận tổng quan ngắn gọn, tính mức thưởng 50% cụ thể nếu đề tài gốc có tiền thưởng.",
+  "matched_analysis": [
+     {{
+        "ma_kaizen": "Mã Kaizen",
+        "similarity_pct": 45.0,
+        "reasoning": "Viết 1-2 câu nhận xét ngắn gọn điểm giống và khác về kỹ thuật."
+     }}
+  ]
+}}"""
+
+    GEMINI_MODELS = [
+        "gemini-1.5-flash",
+        "gemini-1.5-pro",
+        "gemini-2.0-flash-exp",
+        "gemini-2.5-flash"
+    ]
+
+    import urllib.request
+    gemini_json = None
+    last_err = ""
+    used_model = ""
+
+    for model_name in GEMINI_MODELS:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            payload = json.dumps({"contents": [{"parts": [{"text": prompt_text}]}]}).encode("utf-8")
+            req_obj = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req_obj, timeout=15) as resp:
+                if resp.status == 200:
+                    gemini_json = json.loads(resp.read().decode("utf-8"))
+                    used_model = model_name
+                    break
+        except Exception as e:
+            last_err = str(e)
+
+    if not gemini_json:
+        return JSONResponse(status_code=500, content={"error": f"Lỗi Gemini API: {last_err}"})
+
+    raw_text = gemini_json.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+    cleaned_json = raw_text.replace("```json", "").replace("```", "").strip()
+    try:
+        parsed_res = json.loads(cleaned_json)
+    except:
+        import re
+        m = re.search(r"\{[\s\S]*\}", raw_text)
+        if m:
+            parsed_res = json.loads(m.group(0))
+        else:
+            return JSONResponse(status_code=500, content={"error": "Không thể parse JSON từ Gemini API."})
+
+    merged_matches = []
+    for c in candidates:
+        llm_item = next((m for m in parsed_res.get("matched_analysis", []) if m.get("ma_kaizen") == c["ma_kaizen"]), None)
+        c_copy = dict(c)
+        if llm_item:
+            c_copy["overall_similarity_pct"] = llm_item.get("similarity_pct", c["overall_similarity_pct"])
+            c_copy["llm_reasoning"] = llm_item.get("reasoning")
+        merged_matches.append(c_copy)
+
+    return {
+        "max_similarity_pct": parsed_res.get("max_similarity_pct", res_vec.get("max_similarity_pct")),
+        "risk_level": parsed_res.get("risk_level", res_vec.get("risk_level")),
+        "risk_code": parsed_res.get("risk_code", res_vec.get("risk_code")),
+        "reward_policy": f"🧠 [KẾT QUẢ ĐÁNH GIÁ CHUYÊN SÂU BỞI GEMINI AI ({used_model})]\n\n" + parsed_res.get("reward_policy", ""),
+        "matched_kaizens": merged_matches
+    }
 
 @app.post("/api/sync")
 async def sync_google_sheet():

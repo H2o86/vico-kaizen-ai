@@ -392,26 +392,46 @@ async function handleGeminiEvaluate(e) {
         return;
     }
 
-    const apiKey = getGeminiApiKey();
-    if (!apiKey) {
-        alert("Vui lòng nhập Google Gemini API Key trước khi sử dụng tính năng Đánh Giá Sâu (Gemini LLM)!\n\nBạn có thể nhận API Key hoàn toàn MIỄN PHÍ tại: https://aistudio.google.com/app/apikey");
-        const keyInput = document.getElementById("gemini-api-key");
-        if (keyInput) {
-            keyInput.focus();
-            keyInput.classList.add("highlight-input");
-        }
-        return;
-    }
+    const topKSelect = document.getElementById("input-topk");
+    const topK = topKSelect ? parseInt(topKSelect.value) : 5;
 
     showLoading(
         "🧠 Gemini AI đang phân tích ngữ nghĩa & suy luận chi tiết...",
         "Đang đối chiếu sâu về bản chất kỹ thuật, thực trạng và giải pháp với kho Kaizen VICO"
     );
 
-    try {
-        const topKSelect = document.getElementById("input-topk");
-        const topK = topKSelect ? parseInt(topKSelect.value) : 5;
+    // Prioritize Server-side endpoint reading from .env file
+    if (isLocalServer) {
+        try {
+            const res = await fetch("/api/evaluate_gemini", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: contentText, top_k: topK })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                hideLoading();
+                renderEvaluationResult(data, contentText);
+                return;
+            } else {
+                const errData = await res.json();
+                throw new Error(errData.error || `Lỗi HTTP ${res.status}`);
+            }
+        } catch (sErr) {
+            console.warn("Server-side Gemini evaluation error:", sErr.message);
+        }
+    }
 
+    // Client-side fallback if client API key is provided
+    const apiKey = getGeminiApiKey();
+    if (!apiKey) {
+        hideLoading();
+        alert("Để đánh giá bằng Gemini LLM API, vui lòng chạy web server địa phương có file .env chứa GEMINI_API_KEY hoặc nhập API Key!");
+        handleEvaluate(e);
+        return;
+    }
+
+    try {
         // Step 1: Pre-filter candidate Kaizens using Vector engine
         const vectorResult = evaluateClientSide(contentText, topK);
         const candidates = vectorResult.matched_kaizens || [];
