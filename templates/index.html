@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style.css?v=556.3">
+    <link rel="stylesheet" href="/static/style.css?v=556.5">
 </head>
 <body>
     <div class="app-container">
@@ -107,7 +107,7 @@
                     <div class="empty-state" id="empty-state">
                         <div class="empty-icon"><i class="fa-solid fa-microchip"></i></div>
                         <h3>Sẵn Sàng Đánh Giá Ý Tưởng</h3>
-                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả phân tích độ trùng lặp thời gian thực.</p>
+                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả kết luận tổng quan & danh sách chi tiết bên dưới.</p>
                     </div>
 
                     <!-- Loading State -->
@@ -119,35 +119,30 @@
 
                     <!-- Active Results -->
                     <div class="eval-result hidden" id="eval-result">
-                        <!-- Score Banner -->
-                        <div class="score-banner" id="score-banner">
-                            <div class="score-gauge">
-                                <span class="score-num" id="res-score">0%</span>
-                                <span class="score-label">Độ Tương Đồng</span>
+                        <!-- VÙNG KẾT LUẬN TỔNG QUAN -->
+                        <div class="overview-summary-card">
+                            <div class="summary-top">
+                                <div class="score-gauge">
+                                    <span class="score-num" id="res-score">0%</span>
+                                    <span class="score-label">Độ Tương Đồng</span>
+                                </div>
+                                <div class="summary-headline">
+                                    <div class="risk-badge" id="res-risk-badge">...</div>
+                                    <div class="res-title-text" id="res-idea-title">...</div>
+                                </div>
                             </div>
-                            <div class="score-details">
-                                <div class="risk-badge" id="res-risk-badge">...</div>
-                                <div class="res-title-text" id="res-idea-title">...</div>
+
+                            <div class="conclusion-box" id="res-policy-box">
+                                <div class="conclusion-header"><i class="fa-solid fa-square-check"></i> KẾT LUẬN ĐÁNH GIÁ TỔNG QUAN & KHEN THƯỞNG:</div>
+                                <div class="conclusion-body" id="res-policy-text">...</div>
                             </div>
                         </div>
 
-                        <!-- Reward Policy Rule Box -->
-                        <div class="reward-policy-box" id="res-policy-box">
-                            <div class="policy-header"><i class="fa-solid fa-coins"></i> ĐÁNH GIÁ KHEN THƯỞNG:</div>
-                            <div class="policy-body" id="res-policy-text">...</div>
-                        </div>
-
-                        <!-- Recommendation Box -->
-                        <div class="recommendation-box" id="res-rec-box">
-                            <div class="rec-header"><i class="fa-solid fa-circle-info"></i> KHUYẾN NGHỊ CHO BAN CẢI TIẾN:</div>
-                            <div class="rec-body" id="res-rec-text">...</div>
-                        </div>
-
-                        <!-- Matched Historical Kaizens Section -->
+                        <!-- VÙNG HIỂN THỊ CHI TIẾT BÊN DƯỚI -->
                         <div class="matched-section">
-                            <h3><i class="fa-solid fa-clock-rotate-left"></i> Các Đề Tài Có Giải Pháp Tương Tự Trong Hệ Thống</h3>
+                            <h3><i class="fa-solid fa-list-check"></i> CHI TIẾT CÁC ĐỀ TÀI TƯƠNG TỰ TRONG CSDL</h3>
                             <div class="matched-list" id="res-matched-list">
-                                <!-- Matched items dynamically injected -->
+                                <!-- Dynamic matched items -->
                             </div>
                         </div>
                     </div>
@@ -214,6 +209,6 @@
         </div>
     </div>
 
-    <script src="/static/app.js?v=556.3"></script>
+    <script src="/static/app.js?v=556.5"></script>
 </body>
 </html>
