@@ -72,14 +72,7 @@ class KaizenDuplicateChecker:
 
         if is_gs:
             st_sys = (rec.get('trang_thai') or '').strip().lower()
-            st_tk = (rec.get('trang_thai_trien_khai') or '').strip().lower()
-
-            unqualified = ['xem xét', 'đề nghị mới', 'lưu ý tưởng', 'chờ phê duyệt', 'chưa triển khai', 'đang triển khai', 'không phù hợp', 'không thành công', 'triển khai không thành công', 'không triển khai', 'tạm dừng', 'hủy']
-            if st_sys in unqualified:
-                return False
-
-            is_completed = st_sys in ['hoàn thành', 'khen thưởng', 'báo cáo a3'] or st_tk in ['hoàn thành', 'đã hoàn thiện']
-            return is_completed
+            return 'hoàn thành' in st_sys
 
         return True
 

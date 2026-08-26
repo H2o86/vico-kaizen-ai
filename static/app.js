@@ -341,18 +341,9 @@ function isEligibleForEvaluation(rec) {
     }
 
     if (isGS) {
-        // Dữ liệu Google Sheet: chỉ xem xét những ý tưởng đã hoàn thành
-        const stSys = (rec.trang_thai || '').toLowerCase();
-        const stTk = (rec.trang_thai_trien_khai || '').toLowerCase();
-        const stDt = (rec.trang_thai_duy_tri || '').toLowerCase();
-
-        return stSys.includes('hoàn thành') || 
-               stSys.includes('a3') || 
-               stSys.includes('duy trì') || 
-               stSys.includes('đã triển khai') || 
-               stTk.includes('hoàn thành') || 
-               stDt.includes('hoàn thành') ||
-               stDt.includes('duy trì');
+        // Dữ liệu Google Sheet: chỉ xem xét những ý tưởng có Trạng thái (hệ thống) là "Hoàn thành"
+        const stSys = (rec.trang_thai || '').trim().toLowerCase();
+        return stSys.includes('hoàn thành');
     }
 
     return true;
