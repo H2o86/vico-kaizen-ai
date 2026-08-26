@@ -145,6 +145,10 @@ body {
     margin-bottom: 24px;
 }
 
+.stats-bar-1col {
+    grid-template-columns: 1fr;
+}
+
 .stats-bar-2cols {
     grid-template-columns: repeat(2, 1fr);
 }

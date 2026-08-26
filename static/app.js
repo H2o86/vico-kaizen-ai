@@ -29,7 +29,7 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json?v=556.2");
+        const res = await fetch("./kaizen_database.json?v=556.3");
         allKaizensCache = await res.json();
         
         // Fetch live updates from Google Sheet with 100% strict deduplication
