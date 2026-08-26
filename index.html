@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./static/style.css?v=557.6">
+    <link rel="stylesheet" href="./static/style.css?v=557.7">
 </head>
 <body>
     <div class="app-container">
@@ -73,10 +73,22 @@
                         <button class="btn-sample" onclick="loadSample(3)">📋 Ý tưởng AI mới</button>
                     </div>
 
+                    <!-- Optional Gemini API Key Box -->
+                    <div class="gemini-key-box">
+                        <div class="key-header">
+                            <label for="gemini-api-key"><i class="fa-solid fa-key"></i> Google Gemini API Key (Dành cho Đánh Giá Deep LLM):</label>
+                            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="key-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lấy Key Miễn Phí</a>
+                        </div>
+                        <div class="key-input-wrapper">
+                            <input type="password" id="gemini-api-key" placeholder="Dán Gemini API Key của bạn (Ví dụ: AIzaSy...)" onchange="saveGeminiKey()">
+                            <button type="button" class="btn-toggle-key" onclick="toggleKeyVisibility()" title="Ẩn/Hiện API Key"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
                     <form id="eval-form" onsubmit="handleEvaluate(event)">
                         <div class="form-group">
                             <label for="input-content">Nội Dung Đề Tài Cải Tiến <span class="required">*</span></label>
-                            <textarea id="input-content" rows="12" placeholder="Dán toàn bộ nội dung cải tiến (Tên đề tài, Thực trạng/Vấn đề, Giải pháp đề xuất)..." required></textarea>
+                            <textarea id="input-content" rows="11" placeholder="Dán toàn bộ nội dung cải tiến (Tên đề tài, Thực trạng/Vấn đề, Giải pháp đề xuất)..." required></textarea>
                         </div>
 
                         <div class="form-row">
@@ -90,9 +102,12 @@
                             </div>
                         </div>
 
-                        <div class="form-actions">
-                            <button type="submit" class="btn-eval" id="btn-eval">
-                                <i class="fa-solid fa-robot"></i> 🤖 Đánh Giá Mức Độ Trùng Lặp Bằng AI
+                        <div class="form-actions-grid">
+                            <button type="submit" class="btn-eval" id="btn-eval" title="So sánh ma trận Véc-tơ siêu tốc (0.01 giây)">
+                                <i class="fa-solid fa-bolt"></i> ⚡ 1. Đánh Giá Nhanh (Vector AI)
+                            </button>
+                            <button type="button" class="btn-gemini" id="btn-gemini" onclick="handleGeminiEvaluate(event)" title="Đánh giá lập luận chuyên sâu bằng Google Gemini LLM API">
+                                <i class="fa-solid fa-brain"></i> 🧠 2. Đánh Giá Sâu (Gemini LLM API)
                             </button>
                             <button type="button" class="btn-secondary" onclick="resetForm()">
                                 <i class="fa-solid fa-eraser"></i> Làm Mới
@@ -107,14 +122,14 @@
                     <div class="empty-state" id="empty-state">
                         <div class="empty-icon"><i class="fa-solid fa-microchip"></i></div>
                         <h3>Sẵn Sàng Đánh Giá Ý Tưởng</h3>
-                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh giá bằng AI** để nhận kết quả kết luận tổng quan & danh sách chi tiết bên dưới.</p>
+                        <p>Dán nội dung cải tiến ở khung bên trái và nhấn nút **Đánh Giá Nhanh** hoặc **Đánh Giá Sâu bằng Gemini LLM** để nhận kết quả phân tích.</p>
                     </div>
 
                     <!-- Loading State -->
                     <div class="loading-state hidden" id="loading-state">
                         <div class="spinner"></div>
-                        <h3>AI Đang Phân Tích & Đối Chiếu Toàn Bộ Hệ Thống...</h3>
-                        <p>Đang so sánh ngữ nghĩa với các đề tài cải tiến trong CSDL VICO</p>
+                        <h3 id="loading-title">AI Đang Phân Tích & Đối Chiếu Toàn Bộ Hệ Thống...</h3>
+                        <p id="loading-desc">Đang so sánh ngữ nghĩa với các đề tài cải tiến trong CSDL VICO</p>
                     </div>
 
                     <!-- Active Results -->
@@ -209,6 +224,6 @@
         </div>
     </div>
 
-    <script src="./static/app.js?v=557.6"></script>
+    <script src="./static/app.js?v=557.7"></script>
 </body>
 </html>

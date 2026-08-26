@@ -6,12 +6,49 @@ let isLocalServer = true;
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
 document.addEventListener("DOMContentLoaded", async () => {
+    loadGeminiKey();
     await initApp();
 });
 
 function setElementText(id, text) {
     const el = document.getElementById(id);
     if (el) el.innerText = text;
+}
+
+function saveGeminiKey() {
+    const input = document.getElementById("gemini-api-key");
+    if (input) {
+        const val = input.value.trim();
+        if (val) {
+            localStorage.setItem("VICO_GEMINI_API_KEY", val);
+            input.classList.remove("highlight-input");
+        } else {
+            localStorage.removeItem("VICO_GEMINI_API_KEY");
+        }
+    }
+}
+
+function loadGeminiKey() {
+    const saved = localStorage.getItem("VICO_GEMINI_API_KEY");
+    const input = document.getElementById("gemini-api-key");
+    if (saved && input) {
+        input.value = saved;
+    }
+}
+
+function getGeminiApiKey() {
+    const input = document.getElementById("gemini-api-key");
+    if (input && input.value.trim()) {
+        return input.value.trim();
+    }
+    return localStorage.getItem("VICO_GEMINI_API_KEY") || "";
+}
+
+function toggleKeyVisibility() {
+    const input = document.getElementById("gemini-api-key");
+    if (input) {
+        input.type = input.type === "password" ? "text" : "password";
+    }
 }
 
 function formatVND(val) {
@@ -287,9 +324,27 @@ async function fetchStats() {
     } catch (err) {}
 }
 
-// Handle AI Evaluation Submit
+function showLoading(title, desc) {
+    const emptyElem = document.getElementById("empty-state");
+    if (emptyElem) emptyElem.classList.add("hidden");
+    const resElem = document.getElementById("eval-result");
+    if (resElem) resElem.classList.add("hidden");
+    
+    const loadElem = document.getElementById("loading-state");
+    if (loadElem) loadElem.classList.remove("hidden");
+
+    setElementText("loading-title", title || "AI Đang Phân Tích & Đối Chiếu Toàn Bộ Hệ Thống...");
+    setElementText("loading-desc", desc || "Đang so sánh ngữ nghĩa với các đề tài cải tiến trong CSDL VICO");
+}
+
+function hideLoading() {
+    const loadElem = document.getElementById("loading-state");
+    if (loadElem) loadElem.classList.add("hidden");
+}
+
+// Handle Fast Vector AI Evaluation Submit
 async function handleEvaluate(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
 
     const contentText = document.getElementById("input-content").value.trim();
     const topK = parseInt(document.getElementById("input-topk").value);
@@ -299,12 +354,10 @@ async function handleEvaluate(e) {
         return;
     }
 
-    const emptyElem = document.getElementById("empty-state");
-    if (emptyElem) emptyElem.classList.add("hidden");
-    const resElem = document.getElementById("eval-result");
-    if (resElem) resElem.classList.add("hidden");
-    const loadElem = document.getElementById("loading-state");
-    if (loadElem) loadElem.classList.remove("hidden");
+    showLoading(
+        "⚡ Vector AI đang phân tích ma trận véc-tơ siêu tốc (0.01s)...",
+        "Đang so sánh trọng số N-gram với toàn bộ cơ sở dữ liệu VICO"
+    );
 
     try {
         if (isLocalServer) {
@@ -324,8 +377,142 @@ async function handleEvaluate(e) {
         const data = evaluateClientSide(contentText, topK);
         renderEvaluationResult(data, contentText);
     } finally {
-        const loadElem = document.getElementById("loading-state");
-        if (loadElem) loadElem.classList.add("hidden");
+        hideLoading();
+    }
+}
+
+// Handle Deep Gemini LLM Evaluation
+async function handleGeminiEvaluate(e) {
+    if (e) e.preventDefault();
+
+    const textarea = document.getElementById("input-content");
+    const contentText = textarea ? textarea.value.trim() : "";
+    if (!contentText) {
+        alert("Vui lòng nhập hoặc dán nội dung đề tài cải tiến cần đánh giá!");
+        return;
+    }
+
+    const apiKey = getGeminiApiKey();
+    if (!apiKey) {
+        alert("Vui lòng nhập Google Gemini API Key trước khi sử dụng tính năng Đánh Giá Sâu (Gemini LLM)!\n\nBạn có thể nhận API Key hoàn toàn MIỄN PHÍ tại: https://aistudio.google.com/app/apikey");
+        const keyInput = document.getElementById("gemini-api-key");
+        if (keyInput) {
+            keyInput.focus();
+            keyInput.classList.add("highlight-input");
+        }
+        return;
+    }
+
+    showLoading(
+        "🧠 Gemini AI đang phân tích ngữ nghĩa & suy luận chi tiết...",
+        "Đang đối chiếu sâu về bản chất kỹ thuật, thực trạng và giải pháp với kho Kaizen VICO"
+    );
+
+    try {
+        const topKSelect = document.getElementById("input-topk");
+        const topK = topKSelect ? parseInt(topKSelect.value) : 5;
+
+        // Step 1: Pre-filter candidate Kaizens using Vector engine
+        const vectorResult = evaluateClientSide(contentText, topK);
+        const candidates = vectorResult.matched_kaizens || [];
+
+        // Step 2: Format prompt for Gemini LLM
+        let candText = "";
+        candidates.forEach((c, idx) => {
+            candText += `\n${idx+1}. Mã Kaizen: [${c.ma_kaizen}] | Năm: ${c.nam} | Tác giả: ${c.nguoi_de_xuat} (${c.don_vi || 'VICO'})\n   Tên ý tưởng: ${c.ten_y_tuong}\n   Thực trạng: ${c.thuc_trang || 'N/A'}\n   Giải pháp: ${c.giai_phap || 'N/A'}\n   Thưởng gốc: ${c.tien_thuong_vnd ? formatVND(c.tien_thuong_vnd) : 'Theo quy chế VICO'}\n`;
+        });
+
+        const promptText = `Bạn là Chuyên gia Cao cấp Đánh giá Cải tiến (Senior Kaizen Specialist) của Công ty VICO.
+Nhiệm vụ của bạn là đọc hiểu bản chất kỹ thuật, thực trạng và giải pháp của đề tài mới, sau đó đối chiếu ngữ nghĩa sâu với danh sách các đề tài đã có trong CSDL VICO bên dưới.
+
+NỘI DUNG ĐỀ TÀI CẢI TIẾN MỚI CẦN ĐÁNH GIÁ:
+"""
+${contentText}
+"""
+
+DANH SÁCH ${candidates.length} ĐỀ TÀI LỊCH SỬ CÓ KHẢ NĂNG TƯƠNG ĐỒNG CAO NHẤT TRONG CSDL VICO:
+${candText}
+
+QUY TẮC ĐÁNH GIÁ & KHEN THƯỞNG CỦA VICO:
+1. Trùng lặp hoàn toàn (>= 70%): Phân loại "🔴 TRÙNG LẮP HOÀN TOÀN" (Mức thưởng: 0 VNĐ - Bác bỏ).
+2. Giải pháp mở rộng/nhân rộng (35% - 69%): Phân loại "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)" (Mức thưởng = 50% mức thưởng gốc).
+3. Ý tưởng mới độc lập (< 35%): Phân loại "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)".
+
+YÊU CẦU TRẢ VỀ:
+Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown code block hay text thừa) theo đúng cấu trúc:
+{
+  "max_similarity_pct": 45.0,
+  "risk_level": "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)",
+  "risk_code": "EXPANDED_SOLUTION",
+  "reward_policy": "Viết kết luận tổng quan ngắn gọn, tính mức thưởng 50% cụ thể nếu đề tài gốc có tiền thưởng.",
+  "matched_analysis": [
+     {
+        "ma_kaizen": "Mã Kaizen",
+        "similarity_pct": 45.0,
+        "reasoning": "Viết 1-2 câu nhận xét ngắn gọn điểm giống và khác về kỹ thuật."
+     }
+  ]
+}`;
+
+        // Step 3: Call Gemini REST API directly
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const geminiRes = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: promptText }] }]
+            })
+        });
+
+        if (!geminiRes.ok) {
+            const errData = await geminiRes.json();
+            throw new Error(errData.error?.message || `Lỗi Gemini API (HTTP ${geminiRes.status})`);
+        }
+
+        const geminiJson = await geminiRes.json();
+        const rawText = geminiJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
+
+        // Step 4: Parse LLM JSON
+        let cleanedJson = rawText.replace(/```json/gi, "").replace(/```/g, "").trim();
+        let parsedResult = null;
+        try {
+            parsedResult = JSON.parse(cleanedJson);
+        } catch (pErr) {
+            const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                parsedResult = JSON.parse(jsonMatch[0]);
+            }
+        }
+
+        if (!parsedResult) {
+            throw new Error("Không thể parse phản hồi từ Gemini API.");
+        }
+
+        // Merge matched reasoning with candidates
+        const mergedMatches = candidates.map(c => {
+            const llmItem = (parsedResult.matched_analysis || []).find(m => m.ma_kaizen === c.ma_kaizen);
+            return {
+                ...c,
+                overall_similarity_pct: llmItem && llmItem.similarity_pct ? llmItem.similarity_pct : c.overall_similarity_pct,
+                llm_reasoning: llmItem ? llmItem.reasoning : null
+            };
+        });
+
+        const finalData = {
+            max_similarity_pct: parsedResult.max_similarity_pct || vectorResult.max_similarity_pct,
+            risk_level: parsedResult.risk_level || vectorResult.risk_level,
+            risk_code: parsedResult.risk_code || vectorResult.risk_code,
+            reward_policy: `🧠 [KẾT QUẢ ĐÁNH GIÁ CHUYÊN SÂU BỞI GEMINI 2.0 FLASH LLM AI]\n\n` + parsedResult.reward_policy,
+            matched_kaizens: mergedMatches
+        };
+
+        hideLoading();
+        renderEvaluationResult(finalData, contentText);
+
+    } catch (err) {
+        hideLoading();
+        alert("Lỗi khi kết nối Gemini API: " + err.message + "\n\nHệ thống sẽ tự động chuyển sang chế độ Đánh Giá Nhanh bằng Vector AI.");
+        handleEvaluate(e);
     }
 }
 
@@ -515,6 +702,12 @@ function renderEvaluationResult(data, contentText) {
             const dateStr = m.ngay_gui ? `Ngày ${m.ngay_gui}` : `Năm ${m.nam || '2026'}`;
             const authorUnitStr = m.don_vi ? `${m.nguoi_de_xuat || 'Hệ thống'} (${m.don_vi})` : `${m.nguoi_de_xuat || 'Hệ thống'}`;
 
+            const llmReasoningHtml = m.llm_reasoning ? `
+                <div class="llm-reasoning-box">
+                    <i class="fa-solid fa-brain"></i> <strong>Phân tích chuyên sâu từ Gemini AI:</strong> ${m.llm_reasoning}
+                </div>
+            ` : '';
+
             const card = document.createElement("div");
             card.className = "match-item match-item-clickable";
             card.onclick = () => openDetailModal(m.ma_kaizen);
@@ -522,7 +715,7 @@ function renderEvaluationResult(data, contentText) {
             card.innerHTML = `
                 <div class="match-item-header">
                     <span class="match-code">${m.ma_kaizen}</span>
-                    <span class="match-scores">Tương đồng: ${m.overall_similarity_pct}% (Giải pháp: ${m.solution_similarity_pct}%)</span>
+                    <span class="match-scores">Tương đồng: ${m.overall_similarity_pct}% ${m.solution_similarity_pct !== undefined ? `(Giải pháp: ${m.solution_similarity_pct}%)` : ''}</span>
                 </div>
                 <div class="match-title">${idx + 1}. ${m.ten_y_tuong}</div>
                 <div class="match-meta">
@@ -533,6 +726,7 @@ function renderEvaluationResult(data, contentText) {
                 <div class="match-details">
                     <strong>Giải pháp gốc trong CSDL:</strong> ${m.giai_phap || 'N/A'}<br>
                     <strong>Thực trạng gốc:</strong> ${m.thuc_trang || 'N/A'}
+                    ${llmReasoningHtml}
                 </div>
                 <div class="match-click-hint">
                     <i class="fa-solid fa-circle-arrow-right"></i> Nhấn vào đây để xem toàn bộ nội dung chi tiết đề tài
