@@ -36,17 +36,20 @@ try:
         if '💡 Tên ý tưởng:' not in row_text and '💡 Mã ý tưởng:' not in row_text:
             continue
 
-        title_m = re.search(r'💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        code_m = re.search(r'💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        author_m = re.search(r'👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        unit_m = re.search(r'🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        date_m = re.search(r'📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        title_m = re.search(r'💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        code_m = re.search(r'💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        author_m = re.search(r'👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        unit_m = re.search(r'🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        date_m = re.search(r'📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
 
-        status_m = re.search(r'⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        solution_m = re.search(r'🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        benefits_m = re.search(r'✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        resources_m = re.search(r'💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)', row_text, re.DOTALL)
-        expansion_m = re.search(r'🚀 Cơ hội nhân rộng phát triển:\s*(.*?)(?=\n📊|$)', row_text, re.DOTALL)
+        status_m = re.search(r'⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        solution_m = re.search(r'🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        benefits_m = re.search(r'✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        resources_m = re.search(r'💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+        expansion_m = re.search(r'🚀 Cơ hội nhân rộng phát triển:\s*(.*?)(?=\n💰|\n🎁|\n📊|$)', row_text, re.DOTALL)
+
+        val_m = re.search(r'💰 Giá trị làm lợi:\s*([^\n\r]+)', row_text)
+        rw_m = re.search(r'🎁 Tiền thưởng:\s*([^\n\r]+)', row_text)
 
         system_status_m = re.search(r'📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
         tk_status_m = re.search(r'📊 Trạng thái triển khai \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
@@ -64,6 +67,13 @@ try:
         resources = resources_m.group(1).strip() if resources_m else ''
         expansion = expansion_m.group(1).strip() if expansion_m else ''
         
+        val_str = val_m.group(1).strip() if val_m else ''
+        rw_str = rw_m.group(1).strip() if rw_m else ''
+        val_num = re.sub(r'[^\d]', '', val_str)
+        rw_num = re.sub(r'[^\d]', '', rw_str)
+        val_vnd = float(val_num) if val_num else None
+        reward_vnd = float(rw_num) if rw_num else None
+
         status = system_status_m.group(1).strip() if system_status_m and system_status_m.group(1).strip() != '*empty*' else 'Đề nghị mới'
         tk_status = tk_status_m.group(1).strip() if tk_status_m and tk_status_m.group(1).strip() != '*empty*' else ''
         dt_status = dt_status_m.group(1).strip() if dt_status_m and dt_status_m.group(1).strip() != '*empty*' else ''
@@ -83,9 +93,9 @@ try:
                 'danh_gia_hieu_qua': benefits,
                 'co_hoi_nhan_rong': expansion,
                 'mo_ta_cach_tinh': '',
-                'gia_tri_lam_loi_vnd': None,
-                'tien_thuong_vnd': None,
-                'tinh_trang_khen_thuong': '',
+                'gia_tri_lam_loi_vnd': val_vnd,
+                'tien_thuong_vnd': reward_vnd,
+                'tinh_trang_khen_thuong': 'Đã khen thưởng' if reward_vnd else '',
                 'trang_thai': status,
                 'trang_thai_trien_khai': tk_status,
                 'trang_thai_duy_tri': dt_status,

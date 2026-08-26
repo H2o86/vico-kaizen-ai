@@ -132,16 +132,19 @@ function parseGoogleSheetRows(csvRows) {
         const rowText = row.filter(val => val && val.trim()).join('\n');
         if (!rowText.includes("💡 Tên ý tưởng:") && !rowText.includes("💡 Mã ý tưởng:")) return;
 
-        const titleM = rowText.match(/💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const codeM = rowText.match(/💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const authorM = rowText.match(/👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const unitM = rowText.match(/🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const dateM = rowText.match(/📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const titleM = rowText.match(/💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const codeM = rowText.match(/💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const authorM = rowText.match(/👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const unitM = rowText.match(/🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const dateM = rowText.match(/📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
 
-        const statusM = rowText.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const solM = rowText.match(/🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const benM = rowText.match(/✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)/s);
-        const resM = rowText.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)/s);
+        const statusM = rowText.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const solM = rowText.match(/🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const benM = rowText.match(/✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n💰|\n🎁|\n📊|$)/s);
+        const resM = rowText.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n💰|\n🎁|\n📊|$)/s);
+
+        const valM = rowText.match(/💰 Giá trị làm lợi:\s*([^\n\r]+)/);
+        const rwM = rowText.match(/🎁 Tiền thưởng:\s*([^\n\r]+)/);
         
         const sysM = rowText.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)/s);
         const tkM = rowText.match(/📊 Trạng thái triển khai \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)/s);
@@ -157,6 +160,13 @@ function parseGoogleSheetRows(csvRows) {
         const solution = solM ? solM[1].trim() : '';
         const benefits = benM ? benM[1].trim() : '';
         const resources = resM ? resM[1].trim() : '';
+
+        const valStr = valM ? valM[1].trim() : '';
+        const rwStr = rwM ? rwM[1].trim() : '';
+        const valNum = valStr.replace(/[^\d]/g, '');
+        const rwNum = rwStr.replace(/[^\d]/g, '');
+        const giaTriLamLoiVnd = valNum ? parseFloat(valNum) : null;
+        const tienThuongVnd = rwNum ? parseFloat(rwNum) : null;
 
         const status = sysM && sysM[1].trim() !== '*empty*' ? sysM[1].trim() : 'Đề nghị mới';
         const tkStatus = tkM && tkM[1].trim() !== '*empty*' ? tkM[1].trim() : '';
@@ -174,6 +184,9 @@ function parseGoogleSheetRows(csvRows) {
                 giai_phap: solution,
                 danh_gia_hieu_qua: benefits,
                 nguon_luc: resources,
+                gia_tri_lam_loi_vnd: giaTriLamLoiVnd,
+                tien_thuong_vnd: tienThuongVnd,
+                tinh_trang_khen_thuong: tienThuongVnd ? 'Đã khen thưởng' : '',
                 trang_thai: status,
                 trang_thai_trien_khai: tkStatus,
                 trang_thai_duy_tri: dtStatus,
