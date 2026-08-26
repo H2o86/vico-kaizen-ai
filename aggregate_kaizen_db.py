@@ -11,7 +11,7 @@ from datetime import datetime
 # Source files
 excel_file = '3. KAIZEN - BM.xlsx'
 json_raw_file = 'extracted_raw.json'
-google_sheet_csv_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=642561884&single=true&output=csv'
+google_sheet_csv_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv'
 
 print("Starting Kaizen Database aggregation (Master Excel + Live Google Sheet)...")
 
@@ -36,19 +36,28 @@ try:
         if '💡 Tên ý tưởng:' not in row_text and '💡 Mã ý tưởng:' not in row_text:
             continue
 
-        title_m = re.search(r'💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
-        code_m = re.search(r'💡 Mã ý tưởng:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        title_m = re.search(r'💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        code_m = re.search(r'💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        author_m = re.search(r'👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        unit_m = re.search(r'🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+        date_m = re.search(r'📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
+
         status_m = re.search(r'⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
         solution_m = re.search(r'🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
         benefits_m = re.search(r'✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)', row_text, re.DOTALL)
         resources_m = re.search(r'💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)', row_text, re.DOTALL)
         expansion_m = re.search(r'🚀 Cơ hội nhân rộng phát triển:\s*(.*?)(?=\n📊|$)', row_text, re.DOTALL)
+
         system_status_m = re.search(r'📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
         tk_status_m = re.search(r'📊 Trạng thái triển khai \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
         dt_status_m = re.search(r'📊 Trạng thái duy trì/mở rộng \(TĐV\):\s*(.*?)(?=\n📊|\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\nGộp|$)', row_text, re.DOTALL)
 
         title = title_m.group(1).strip() if title_m else ''
         code = code_m.group(1).strip() if code_m else f'GS-2026-{idx+1}'
+        author = author_m.group(1).strip() if author_m and author_m.group(1).strip() != '*empty*' else 'Google Sheet Trực Tuyến'
+        unit = unit_m.group(1).strip() if unit_m and unit_m.group(1).strip() != '*empty*' else 'Hệ thống mới'
+        sent_date = date_m.group(1).strip() if date_m and date_m.group(1).strip() != '*empty*' else datetime.now().strftime('%d/%m/%Y')
+
         status_quo = status_m.group(1).strip() if status_m else ''
         solution = solution_m.group(1).strip() if solution_m else ''
         benefits = benefits_m.group(1).strip() if benefits_m else ''
@@ -59,22 +68,15 @@ try:
         tk_status = tk_status_m.group(1).strip() if tk_status_m and tk_status_m.group(1).strip() != '*empty*' else ''
         dt_status = dt_status_m.group(1).strip() if dt_status_m and dt_status_m.group(1).strip() != '*empty*' else ''
 
-        # Infer unit from text if possible
-        unit = 'Hệ thống mới'
-        if 'Phân xưởng' in row_text or 'PX' in row_text:
-            px_m = re.search(r'(Phân xưởng [^\n,.;]+|PX [^\n,.;]+)', row_text)
-            if px_m:
-                unit = px_m.group(1).strip()
-
         if title:
-            full_text = f"Mã: {code} | Tên ý tưởng: {title} | Đơn vị: {unit} | Thực trạng: {status_quo} | Giải pháp: {solution} | Lợi ích: {benefits} | Nhân rộng: {expansion} | Nguồn lực: {resources}"
+            full_text = f"Mã: {code} | Tên ý tưởng: {title} | Tác giả: {author} | Đơn vị: {unit} | Thực trạng: {status_quo} | Giải pháp: {solution} | Lợi ích: {benefits} | Nhân rộng: {expansion} | Nguồn lực: {resources}"
             gs_records.append({
                 'ma_kaizen': code,
                 'nam': 2026,
                 'ten_y_tuong': title,
                 'don_vi': unit,
                 'vi_tri': '',
-                'nguoi_de_xuat': 'Hệ thống trực tuyến',
+                'nguoi_de_xuat': author,
                 'thuc_trang': status_quo,
                 'giai_phap': solution,
                 'nguon_luc': resources,
@@ -88,7 +90,7 @@ try:
                 'trang_thai_trien_khai': tk_status,
                 'trang_thai_duy_tri': dt_status,
                 'phan_loai': 'Google Sheet Kaizen',
-                'ngay_gui': datetime.now().strftime('%d/%m/%Y'),
+                'ngay_gui': sent_date,
                 'hinh_anh_truoc': '',
                 'hinh_anh_sau': '',
                 'full_text_search': full_text

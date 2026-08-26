@@ -3,7 +3,7 @@ let searchDebounceTimer = null;
 let allKaizensCache = [];
 let isLocalServer = true;
 
-const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=642561884&single=true&output=csv';
+const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
 document.addEventListener("DOMContentLoaded", async () => {
     await initApp();
@@ -41,7 +41,7 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json?v=556.9");
+        const res = await fetch("./kaizen_database.json?v=557.0");
         allKaizensCache = await res.json();
         
         // Fetch live updates from Google Sheet with 100% strict deduplication
@@ -132,8 +132,12 @@ function parseGoogleSheetRows(csvRows) {
         const rowText = row.filter(val => val && val.trim()).join('\n');
         if (!rowText.includes("💡 Tên ý tưởng:") && !rowText.includes("💡 Mã ý tưởng:")) return;
 
-        const titleM = rowText.match(/💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
-        const codeM = rowText.match(/💡 Mã ý tưởng:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const titleM = rowText.match(/💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const codeM = rowText.match(/💡 Mã ý tưởng:\s*(.*?)(?=\n👤|\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const authorM = rowText.match(/👤 Họ và tên tác giả:\s*(.*?)(?=\n🏢|\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const unitM = rowText.match(/🏢 Đơn vị:\s*(.*?)(?=\n📅|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const dateM = rowText.match(/📅 Ngày gửi:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+
         const statusM = rowText.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
         const solM = rowText.match(/🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)/s);
         const benM = rowText.match(/✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)/s);
@@ -145,6 +149,10 @@ function parseGoogleSheetRows(csvRows) {
 
         const title = titleM ? titleM[1].trim() : '';
         const code = codeM ? codeM[1].trim() : `GS-LIVE-${idx}`;
+        const author = authorM && authorM[1].trim() !== '*empty*' ? authorM[1].trim() : 'Google Sheet Trực Tuyến';
+        const unit = unitM && unitM[1].trim() !== '*empty*' ? unitM[1].trim() : 'Hệ thống mới';
+        const sentDate = dateM && dateM[1].trim() !== '*empty*' ? dateM[1].trim() : '';
+
         const statusQuo = statusM ? statusM[1].trim() : '';
         const solution = solM ? solM[1].trim() : '';
         const benefits = benM ? benM[1].trim() : '';
@@ -159,8 +167,9 @@ function parseGoogleSheetRows(csvRows) {
                 ma_kaizen: code,
                 nam: 2026,
                 ten_y_tuong: title,
-                don_vi: 'Hệ thống mới',
-                nguoi_de_xuat: 'Google Sheet Trực Tuyến',
+                don_vi: unit,
+                nguoi_de_xuat: author,
+                ngay_gui: sentDate,
                 thuc_trang: statusQuo,
                 giai_phap: solution,
                 danh_gia_hieu_qua: benefits,
@@ -639,7 +648,8 @@ function openDetailModal(maKaizen) {
     body.innerHTML = `
         <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; color: #94a3b8; font-size: 13px;">
             <span><i class="fa-solid fa-user" style="color: #60a5fa;"></i> <strong>Tác giả / Người đề xuất:</strong> ${k.nguoi_de_xuat || 'Hệ thống'}</span>
-            <span><i class="fa-solid fa-calendar" style="color: #60a5fa;"></i> <strong>Năm:</strong> ${k.nam || '2026'}</span>
+            ${k.don_vi ? `<span><i class="fa-solid fa-building" style="color: #60a5fa;"></i> <strong>Đơn vị:</strong> ${k.don_vi}</span>` : ''}
+            <span><i class="fa-solid fa-calendar" style="color: #60a5fa;"></i> <strong>Năm:</strong> ${k.nam || '2026'}${k.ngay_gui ? ` (${k.ngay_gui})` : ''}</span>
         </div>
 
         <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 14px 18px; border-radius: 8px; margin-bottom: 14px;">
