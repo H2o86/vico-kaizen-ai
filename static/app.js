@@ -41,7 +41,7 @@ async function initApp() {
 
 async function loadStaticJSONDatabase() {
     try {
-        const res = await fetch("./kaizen_database.json?v=556.6");
+        const res = await fetch("./kaizen_database.json?v=556.8");
         allKaizensCache = await res.json();
         
         // Fetch live updates from Google Sheet with 100% strict deduplication
@@ -345,9 +345,11 @@ function evaluateClientSide(inputStr, topK = 5) {
             thuc_trang: rec.thuc_trang,
             giai_phap: rec.giai_phap,
             danh_gia_hieu_qua: rec.danh_gia_hieu_qua,
+            nguon_luc: rec.nguon_luc,
             tien_thuong_vnd: rec.tien_thuong_vnd,
             gia_tri_lam_loi_vnd: rec.gia_tri_lam_loi_vnd,
             tinh_trang_khen_thuong: rec.tinh_trang_khen_thuong,
+            trang_thai: rec.trang_thai,
             overall_similarity_pct: Math.min(99.9, Math.round(sim * 220 * 10) / 10),
             solution_similarity_pct: Math.min(99.9, Math.round(solSim * 200 * 10) / 10)
         };
@@ -385,7 +387,7 @@ function evaluateClientSide(inputStr, topK = 5) {
     } else {
         risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)";
         risk_code = "NEW_IDEA";
-        reward_policy = `${countNotice}\n\n✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa từng có giải pháp tương tự trong CSDL công ty. Đủ điều kiện hưởng 100% mức thưởng tối đa.`;
+        reward_policy = `${countNotice}\n\n✅ ĐỦ ĐIỀU KIỆN KHEN THƯẢNG 100%: Ý tưởng cải tiến mới độc lập, chưa từng có giải pháp tương tự trong CSDL công ty. Đủ điều kiện hưởng 100% mức thưởng tối đa.`;
         recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%).";
     }
 
@@ -447,22 +449,10 @@ function renderEvaluationResult(data, contentText) {
             const origRewardFmt = formatVND(m.tien_thuong_vnd);
             let rewardTag = origRewardFmt ? `💰 Thưởng gốc: ${origRewardFmt}` : `💰 Thưởng: Theo quy chế VICO`;
 
-            let rewardHintTag = "";
-            if (score >= 35 && score < 70) {
-                const rw50 = m.tien_thuong_vnd ? formatVND(m.tien_thuong_vnd * 0.5) : null;
-                if (rw50) {
-                    rewardHintTag = `<div class="reward-calc-pill">👉 Gợi ý thưởng mở rộng 50%: <strong>${rw50}</strong></div>`;
-                } else {
-                    rewardHintTag = `<div class="reward-calc-pill">👉 Gợi ý thưởng mở rộng: <strong>50% Mức thưởng gốc</strong></div>`;
-                }
-            } else if (score >= 70) {
-                rewardHintTag = `<div class="reward-calc-pill reward-zero">⛔ Mức thưởng đề xuất: <strong>0 VNĐ (Trùng lặp 100%)</strong></div>`;
-            } else if (score < 35) {
-                rewardHintTag = `<div class="reward-calc-pill reward-full">✅ Mức thưởng đề xuất: <strong>100% Mức thưởng tối đa</strong></div>`;
-            }
-
             const card = document.createElement("div");
-            card.className = "match-item";
+            card.className = "match-item match-item-clickable";
+            card.onclick = () => openDetailModal(m.ma_kaizen);
+            card.title = "Nhấn để xem toàn bộ nội dung chi tiết ý tưởng này";
             card.innerHTML = `
                 <div class="match-item-header">
                     <span class="match-code">${m.ma_kaizen}</span>
@@ -478,7 +468,9 @@ function renderEvaluationResult(data, contentText) {
                     <strong>Giải pháp gốc trong CSDL:</strong> ${m.giai_phap || 'N/A'}<br>
                     <strong>Thực trạng gốc:</strong> ${m.thuc_trang || 'N/A'}
                 </div>
-                ${rewardHintTag}
+                <div class="match-click-hint">
+                    <i class="fa-solid fa-circle-arrow-right"></i> Nhấn vào đây để xem toàn bộ nội dung chi tiết đề tài
+                </div>
             `;
             listElem.appendChild(card);
         });
@@ -635,7 +627,11 @@ function openDetailModal(maKaizen) {
     const profitFmt = formatVND(k.gia_tri_lam_loi_vnd) || 'Chưa định lượng';
 
     body.innerHTML = `
-        <p style="margin-bottom: 12px;"><strong>Tác giả:</strong> ${k.nguoi_de_xuat || 'N/A'} | <strong>Trạng thái:</strong> ${k.trang_thai || 'N/A'}</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; color: #94a3b8; font-size: 13px;">
+            <span><i class="fa-solid fa-user" style="color: #60a5fa;"></i> <strong>Tác giả / Người đề xuất:</strong> ${k.nguoi_de_xuat || 'Hệ thống'}</span>
+            <span><i class="fa-solid fa-calendar" style="color: #60a5fa;"></i> <strong>Năm:</strong> ${k.nam || '2026'}</span>
+            <span><i class="fa-solid fa-tag" style="color: #60a5fa;"></i> <strong>Trạng thái:</strong> ${k.trang_thai || 'Báo cáo mới'}</span>
+        </div>
         
         <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 14px 18px; border-radius: 8px; margin-bottom: 14px;">
             <h4 style="color: #fbbf24; margin-bottom: 6px;"><i class="fa-solid fa-coins"></i> Thông Tin Khen Thưởng & Giá Trị Làm Lợi:</h4>
@@ -645,17 +641,17 @@ function openDetailModal(maKaizen) {
         </div>
 
         <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; margin-bottom: 14px;">
-            <h4 style="color: #60a5fa; margin-bottom: 6px;">⚠️ Thực Trạng & Vấn Đề Hiện Tại:</h4>
-            <p style="line-height: 1.5;">${k.thuc_trang || 'Chưa cập nhật'}</p>
+            <h4 style="color: #60a5fa; margin-bottom: 6px;"><i class="fa-solid fa-triangle-exclamation"></i> ⚠️ Thực Trạng & Vấn Đề Hiện Tại (Đầy Đủ):</h4>
+            <p style="line-height: 1.6; white-space: pre-line; color: #f8fafc;">${k.thuc_trang || 'Chưa cập nhật nội dung thực trạng'}</p>
         </div>
         <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; margin-bottom: 14px;">
-            <h4 style="color: #34d399; margin-bottom: 6px;">🛠️ Giải Pháp Cải Tiến Đã Thực Hiện:</h4>
-            <p style="line-height: 1.5;">${k.giai_phap || 'Chưa cập nhật'}</p>
+            <h4 style="color: #34d399; margin-bottom: 6px;"><i class="fa-solid fa-wrench"></i> 🛠️ Giải Pháp Cải Tiến Đã Thực Hiện (Đầy Đủ):</h4>
+            <p style="line-height: 1.6; white-space: pre-line; color: #f8fafc;">${k.giai_phap || 'Chưa cập nhật nội dung giải pháp'}</p>
         </div>
         <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px;">
-            <h4 style="color: #a78bfa; margin-bottom: 6px;">✨ Tính Lợi Ích & Nguồn Lực:</h4>
-            <p style="line-height: 1.5;"><strong>Lợi ích:</strong> ${k.danh_gia_hieu_qua || 'Chưa cập nhật'}</p>
-            <p style="line-height: 1.5; margin-top: 6px;"><strong>Nguồn lực:</strong> ${k.nguon_luc || 'Chưa cập nhật'}</p>
+            <h4 style="color: #a78bfa; margin-bottom: 6px;"><i class="fa-solid fa-chart-line"></i> ✨ Tính Lợi Ích & Nguồn Lực Thực Hiện:</h4>
+            <p style="line-height: 1.6; white-space: pre-line; color: #f8fafc;"><strong>Lợi ích:</strong> ${k.danh_gia_hieu_qua || 'Chưa cập nhật'}</p>
+            <p style="line-height: 1.6; margin-top: 6px; white-space: pre-line; color: #f8fafc;"><strong>Nguồn lực:</strong> ${k.nguon_luc || 'Chưa cập nhật'}</p>
         </div>
     `;
 

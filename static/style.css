@@ -564,12 +564,35 @@ textarea:focus {
     border-radius: var(--radius-md);
     padding: 18px;
     margin-bottom: 14px;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
-.match-item:hover {
-    border-color: var(--border-glow);
-    background: rgba(15, 23, 42, 0.8);
+.match-item-clickable {
+    cursor: pointer;
+}
+
+.match-item-clickable:hover {
+    border-color: #60a5fa;
+    background: rgba(30, 41, 59, 0.85);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.match-click-hint {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+    color: #60a5fa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.match-item-clickable:hover .match-click-hint {
+    color: #93c5fd;
 }
 
 .match-item-header {
