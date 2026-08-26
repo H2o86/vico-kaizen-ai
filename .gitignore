@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large binary files & database files
+kaizen_database.db
+*.xlsx
+*.pdf
+*.docx
+*.vsdx
+excel_images/
+extracted_images/
+cropped_test/
+.system_generated/
+scratch/
+
+# Environment variables & IDE
+.env
+.idea/
+.vscode/

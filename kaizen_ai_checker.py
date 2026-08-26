@@ -1,0 +1,166 @@
+import sqlite3
+import json
+import re
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+class KaizenDuplicateChecker:
+    def __init__(self, db_path='kaizen_database.db'):
+        self.db_path = db_path
+        self.records = []
+        self.vectorizer = None
+        self.tfidf_matrix = None
+        self.load_database()
+        self.train_vectorizer()
+
+    def load_database(self):
+        """Load records from SQLite database."""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT id, ma_kaizen, nam, ten_y_tuong, don_vi, nguoi_de_xuat,
+                   thuc_trang, giai_phap, nguon_luc, danh_gia_hieu_qua,
+                   co_hoi_nhan_rong, phan_loai, trang_thai, tien_thuong_vnd, full_text_search
+            FROM kaizen_records
+        ''')
+        rows = cursor.fetchall()
+        conn.close()
+
+        self.records = []
+        for r in rows:
+            self.records.append({
+                'id': r[0],
+                'ma_kaizen': r[1],
+                'nam': r[2],
+                'ten_y_tuong': r[3] or '',
+                'don_vi': r[4] or '',
+                'nguoi_de_xuat': r[5] or '',
+                'thuc_trang': r[6] or '',
+                'giai_phap': r[7] or '',
+                'nguon_luc': r[8] or '',
+                'danh_gia_hieu_qua': r[9] or '',
+                'co_hoi_nhan_rong': r[10] or '',
+                'phan_loai': r[11] or '',
+                'trang_thai': r[12] or '',
+                'tien_thuong_vnd': r[13],
+                'full_text_search': r[14] or ''
+            })
+        print(f"[KaizenDuplicateChecker] Loaded {len(self.records)} records from database.")
+
+    def preprocess_text(self, text):
+        """Clean and normalize Vietnamese text."""
+        if not text:
+            return ""
+        text = text.lower()
+        text = re.sub(r'[^\w\sàáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]', ' ', text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
+
+    def train_vectorizer(self):
+        """Build TF-IDF matrix for all historical records."""
+        corpus = [
+            self.preprocess_text(
+                f"{r['ten_y_tuong']} {r['ten_y_tuong']} {r['giai_phap']} {r['giai_phap']} {r['thuc_trang']} {r['don_vi']}"
+            )
+            for r in self.records
+        ]
+        self.vectorizer = TfidfVectorizer(ngram_range=(1, 3), min_df=1)
+        self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
+
+    def evaluate_proposal(self, content_text, top_k=5):
+        """
+        Evaluate a single full improvement proposal text.
+        Determines similarity, duplicate risk, and 50% reward rule eligibility.
+        """
+        clean_input = self.preprocess_text(content_text)
+        if not clean_input:
+            return None
+
+        query_vec = self.vectorizer.transform([clean_input])
+        sim_scores = cosine_similarity(query_vec, self.tfidf_matrix).flatten()
+
+        top_indices = np.argsort(sim_scores)[::-1][:top_k]
+
+        matches = []
+        for idx in top_indices:
+            score = float(sim_scores[idx])
+            rec = self.records[idx]
+
+            # Compute specific solution text similarity
+            sol_clean = self.preprocess_text(rec['giai_phap'])
+            sol_sim = 0.0
+            if sol_clean:
+                vec_s = TfidfVectorizer(ngram_range=(1, 2), min_df=1).fit_transform([sol_clean, clean_input])
+                sol_sim = float(cosine_similarity(vec_s[0], vec_s[1])[0][0])
+
+            matches.append({
+                'ma_kaizen': rec['ma_kaizen'],
+                'nam': rec['nam'],
+                'ten_y_tuong': rec['ten_y_tuong'],
+                'don_vi': rec['don_vi'],
+                'nguoi_de_xuat': rec['nguoi_de_xuat'],
+                'thuc_trang': rec['thuc_trang'],
+                'giai_phap': rec['giai_phap'],
+                'danh_gia_hieu_qua': rec['danh_gia_hieu_qua'],
+                'tien_thuong_vnd': rec['tien_thuong_vnd'],
+                'overall_similarity_pct': round(score * 100, 1),
+                'solution_similarity_pct': round(sol_sim * 100, 1)
+            })
+
+        max_score = matches[0]['overall_similarity_pct'] if matches else 0
+        top_match = matches[0] if matches else None
+
+        # Determine Duplicate Risk Level & Reward Policy (50% Rule)
+        if max_score >= 70:
+            risk_level = "🔴 TRÙNG LẮP HOÀN TOÀN"
+            risk_code = "HIGH_DUPLICATE"
+            reward_policy = "⛔ KHÔNG ĐỦ ĐIỀU KIỆN KHEN THƯỞNG (0%): Đề tài trùng lặp hoàn toàn với Kaizen đã có trong hệ thống."
+            recommendation = f"Ý tưởng trùng lặp hoàn toàn với Kaizen mã [{top_match['ma_kaizen']}] ({top_match['ten_y_tuong']}). Cần bác bỏ hoặc chuyển sang trạng thái theo dõi duy trì."
+        elif max_score >= 35:
+            risk_level = "🟡 GIẢI PHÁP MỞ RỘNG / TƯƠNG TỰ (THƯỞNG 50%)"
+            risk_code = "EXPANDED_SOLUTION"
+            reward_policy = f"⚠️ ĐỦ ĐIỀU KIỆN TÍNH THƯỞNG MỞ RỘNG (50%): Đề tài có giải pháp tương tự hoặc nhân rộng từ Kaizen gốc [{top_match['ma_kaizen']}]. Theo quy định công ty, mức khen thưởng tính bằng 50% mức thưởng của giải pháp gốc."
+            recommendation = f"Đề tài có giải pháp tương tự đề tài gốc [{top_match['ma_kaizen']}] ({top_match['ten_y_tuong']}). Ban Cải Tiến xét duyệt khen thưởng ở mức 50% so với giải pháp gốc."
+        else:
+            risk_level = "🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)"
+            risk_code = "NEW_IDEA"
+            reward_policy = "✅ ĐỦ ĐIỀU KIỆN KHEN THƯỞNG 100%: Ý tưởng cải tiến mới độc lập, chưa có giải pháp tương tự trong kho CSDL."
+            recommendation = "Ý tưởng chưa ghi nhận trùng lặp hoặc tương tự trong CSDL công ty. Đủ điều kiện đánh giá khen thưởng mức tối đa (100%)."
+
+        report_md = self._format_report(content_text, risk_level, reward_policy, recommendation, matches)
+
+        return {
+            'risk_level': risk_level,
+            'risk_code': risk_code,
+            'max_similarity_pct': max_score,
+            'reward_policy': reward_policy,
+            'recommendation': recommendation,
+            'matched_kaizens': matches,
+            'report_markdown': report_md
+        }
+
+    def _format_report(self, content_text, risk_level, reward_policy, recommendation, matches):
+        md = []
+        md.append(f"# 🤖 BÁO CÁO AI ĐÁNH GIÁ TRÙNG LẮP & CHÍNH SÁCH KHEN THƯỞNG\n")
+        md.append(f"**Nội dung ý tưởng nhập:**\n> {content_text[:300]}...\n")
+        md.append(f"---\n")
+        md.append(f"### 📊 ĐÁNH GIÁ CỦA AI:")
+        md.append(f"- **Phân loại:** {risk_level}")
+        md.append(f"- **Chính sách tiền thưởng:** {reward_policy}")
+        md.append(f"- **Khuyến nghị cho Ban Cải Tiến:** {recommendation}\n")
+
+        md.append(f"### 🔍 TOP CÁC GIẢI PHÁP TƯƠNG TỰ TRONG CƠ SỞ DỮ LIỆU:")
+        for idx, m in enumerate(matches, 1):
+            md.append(f"#### {idx}. [{m['ma_kaizen']}] {m['ten_y_tuong']} (Năm {m['nam']})")
+            md.append(f"- **Tương đồng tổng thể:** `{m['overall_similarity_pct']}%` | **Tương đồng giải pháp:** `{m['solution_similarity_pct']}%`")
+            md.append(f"- **Người đề xuất / Đơn vị:** {m['nguoi_de_xuat']} ({m['don_vi']})")
+            md.append(f"- **Giải pháp gốc:** {m['giai_phap'][:200]}..." if len(m['giai_phap']) > 200 else f"- **Giải pháp gốc:** {m['giai_phap']}")
+            md.append("")
+
+        return "\n".join(md)
+
+if __name__ == '__main__':
+    checker = KaizenDuplicateChecker()
+    res = checker.evaluate_proposal("Lắp nắp che tôn bảo vệ đầu tay kéo máng lấy điện cẩu trục xoay tránh chập mưa")
+    print(res['report_markdown'])
