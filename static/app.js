@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v558.5";
-const APP_BUILD_TIME = "26/08/2026 - 16:02";
+const APP_VERSION = "v558.6";
+const APP_BUILD_TIME = "26/08/2026 - 16:08";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -273,12 +273,17 @@ function switchTab(tabId) {
     document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
     document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
 
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) {
+        targetContent.classList.add("active");
+    }
+
     if (tabId === "evaluator-tab") {
-        document.querySelectorAll(".tab-btn")[0].classList.add("active");
-        document.getElementById("evaluator-tab").classList.add("active");
-    } else {
-        document.querySelectorAll(".tab-btn")[1].classList.add("active");
-        document.getElementById("database-tab").classList.add("active");
+        document.querySelectorAll(".tab-btn")[0]?.classList.add("active");
+    } else if (tabId === "database-tab") {
+        document.querySelectorAll(".tab-btn")[1]?.classList.add("active");
+    } else if (tabId === "guide-tab") {
+        document.querySelectorAll(".tab-btn")[2]?.classList.add("active");
     }
 }
 
