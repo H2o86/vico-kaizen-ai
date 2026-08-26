@@ -22,7 +22,7 @@ async function initApp() {
         isLocalServer = false;
     }
 
-    // Static GitHub Pages fallback mode
+    // Static GitHub Pages mode
     isLocalServer = false;
     await loadStaticJSONDatabase();
 }
@@ -32,7 +32,7 @@ async function loadStaticJSONDatabase() {
         const res = await fetch("./kaizen_database.json");
         allKaizensCache = await res.json();
         
-        // Also fetch live updates from Google Sheet in background to ensure 100% fresh data!
+        // Also fetch live updates from Google Sheet using accurate RFC4180 CSV parser
         await fetchLiveGoogleSheetUpdates();
 
         updateUIStats();
@@ -43,6 +43,41 @@ async function loadStaticJSONDatabase() {
     }
 }
 
+// RFC4180 Compliant CSV Parser for multi-line cells
+function parseRFC4180CSV(text) {
+    let rows = [];
+    let row = [''];
+    let inQuotes = false;
+    let i = 0;
+
+    while (i < text.length) {
+        const c = text[i];
+        const nextC = i + 1 < text.length ? text[i + 1] : '';
+
+        if (c === '"') {
+            if (inQuotes && nextC === '"') {
+                row[row.length - 1] += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
+        } else if (c === ',' && !inQuotes) {
+            row.push('');
+        } else if ((c === '\r' || c === '\n') && !inQuotes) {
+            if (c === '\r' && nextC === '\n') i++;
+            rows.push(row);
+            row = [''];
+        } else {
+            row[row.length - 1] += c;
+        }
+        i++;
+    }
+    if (row.length > 1 || row[0] !== '') {
+        rows.push(row);
+    }
+    return rows;
+}
+
 // Fetch live updates from Google Sheet directly in browser
 async function fetchLiveGoogleSheetUpdates() {
     try {
@@ -50,16 +85,16 @@ async function fetchLiveGoogleSheetUpdates() {
         if (!res.ok) return;
 
         const csvText = await res.text();
-        const parsedGS = parseGoogleSheetCSV(csvText);
+        const csvRows = parseRFC4180CSV(csvText);
+        const parsedGS = parseGoogleSheetRows(csvRows);
 
         if (parsedGS && parsedGS.length > 0) {
-            // Deduplicate with existing cache
             const existingCodes = new Set(allKaizensCache.map(k => k.ma_kaizen));
             let newAdded = 0;
 
             parsedGS.forEach(item => {
                 if (!existingCodes.has(item.ma_kaizen)) {
-                    allKaizensCache.unshift(item); // Add newest item at top
+                    allKaizensCache.unshift(item);
                     existingCodes.add(item.ma_kaizen);
                     newAdded++;
                 }
@@ -74,28 +109,28 @@ async function fetchLiveGoogleSheetUpdates() {
     }
 }
 
-// Client-side regex parser for Google Sheet CSV
-function parseGoogleSheetCSV(csvText) {
-    const rows = csvText.split('\n');
+// Parse structured CSV rows
+function parseGoogleSheetRows(csvRows) {
     const records = [];
 
-    rows.forEach((rowStr, idx) => {
-        if (!rowStr.includes("💡 Tên ý tưởng:") && !rowStr.includes("💡 Mã ý tưởng:")) return;
+    csvRows.forEach((row, idx) => {
+        const rowText = row.filter(val => val && val.trim()).join('\n');
+        if (!rowText.includes("💡 Tên ý tưởng:") && !rowText.includes("💡 Mã ý tưởng:")) return;
 
-        const titleM = rowStr.match(/💡 Tên ý tưởng:\s*(.*?)(?=\\n💡|\\n⚠️|\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
-        const codeM = rowStr.match(/💡 Mã ý tưởng:\s*(.*?)(?=\\n⚠️|\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
-        const statusM = rowStr.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\\n🛠️|\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
-        const solM = rowStr.match(/🛠️ Giải pháp:\s*(.*?)(?=\\n✨|\\n💪|\\n🚀|\\n📊|\n|$)/s);
-        const benM = rowStr.match(/✨ Tính lợi ích:\s*(.*?)(?=\\n💪|\\n🚀|\\n📊|\n|$)/s);
-        const resM = rowStr.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\\n🚀|\\n📊|\n|$)/s);
-        const stM = rowStr.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\\n📊|\n|$)/s);
+        const titleM = rowText.match(/💡 Tên ý tưởng:\s*(.*?)(?=\n💡|\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const codeM = rowText.match(/💡 Mã ý tưởng:\s*(.*?)(?=\n⚠️|\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const statusM = rowText.match(/⚠️ Hiện trạng và vấn đề:\s*(.*?)(?=\n🛠️|\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const solM = rowText.match(/🛠️ Giải pháp:\s*(.*?)(?=\n✨|\n💪|\n🚀|\n📊|$)/s);
+        const benM = rowText.match(/✨ Tính lợi ích:\s*(.*?)(?=\n💪|\n🚀|\n📊|$)/s);
+        const resM = rowText.match(/💪 Nguồn lực thực hiện:\s*(.*?)(?=\n🚀|\n📊|$)/s);
+        const stM = rowText.match(/📊 Trạng thái \(hệ thống\):\s*(.*?)(?=\n📊|$)/s);
 
-        const title = titleM ? titleM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const title = titleM ? titleM[1].trim() : '';
         const code = codeM ? codeM[1].trim() : `GS-LIVE-${idx}`;
-        const statusQuo = statusM ? statusM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
-        const solution = solM ? solM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
-        const benefits = benM ? benM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
-        const resources = resM ? resM[1].replace(/\\n/g, '\n').replace(/\\r/g, '').trim() : '';
+        const statusQuo = statusM ? statusM[1].trim() : '';
+        const solution = solM ? solM[1].trim() : '';
+        const benefits = benM ? benM[1].trim() : '';
+        const resources = resM ? resM[1].trim() : '';
         const status = stM ? stM[1].trim() : 'Đề nghị mới';
 
         if (title) {
