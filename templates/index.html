@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style.css?v=558.4">
+    <link rel="stylesheet" href="/static/style.css?v=558.5">
 </head>
 <body>
     <div class="app-container">
@@ -61,6 +61,9 @@
             </button>
             <button class="tab-btn" onclick="switchTab('database-tab')">
                 <i class="fa-solid fa-boxes-stacked"></i> 2. Tra Cứu Kho Kaizen (CSDL Hệ Thống)
+            </button>
+            <button class="tab-btn" onclick="switchTab('guide-tab')">
+                <i class="fa-solid fa-book-open"></i> 3. Hướng Dẫn Sử Dụng (CBCNV VICO)
             </button>
         </div>
 
@@ -221,6 +224,84 @@
                 </div>
             </div>
         </div>
+
+        <!-- TAB 3: USER GUIDE (DÀNH CHO CBCNV VICO) -->
+        <div id="guide-tab" class="tab-content">
+            <div class="card guide-card">
+                <div class="guide-header">
+                    <h2><i class="fa-solid fa-graduation-cap"></i> CẨM NANG HƯỚNG DẪN TỰ ĐÁNH GIÁ KAIZEN DÀNH CHO CBCNV VICO</h2>
+                    <p>Hệ thống VICO Kaizen AI giúp toàn thể Cán bộ công nhân viên chủ động tra cứu, kiểm tra độ trùng lặp và tối ưu hóa khả năng được xét duyệt khen thưởng cho ý tưởng cải tiến của mình trước khi chính thức nộp bài.</p>
+                </div>
+
+                <!-- 3 Steps Walkthrough Grid -->
+                <div class="guide-steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3><i class="fa-solid fa-pen-clip"></i> Bước 1: Nhập Nội Dung Ý Tưởng</h3>
+                            <p>Truy cập <strong>Tab 1 (AI Đánh Giá Ý Tưởng)</strong>, dán hoặc nhập đầy đủ thông tin đề tài cải tiến của bạn bao gồm: <em>Tên ý tưởng, Thực trạng/Vấn đề hiện tại, Giải pháp đề xuất</em> vào khung duy nhất.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3><i class="fa-solid fa-robot"></i> Bước 2: Chọn Công Cụ AI Đánh Giá</h3>
+                            <p>Nhấn <strong>⚡ 1. Đánh Giá Nhanh (Vector AI)</strong> để xem ngay các bài có từ khóa/nội dung gần nhất trong 0.01s, hoặc nhấn <strong>🧠 2. Đánh Giá Sâu (Gemini LLM)</strong> để AI suy luận chi tiết nhận xét giống/khác nhau.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3><i class="fa-solid fa-chart-line"></i> Bước 3: Xem Kết Quả & Quy Định Thưởng</h3>
+                            <p>Xem kết luận tổng quan và danh sách các bài trùng lặp. Nhấn trực tiếp vào bất kỳ thẻ bài trùng nào để mở xem <strong>toàn bộ nội dung chi tiết bài gốc</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policy Explanation Box -->
+                <div class="guide-policy-section">
+                    <h3><i class="fa-solid fa-scale-balanced"></i> KHUÔN KHỔ QUY ĐỊNH XÉT DUYỆT KHEN THƯỞNG KAIZEN VICO</h3>
+                    <div class="policy-grid">
+                        <div class="policy-card p-green">
+                            <div class="p-header"><i class="fa-solid fa-circle-check"></i> 🟢 Ý TƯỞNG MỚI ĐỘC LẬP (THƯỞNG 100%)</div>
+                            <p>Độ trùng lặp <strong>&lt; 35%</strong>. Ý tưởng mang tính sáng tạo độc lập, chưa từng có giải pháp tương tự trong CSDL công ty từ năm 2020 đến nay. ➔ <strong>Đủ điều kiện hưởng 100% mức thưởng tối đa</strong>.</p>
+                        </div>
+
+                        <div class="policy-card p-amber">
+                            <div class="p-header"><i class="fa-solid fa-circle-exclamation"></i> 🟡 GIẢI PHÁP MỞ RỘNG (THƯỞNG 50%)</div>
+                            <p>Độ trùng lặp <strong>35% - 69%</strong>. Ý tưởng áp dụng/nhân rộng giải pháp từ một đề tài gốc đã có. ➔ <strong>Tính thưởng bằng 50% mức thưởng của giải pháp gốc</strong> theo quy định công ty.</p>
+                        </div>
+
+                        <div class="policy-card p-red">
+                            <div class="p-header"><i class="fa-solid fa-circle-xmark"></i> 🔴 TRÙNG LẮP HOÀN TOÀN (THƯỞNG 0 VNĐ)</div>
+                            <p>Độ trùng lặp <strong>&gt;= 70%</strong>. Ý tưởng đã trùng lặp hoàn toàn nguyên lý/đối sách với bài gốc đã được triển khai/khen thưởng trước đó. ➔ <strong>Không đủ điều kiện khen thưởng (0 VNĐ)</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-faq-section">
+                    <h3><i class="fa-solid fa-circle-question"></i> CÁC CÂU HỎI THƯỜNG GẶP (FAQ)</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="fa-solid fa-q"></i> Dữ liệu hệ thống đối chiếu bao gồm những đề tài nào?</div>
+                        <div class="faq-a"><i class="fa-solid fa-check"></i> Cơ sở dữ liệu hệ thống tổng hợp toàn bộ các đề tài cải tiến Kaizen (bao gồm cả dữ liệu trong và ngoài hệ thống ghi nhận cải tiến của công ty) từ <strong>năm 2020 đến thời điểm hiện tại</strong>.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="fa-solid fa-q"></i> Tôi có cần bấm nút "Đồng Bộ Sheet" không?</div>
+                        <div class="faq-a"><i class="fa-solid fa-check"></i> Không bắt buộc. Mỗi khi bạn mở web hay nhấn F5, hệ thống tự động tải các bài mới nhất. Bạn chỉ bấm nút "Đồng Bộ Sheet" khi ai đó vừa nộp bài mới trên Sheet cách đây vài phút và bạn muốn cập nhật tức thì.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="fa-solid fa-q"></i> Tôi muốn tra cứu xem đồng nghiệp ở phân xưởng khác đã làm Kaizen gì thì làm thế nào?</div>
+                        <div class="faq-a"><i class="fa-solid fa-check"></i> Chuyển sang <strong>Tab 2 (Tra Cứu Kho Kaizen)</strong>, gõ từ khóa (ví dụ: <em>"máng điện"</em>, <em>"đá mài"</em>, <em>"tác giả"</em>) hoặc lọc theo trạng thái để tìm kiếm toàn bộ kho đề tài của công ty.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Detail Modal -->
@@ -236,6 +317,6 @@
         </div>
     </div>
 
-    <script src="/static/app.js?v=558.4"></script>
+    <script src="/static/app.js?v=558.5"></script>
 </body>
 </html>
