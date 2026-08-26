@@ -156,7 +156,34 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Data Source Announcement Banner */
+.data-source-banner {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #93c5fd;
+    line-height: 1.5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.data-source-banner i {
+    font-size: 18px;
+    color: #60a5fa;
+    flex-shrink: 0;
+}
+
+.data-source-banner strong {
+    color: #fff;
+    font-weight: 700;
 }
 
 .stats-bar-1col {
