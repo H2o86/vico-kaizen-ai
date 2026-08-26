@@ -316,6 +316,35 @@ async function handleEvaluate(e) {
     }
 }
 
+function isEligibleForEvaluation(rec) {
+    const source = rec.phan_loai || '';
+    const isOld = !source.includes('Google Sheet');
+    const isGS = source.includes('Google Sheet');
+
+    if (isOld) {
+        // CSDL cũ: chỉ xem xét những ý tưởng có ghi nhận giá trị tiền thưởng
+        const rw = rec.tien_thuong_vnd;
+        return rw !== null && rw !== undefined && String(rw).trim() !== '' && String(rw).trim() !== 'None' && parseFloat(rw) > 0;
+    }
+
+    if (isGS) {
+        // Dữ liệu Google Sheet: chỉ xem xét những ý tưởng đã hoàn thành
+        const stSys = (rec.trang_thai || '').toLowerCase();
+        const stTk = (rec.trang_thai_trien_khai || '').toLowerCase();
+        const stDt = (rec.trang_thai_duy_tri || '').toLowerCase();
+
+        return stSys.includes('hoàn thành') || 
+               stSys.includes('a3') || 
+               stSys.includes('duy trì') || 
+               stSys.includes('đã triển khai') || 
+               stTk.includes('hoàn thành') || 
+               stDt.includes('hoàn thành') ||
+               stDt.includes('duy trì');
+    }
+
+    return true;
+}
+
 // Client-side TF-IDF / N-gram Similarity Engine for Static GitHub Pages
 function evaluateClientSide(inputStr, topK = 5) {
     function cleanText(txt) {
@@ -344,8 +373,9 @@ function evaluateClientSide(inputStr, topK = 5) {
         return intersection / union;
     }
 
+    const eligibleRecords = allKaizensCache.filter(isEligibleForEvaluation);
     const inputNGrams = getNGrams(inputStr);
-    const scored = allKaizensCache.map(rec => {
+    const scored = eligibleRecords.map(rec => {
         const recText = `${rec.ten_y_tuong || ''} ${rec.ten_y_tuong || ''} ${rec.giai_phap || ''} ${rec.giai_phap || ''} ${rec.thuc_trang || ''}`;
         const recNGrams = getNGrams(recText);
         const sim = jaccardSimilarity(inputNGrams, recNGrams);

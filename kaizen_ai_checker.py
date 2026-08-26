@@ -29,7 +29,7 @@ class KaizenDuplicateChecker:
 
         self.records = []
         for r in rows:
-            self.records.append({
+            rec = {
                 'id': r[0],
                 'ma_kaizen': r[1],
                 'nam': r[2],
@@ -45,8 +45,46 @@ class KaizenDuplicateChecker:
                 'trang_thai': r[12] or '',
                 'tien_thuong_vnd': r[13],
                 'full_text_search': r[14] or ''
-            })
-        print(f"[KaizenDuplicateChecker] Loaded {len(self.records)} records from database.")
+            }
+            if self._is_eligible_for_evaluation(rec):
+                self.records.append(rec)
+
+        print(f"[KaizenDuplicateChecker] Loaded {len(rows)} total records, indexed {len(self.records)} eligible benchmark records for AI evaluation.")
+
+    def _is_eligible_for_evaluation(self, rec):
+        """
+        Rule:
+        - Master Excel (CSDL cũ): Chỉ xem xét những ý tưởng có ghi nhận giá trị tiền thưởng (> 0).
+        - Google Sheet: Chỉ xem xét những ý tưởng đã hoàn thành (Hoàn thành / A3 / Duy trì / Đã triển khai).
+        """
+        source = rec.get('phan_loai', '')
+        is_old = 'Google Sheet' not in source
+        is_gs = 'Google Sheet' in source
+
+        if is_old:
+            rw = rec.get('tien_thuong_vnd')
+            if rw is None or str(rw).strip() in ['', 'None']:
+                return False
+            try:
+                return float(rw) > 0
+            except:
+                return False
+
+        if is_gs:
+            st_sys = (rec.get('trang_thai') or '').lower()
+            st_tk = (rec.get('trang_thai_trien_khai') or '').lower()
+            st_dt = (rec.get('trang_thai_duy_tri') or '').lower()
+
+            is_completed = 'hoàn thành' in st_sys or \
+                           'a3' in st_sys or \
+                           'duy trì' in st_sys or \
+                           'đã triển khai' in st_sys or \
+                           'hoàn thành' in st_tk or \
+                           'hoàn thành' in st_dt or \
+                           'duy trì' in st_dt
+            return is_completed
+
+        return True
 
     def preprocess_text(self, text):
         """Clean and normalize Vietnamese text."""
