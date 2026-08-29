@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v559.1";
-const APP_BUILD_TIME = "29/08/2026 - 12:58";
+const APP_VERSION = "v560.0";
+const APP_BUILD_TIME = "29/08/2026 - 13:05";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -880,9 +880,203 @@ function renderCoachingResult(data) {
         <div style="margin-top: 16px; font-size: 12px; color: #94a3b8; border-top: 1px solid var(--border-color); padding-top: 12px;">
             💬 <strong>Lời khuyên của AI Coach:</strong> ${data.final_message || 'Hãy hoàn thiện thêm các thông tin còn thiếu và thử nghiệm thu nhỏ trước khi đăng ký chính thức.'}
         </div>
+    </div>
+
+    <!-- Interactive AI Kaizen Coach Chatbot Card -->
+    <div class="chat-card" id="ai-coach-chat-card">
+        <div class="chat-card-header">
+            <h4><i class="fa-solid fa-comments"></i> TRÒ CHUYỆN & CỐ VẤN TƯƠNG TÁC 2 CHIỀU VỚI AI COACH</h4>
+            <span style="font-size: 11px; color: #94a3b8;">Nhắn tin trực tiếp với AI Coach để hoàn thiện đề tài</span>
+        </div>
+
+        <div class="chat-messages-container" id="chat-messages-container">
+            <!-- Messages populated dynamically -->
+        </div>
+
+        <!-- Quick Action Pills -->
+        <div class="chat-quick-pills">
+            <button type="button" class="quick-pill" onclick="sendQuickPill('📋 Hãy viết lại đề tài này theo đúng cấu trúc chuẩn hóa của VICO')">📋 Viết lại chuẩn VICO</button>
+            <button type="button" class="quick-pill" onclick="sendQuickPill('📊 Đánh giá lại điểm Kaizen Fit và Idea Maturity cho bài viết của tôi')">📊 Điểm Kaizen Fit?</button>
+            <button type="button" class="quick-pill" onclick="sendQuickPill('💡 Đề xuất cho tôi các chỉ số KPI cụ thể để đo lường hiệu quả bài này')">💡 Gợi ý KPI đo lường</button>
+            <button type="button" class="quick-pill" onclick="sendQuickPill('❓ Hướng dẫn tôi cách lập kế hoạch thử nghiệm thu nhỏ (Pilot)')">❓ Hướng dẫn thử nghiệm Pilot</button>
+        </div>
+
+        <!-- Input Bar -->
+        <div class="chat-input-row">
+            <input type="text" class="chat-input" id="chat-user-input" placeholder="Gõ câu trả lời hoặc câu hỏi cho AI Coach (Ví dụ: Thao tác này mất 20 phút mỗi ngày)..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+            <button type="button" class="chat-send-btn" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
+        </div>
     </div>`;
 
     resultsContainer.innerHTML = html;
+
+    // Initialize Chat History
+    coachingChatHistory = [
+        {
+            role: "model",
+            parts: [{ text: `Chào bạn! Tôi là **AI Kaizen Coach** của VICO.\n\n${data.final_message || 'Tôi vừa thẩm định sơ bộ ý tưởng của bạn.'}\n\nBạn có thể trả lời các câu hỏi bổ sung của tôi hoặc gõ thắc mắc/chọn các phản hồi nhanh bên dưới để cùng tôi hoàn thiện đề tài nhé!` }]
+        }
+    ];
+    renderChatMessages();
+}
+
+// Global Chatbot State & Handlers
+let coachingChatHistory = [];
+
+function renderChatMessages() {
+    const container = document.getElementById("chat-messages-container");
+    if (!container) return;
+
+    let html = "";
+    coachingChatHistory.forEach(msg => {
+        const isUser = msg.role === "user";
+        const bubbleClass = isUser ? "user-bubble" : "ai-bubble";
+        const wrapperClass = isUser ? "user-msg" : "ai-msg";
+        const text = msg.parts[0]?.text || "";
+        const formattedText = text.replace(/\n/g, "<br>");
+
+        html += `
+        <div class="chat-msg ${wrapperClass}">
+            <div class="msg-bubble ${bubbleClass}">
+                ${isUser ? '<strong>Bạn:</strong> ' : '<strong><i class="fa-solid fa-robot" style="color: #fbbf24;"></i> AI Coach:</strong><br>'}${formattedText}
+            </div>
+        </div>`;
+    });
+
+    container.innerHTML = html;
+    container.scrollTop = container.scrollHeight;
+}
+
+function appendChatMessage(role, text) {
+    coachingChatHistory.push({ role: role, parts: [{ text: text }] });
+    renderChatMessages();
+}
+
+function showChatTyping() {
+    const container = document.getElementById("chat-messages-container");
+    if (!container) return;
+    const typingDiv = document.createElement("div");
+    typingDiv.id = "chat-typing-indicator";
+    typingDiv.className = "chat-msg ai-msg";
+    typingDiv.innerHTML = `<div class="msg-bubble ai-bubble" style="color: #fbbf24;"><i class="fa-solid fa-spinner fa-spin"></i> AI Coach đang suy nghĩ và gõ câu trả lời...</div>`;
+    container.appendChild(typingDiv);
+    container.scrollTop = container.scrollHeight;
+}
+
+function removeChatTyping() {
+    const typingDiv = document.getElementById("chat-typing-indicator");
+    if (typingDiv) typingDiv.remove();
+}
+
+function sendQuickPill(pillText) {
+    sendChatMessage(pillText);
+}
+
+async function sendChatMessage(customText) {
+    const inputEl = document.getElementById("chat-user-input");
+    const text = customText ? customText.trim() : (inputEl ? inputEl.value.trim() : "");
+    if (!text) return;
+
+    if (inputEl && !customText) inputEl.value = "";
+
+    // Append User Message
+    appendChatMessage("user", text);
+    showChatTyping();
+
+    // Format payload for multi-turn chat
+    const messagesPayload = coachingChatHistory.map(m => ({
+        role: m.role,
+        content: m.parts[0]?.text || ""
+    }));
+
+    try {
+        let replyText = "";
+        let usedModel = "";
+
+        // 1. Try local server endpoint if on local server
+        if (isLocalServer) {
+            try {
+                const res = await fetch("/api/chat_coaching", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ messages: messagesPayload })
+                });
+
+                const contentType = res.headers.get("content-type") || "";
+                if (res.ok && contentType.includes("application/json")) {
+                    const data = await res.json();
+                    replyText = data.reply;
+                    usedModel = data.used_model;
+                }
+            } catch (sErr) {
+                console.warn("Server chat coaching error:", sErr);
+            }
+        }
+
+        // 2. Client-side fallback for GitHub Pages
+        if (!replyText) {
+            const apiKey = getGeminiApiKey();
+            if (!apiKey) {
+                removeChatTyping();
+                alert("Vui lòng nhập API Key để tiếp tục trò chuyện với AI Coach trên GitHub Pages.");
+                return;
+            }
+
+            const GEMINI_MODELS = [
+                "gemini-3.6-flash",
+                "gemini-3.5-flash",
+                "gemini-flash-latest",
+                "gemini-2.5-flash"
+            ];
+
+            const systemInstruction = `Bạn là **AI Kaizen Evaluation & Coaching Agent** chính thức của Công ty VICO.
+Nhiệm vụ của bạn là trò chuyện tương tác 2 chiều với Cán bộ công nhân viên (CBCNV) VICO để:
+1. Đánh giá bản chất ý tưởng (Có phải Kaizen hay là Sửa chữa/Bảo trì/Tuân thủ?).
+2. Hướng dẫn tác giả bổ sung các thông tin còn thiếu (Hiện trạng, Baseline, KPI, Tần suất lỗi).
+3. Cố vấn thu nhỏ phạm vi thử nghiệm (Pilot) & đề xuất chỉ số đo lường.
+4. Giúp tác giả **viết lại đề tài Kaizen theo cấu trúc chuẩn hóa VICO** khi tác giả yêu cầu hoặc khi thông tin đã đủ.
+
+PHONG CÁCH TRÒ CHUYỆN: Lịch sự, chuyên nghiệp, khuyến khích sáng tạo, súc tích và có trọng tâm. Dùng định dạng Markdown rõ ràng.`;
+
+            const contentsPayload = coachingChatHistory.map(m => ({
+                role: m.role,
+                parts: m.parts
+            }));
+
+            for (const modelName of GEMINI_MODELS) {
+                try {
+                    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                    const res = await fetch(geminiUrl, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            systemInstruction: { parts: [{ text: systemInstruction }] },
+                            contents: contentsPayload
+                        })
+                    });
+
+                    if (res.ok) {
+                        const geminiJson = await res.json();
+                        replyText = geminiJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
+                        usedModel = modelName;
+                        break;
+                    }
+                } catch (mErr) {}
+            }
+        }
+
+        removeChatTyping();
+
+        if (!replyText) {
+            replyText = "Xin lỗi, không thể kết nối tới AI Coach lúc này. Vui lòng kiểm tra lại mạng hoặc API Key!";
+        }
+
+        appendChatMessage("model", replyText);
+
+    } catch (err) {
+        removeChatTyping();
+        alert("Lỗi khi kết nối Chatbot AI Coach: " + err.message);
+    }
 }
 
 // Copy rewritten Kaizen statement to clipboard

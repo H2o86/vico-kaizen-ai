@@ -406,6 +406,74 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
     parsed_res["used_model"] = used_model
     return parsed_res
 
+class ChatMessage(BaseModel):
+    role: str
+    content: str
+
+class ChatRequest(BaseModel):
+    messages: list[ChatMessage] = []
+
+@app.post("/api/chat_coaching")
+async def chat_coaching(req: ChatRequest):
+    if not req.messages:
+        return JSONResponse(status_code=400, content={"error": "Danh sách tin nhắn không được để trống."})
+
+    api_key = get_env_gemini_key()
+    if not api_key:
+        return JSONResponse(status_code=500, content={"error": "Chưa tìm thấy GEMINI_API_KEY trong file .env trên server."})
+
+    system_instruction = """Bạn là **AI Kaizen Evaluation & Coaching Agent** chính thức của Công ty VICO.
+Nhiệm vụ của bạn là trò chuyện tương tác 2 chiều với Cán bộ công nhân viên (CBCNV) VICO để:
+1. Đánh giá bản chất ý tưởng (Có phải Kaizen hay là Sửa chữa/Bảo trì/Tuân thủ?).
+2. Hướng dẫn tác giả bổ sung các thông tin còn thiếu (Hiện trạng, Baseline, KPI, Tần suất lỗi).
+3. Cố vấn thu nhỏ phạm vi thử nghiệm (Pilot) & đề xuất chỉ số đo lường.
+4. Giúp tác giả **viết lại đề tài Kaizen theo cấu trúc chuẩn hóa VICO** khi tác giả yêu cầu hoặc khi thông tin đã đủ.
+
+PHONG CÁCH TRÒ CHUYỆN: Lịch sự, chuyên nghiệp, khuyến khích sáng tạo, súc tích và có trọng tâm. Dùng định dạng Markdown rõ ràng."""
+
+    contents = []
+    for m in req.messages:
+        g_role = "user" if m.role == "user" else "model"
+        contents.append({
+            "role": g_role,
+            "parts": [{"text": m.content}]
+        })
+
+    GEMINI_MODELS = [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-flash-latest",
+        "gemini-2.5-flash"
+    ]
+
+    import urllib.request
+    gemini_json = None
+    last_err = ""
+    used_model = ""
+
+    for model_name in GEMINI_MODELS:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            payload_data = {
+                "systemInstruction": {"parts": [{"text": system_instruction}]},
+                "contents": contents
+            }
+            payload = json.dumps(payload_data).encode("utf-8")
+            req_obj = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req_obj, timeout=20) as resp:
+                if resp.status == 200:
+                    gemini_json = json.loads(resp.read().decode("utf-8"))
+                    used_model = model_name
+                    break
+        except Exception as e:
+            last_err = str(e)
+
+    if not gemini_json:
+        return JSONResponse(status_code=500, content={"error": f"Lỗi Gemini API: {last_err}"})
+
+    reply_text = gemini_json.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+    return {"reply": reply_text, "used_model": used_model}
+
 @app.post("/api/sync")
 async def sync_google_sheet():
     global ai_checker
