@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style.css?v=558.6">
+    <link rel="stylesheet" href="/static/style.css?v=559.0">
 </head>
 <body>
     <div class="app-container">
@@ -102,17 +102,21 @@
                             </div>
                         </div>
 
-                        <!-- Explanation Guide for the 2 AI Evaluation Methods -->
+                        <!-- Explanation Guide for the 3 AI Tools -->
                         <div class="ai-modes-guide">
-                            <div class="guide-title"><i class="fa-solid fa-circle-info"></i> Hướng dẫn phân biệt 2 công cụ AI đánh giá:</div>
+                            <div class="guide-title"><i class="fa-solid fa-circle-info"></i> Hướng dẫn lựa chọn 3 công cụ AI hỗ trợ:</div>
                             <div class="guide-grid">
                                 <div class="guide-item">
                                     <span class="guide-badge badge-bolt"><i class="fa-solid fa-bolt"></i> 1. Vector AI (Đánh Giá Nhanh)</span>
-                                    <p>So sánh ma trận véc-tơ N-Gram siêu tốc (0.01s). Khớp chính xác cụm từ kỹ thuật, đối sách & giải pháp, chạy nội bộ không tốn chi phí.</p>
+                                    <p>So sánh véc-tơ siêu tốc (0.01s). Quét sạch cụm từ kỹ thuật & đối sách trùng lặp.</p>
                                 </div>
                                 <div class="guide-item">
-                                    <span class="guide-badge badge-brain"><i class="fa-solid fa-brain"></i> 2. Gemini LLM (Đánh Giá Sâu)</span>
-                                    <p>Sử dụng AI Google Gemini đọc hiểu ngữ nghĩa sâu như chuyên gia. Tự động viết đoạn lập luận phân tích điểm giống/khác & tư vấn mức thưởng.</p>
+                                    <span class="guide-badge badge-brain"><i class="fa-solid fa-brain"></i> 2. Gemini LLM (Đánh Giá Trùng Sâu)</span>
+                                    <p>Đọc hiểu ngữ nghĩa sâu, viết đoạn lập luận so sánh điểm giống/khác & tư vấn % thưởng.</p>
+                                </div>
+                                <div class="guide-item" style="grid-column: span 2;">
+                                    <span class="guide-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fa-solid fa-bullseye"></i> 3. AI Kaizen Coach (Thẩm Định & Cố Vấn)</span>
+                                    <p>Thẩm định bản chất (Có phải Kaizen hay là Sửa chữa?), chấm điểm Kaizen Fit & Idea Maturity, đặt 3-5 câu hỏi bổ sung và <strong>tự động viết lại bài Kaizen chuẩn hóa</strong>.</p>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +125,11 @@
                             <button type="submit" class="btn-eval" id="btn-eval" title="So sánh ma trận Véc-tơ siêu tốc (0.01 giây)">
                                 <i class="fa-solid fa-bolt"></i> ⚡ 1. Đánh Giá Nhanh (Vector AI)
                             </button>
-                            <button type="button" class="btn-gemini" id="btn-gemini" onclick="handleGeminiEvaluate(event)" title="Đánh giá lập luận chuyên sâu bằng Google Gemini LLM API">
-                                <i class="fa-solid fa-brain"></i> 🧠 2. Đánh Giá Sâu (Gemini LLM API)
+                            <button type="button" class="btn-gemini" id="btn-gemini" onclick="handleGeminiEvaluate(event)" title="Đánh giá trùng lặp lập luận chuyên sâu bằng Gemini AI">
+                                <i class="fa-solid fa-brain"></i> 🧠 2. Đánh Giá Sâu (Gemini LLM)
+                            </button>
+                            <button type="button" class="btn-coaching" id="btn-coaching" onclick="handleKaizenCoaching(event)" title="Thẩm định bản chất ý tưởng có phải Kaizen không và hướng dẫn hoàn thiện">
+                                <i class="fa-solid fa-bullseye"></i> 🎯 3. Thẩm Định & Cố Vấn (AI Coach)
                             </button>
                             <button type="button" class="btn-secondary" onclick="resetForm()">
                                 <i class="fa-solid fa-eraser"></i> Làm Mới
@@ -317,6 +324,6 @@
         </div>
     </div>
 
-    <script src="/static/app.js?v=558.6"></script>
+    <script src="/static/app.js?v=559.0"></script>
 </body>
 </html>

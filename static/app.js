@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v558.6";
-const APP_BUILD_TIME = "26/08/2026 - 16:08";
+const APP_VERSION = "v559.0";
+const APP_BUILD_TIME = "29/08/2026 - 12:55";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -568,6 +568,173 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
         alert("Lỗi khi kết nối Gemini API: " + err.message + "\n\nHệ thống sẽ tự động chuyển sang chế độ Đánh Giá Nhanh bằng Vector AI.");
         handleEvaluate(e);
     }
+}
+
+// 🎯 AI Kaizen Evaluation & Coaching Agent Handler
+async function handleKaizenCoaching(e) {
+    if (e) e.preventDefault();
+
+    const contentText = (document.getElementById("input-content")?.value || "").trim();
+    if (!contentText) {
+        alert("Vui lòng nhập nội dung đề tài cải tiến trước khi bấm Thẩm Định & Cố Vấn.");
+        return;
+    }
+
+    showLoading("🎯 AI Kaizen Coach đang thẩm định bản chất ý tưởng, chấm điểm Kaizen Fit & viết lại bài chuẩn hóa...");
+
+    try {
+        const response = await fetch("/api/evaluate_kaizen_coaching", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content: contentText })
+        });
+
+        if (!response.ok) {
+            const errData = await response.json();
+            throw new Error(errData.error || `HTTP error ${response.status}`);
+        }
+
+        const coachingData = await response.json();
+        hideLoading();
+        renderCoachingResult(coachingData);
+    } catch (err) {
+        hideLoading();
+        alert("Lỗi khi kết nối AI Kaizen Coach: " + err.message);
+    }
+}
+
+// Render AI Kaizen Coaching Results
+function renderCoachingResult(data) {
+    const resultsContainer = document.getElementById("eval-results");
+    if (!resultsContainer) return;
+
+    resultsContainer.classList.remove("hidden");
+    resultsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Classification Badge styling
+    let badgeClass = "badge-info";
+    const cls = data.classification || "";
+    if (cls === "KAIZEN") badgeClass = "badge-kaizen";
+    else if (cls.includes("REFINEMENT") || cls.includes("INFO") || cls.includes("PROBLEM") || cls.includes("TARGET")) badgeClass = "badge-refinement";
+    else if (cls.includes("REPAIR") || cls.includes("COMPLIANCE") || cls.includes("RISK") || cls.includes("NOT")) badgeClass = "badge-repair";
+
+    const fitScore = data.kaizen_fit ? (data.kaizen_fit.score || 0) : 0;
+    const maturityScore = data.idea_maturity ? (data.idea_maturity.score || 0) : 0;
+
+    let questionsHtml = "";
+    if (data.top_questions && data.top_questions.length > 0) {
+        questionsHtml = data.top_questions.map(q => `<li><i class="fa-solid fa-circle-question" style="color: #fbbf24;"></i> ${q}</li>`).join("");
+    } else {
+        questionsHtml = "<li>Ý tưởng đã có đầy đủ thông tin cốt lõi!</li>";
+    }
+
+    let recsHtml = "";
+    if (data.improvement_recommendations && data.improvement_recommendations.length > 0) {
+        recsHtml = data.improvement_recommendations.map(r => `<li><i class="fa-solid fa-lightbulb" style="color: #60a5fa;"></i> ${r}</li>`).join("");
+    }
+
+    let wasteHtml = "";
+    if (data.waste_categories && data.waste_categories.length > 0) {
+        wasteHtml = `<p style="font-size: 12px; color: #94a3b8; margin-top: 8px;"><strong>Lãng phí (Muda) được nhận diện:</strong> ${data.waste_categories.map(w => `<span class="badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171; font-size: 11px; margin-right: 4px;">${w}</span>`).join(" ")}</p>`;
+    }
+
+    let pilotHtml = "";
+    if (data.pilot) {
+        pilotHtml = `
+        <div class="pilot-box">
+            <i class="fa-solid fa-vial"></i> <strong>Đề Xuất Thử Nghiệm Thu Nhỏ (Pilot Scope):</strong> ${data.pilot.minimum_testable_kaizen || 'Thử nghiệm trên 1 khu vực nhỏ'}<br>
+            • <strong>Phạm vi:</strong> ${data.pilot.scope || 'Phân xưởng/Bộ phận'}<br>
+            • <strong>Chỉ số đo lường (KPI):</strong> ${data.pilot.measurement || 'Thời gian/Lỗi'}<br>
+            • <strong>Tiêu chuẩn thành công:</strong> ${data.pilot.success_criteria || 'Không phát sinh sự cố'}
+        </div>`;
+    }
+
+    const html = `
+    <div class="coaching-card">
+        <div class="coaching-header">
+            <div class="coaching-title-box">
+                <h3><i class="fa-solid fa-bullseye"></i> THẨM ĐỊNH & CỐ VẤN KAIZEN (AI COACH)</h3>
+                <p>Mô hình AI: Google Gemini (${data.used_model || '3.6-flash'})</p>
+            </div>
+            <div class="coaching-badge ${badgeClass}">
+                <i class="fa-solid fa-award"></i> ${data.classification_display || data.classification || 'KAIZEN'}
+            </div>
+        </div>
+
+        <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin-bottom: 16px;">
+            <strong>Nhận xét bản chất:</strong> ${data.classification_reason || 'Đề tài có tiềm năng cải tiến.'}
+        </p>
+
+        <!-- Scores Grid -->
+        <div class="scores-grid">
+            <div class="score-box">
+                <div class="score-lbl">
+                    <span><i class="fa-solid fa-chart-pie" style="color: #3b82f6;"></i> Kaizen Fit Score (Bản chất):</span>
+                    <span class="score-val">${fitScore}/100</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill fill-fit" style="width: ${fitScore}%;"></div>
+                </div>
+                <div class="score-desc">Mức độ phù hợp với tinh thần Kaizen: <strong>${data.kaizen_fit?.level || 'STRONG_KAIZEN'}</strong></div>
+            </div>
+
+            <div class="score-box">
+                <div class="score-lbl">
+                    <span><i class="fa-solid fa-sliders" style="color: #8b5cf6;"></i> Idea Maturity Score (Độ hoàn thiện):</span>
+                    <span class="score-val">${maturityScore}/100</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill fill-maturity" style="width: ${maturityScore}%;"></div>
+                </div>
+                <div class="score-desc">Trạng thái phát triển ý tưởng: <strong>${data.idea_maturity?.level || 'DEVELOPING'}</strong></div>
+            </div>
+        </div>
+
+        <!-- Rewritten Standardized Kaizen Statement -->
+        <div class="rewritten-section">
+            <div class="rewritten-header">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> PHIÊN BẢN KAIZEN ĐÃ ĐƯỢC AI VIẾT LẠI CHUẨN HÓA</h4>
+                <button type="button" class="btn-copy-rewritten" onclick="copyRewrittenStatement()">
+                    <i class="fa-solid fa-copy"></i> 📋 Sao Chép Bài Viết Lại
+                </button>
+            </div>
+            <div class="rewritten-content" id="rewritten-statement-text">${data.rewritten_kaizen_statement || 'Đang cập nhật phiên bản viết lại...'}</div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="coaching-details-grid">
+            <div class="detail-block">
+                <h4><i class="fa-solid fa-circle-question" style="color: #fbbf24;"></i> 3-5 CÂU HỎI HƯỚNG DẪN BỔ SUNG</h4>
+                <ul>${questionsHtml}</ul>
+            </div>
+
+            <div class="detail-block">
+                <h4><i class="fa-solid fa-lightbulb" style="color: #60a5fa;"></i> GỢI Ý NÂNG CẤP & HOÀN THIỆN</h4>
+                <ul>${recsHtml}</ul>
+                ${wasteHtml}
+            </div>
+        </div>
+
+        ${pilotHtml}
+
+        <div style="margin-top: 16px; font-size: 12px; color: #94a3b8; border-top: 1px solid var(--border-color); padding-top: 12px;">
+            💬 <strong>Lời khuyên của AI Coach:</strong> ${data.final_message || 'Hãy hoàn thiện thêm các thông tin còn thiếu và thử nghiệm thu nhỏ trước khi đăng ký chính thức.'}
+        </div>
+    </div>`;
+
+    resultsContainer.innerHTML = html;
+}
+
+// Copy rewritten Kaizen statement to clipboard
+function copyRewrittenStatement() {
+    const el = document.getElementById("rewritten-statement-text");
+    if (!el) return;
+    const text = el.innerText || el.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("📋 Đã sao chép phiên bản Kaizen viết lại chuẩn hóa vào bộ nhớ tạm! Bạn có thể dán vào khung đăng ký chính thức.");
+    }).catch(err => {
+        alert("Không thể tự động sao chép. Bạn hãy bôi đen và sao chép thủ công.");
+    });
 }
 
 function isEligibleForEvaluation(rec) {
