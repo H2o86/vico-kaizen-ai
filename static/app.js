@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v562.0";
-const APP_BUILD_TIME = "29/08/2026 - 13:40";
+const APP_VERSION = "v562.1";
+const APP_BUILD_TIME = "29/08/2026 - 13:46";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -578,6 +578,20 @@ async function handleKaizenCoaching(e) {
     if (!contentText) {
         alert("Vui lòng nhập nội dung đề tài cải tiến trước khi bấm Thẩm Định & Cố Vấn.");
         return;
+    }
+
+    const dupResult = evaluateClientSide(contentText, 5);
+    let dupContextStr = "";
+    if (dupResult) {
+        dupContextStr = `
+KẾT QUẢ ĐỐI CHIẾU TRÙNG LẮP TRONG CSDL CHÍNH THỨC VICO:
+- Độ tương đồng cao nhất: ${dupResult.max_similarity_pct}% (${dupResult.risk_level})
+- Khuyến nghị khen thưởng: ${dupResult.recommendation}
+- Các đề tài tương tự trong CSDL:
+`;
+        (dupResult.matched_kaizens || []).slice(0, 3).forEach(mk => {
+            dupContextStr += `  + [${mk.ma_kaizen}] ${mk.ten_y_tuong} (Độ giống: ${mk.overall_similarity_pct}%)\n`;
+        });
     }
 
     showLoading("🎯 AI Kaizen Coach đang thẩm định bản chất ý tưởng, chấm điểm Kaizen Fit & viết lại bài chuẩn hóa...");
