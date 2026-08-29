@@ -277,8 +277,25 @@ async def evaluate_kaizen_coaching(req: EvaluateRequest):
     if not api_key:
         return JSONResponse(status_code=500, content={"error": "Chưa tìm thấy GEMINI_API_KEY trong file .env trên server."})
 
+    # Chạy đối chiếu trùng lặp với CSDL VICO (Đã tự động loại trừ so sánh với chính mã Kaizen nếu có trong bài)
+    dup_analysis = None
+    dup_context_str = ""
+    if ai_checker:
+        dup_analysis = ai_checker.evaluate_proposal(content_text, top_k=5)
+        if dup_analysis:
+            dup_context_str = f"""
+KẾT QUẢ ĐỐI CHIẾU TRÙNG LẮP TRONG CSDL CHÍNH THỨC VICO:
+- Độ tương đồng cao nhất: {dup_analysis['max_similarity_pct']}% ({dup_analysis['risk_level']})
+- Khuyến nghị khen thưởng: {dup_analysis['recommendation']}
+- Các đề tài tương tự trong CSDL:
+"""
+            for mk in dup_analysis.get('matched_kaizens', [])[:3]:
+                dup_context_str += f"  + [{mk['ma_kaizen']}] {mk['ten_y_tuong']} (Độ giống: {mk['overall_similarity_pct']}%)\n"
+
     coaching_prompt = f"""Bạn là **AI Kaizen Evaluation & Coaching Agent** chính thức của Công ty VICO.
 Nhiệm vụ của bạn là thẩm định bản chất của đề tài cải tiến nộp vào, chấm điểm định lượng Kaizen Fit & Idea Maturity, phát hiện lãng phí (Muda), tìm lỗ hổng thông tin còn thiếu, đưa ra câu hỏi hướng dẫn và **viết lại bài Kaizen theo mẫu chuẩn hóa của VICO**.
+
+{dup_context_str}
 
 NỘI DUNG Ý TƯỞNG CẦN THẨM ĐỊNH & CỐ VẤN:
 \"\"\"
@@ -368,7 +385,7 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
     "measurement": "Chỉ số đo lường kết quả",
     "success_criteria": "Tiêu chuẩn đánh giá thành công"
   }},
-  "rewritten_kaizen_statement": "- **Tên cải tiến:** [Nêu tên ngắn gọn sáng tạo]\n- **Hiện trạng - Vấn đề:** [Mô tả chi tiết tại Gemba và số liệu lãng phí]\n- **Giải pháp:** [Chi tiết theo nguyên lý ECRS]\n- **Lợi ích mang lại:** [Hiệu quả định lượng]\n- **Nguồn lực thực hiện:** [Vật tư, chi phí, phòng ban hỗ trợ]\n- **Cơ hội nhân rộng và phát triển:** [Phạm vi nhân rộng toàn nhà máy]",
+  "rewritten_kaizen_statement": "- **Tên cải tiến:** [Nêu tên ngắn gọn sáng tạo]\\n- **Hiện trạng - Vấn đề:** [Mô tả chi tiết tại Gemba và số liệu lãng phí]\\n- **Giải pháp:** [Chi tiết theo nguyên lý ECRS]\\n- **Lợi ích mang lại:** [Hiệu quả định lượng]\\n- **Nguồn lực thực hiện:** [Vật tư, chi phí, phòng ban hỗ trợ]\\n- **Cơ hội nhân rộng và phát triển:** [Phạm vi nhân rộng toàn nhà máy]",
   "final_message": "Lời khuyên tổng quan dành cho tác giả nộp bài."
 }}"""
 
@@ -413,6 +430,7 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
             return JSONResponse(status_code=500, content={"error": "Không thể parse JSON từ Gemini API."})
 
     parsed_res["used_model"] = used_model
+    parsed_res["duplicate_analysis"] = dup_analysis
     return parsed_res
 
 class ChatMessage(BaseModel):

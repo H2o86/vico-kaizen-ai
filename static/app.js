@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v561.0";
-const APP_BUILD_TIME = "29/08/2026 - 13:29";
+const APP_VERSION = "v562.0";
+const APP_BUILD_TIME = "29/08/2026 - 13:40";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -763,6 +763,7 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
         }
 
         parsedResult.used_model = usedModel;
+        parsedResult.duplicate_analysis = dupResult;
         hideLoading();
         renderCoachingResult(parsedResult);
 
@@ -832,7 +833,53 @@ function renderCoachingResult(data) {
         </div>`;
     }
 
+    let dupHtml = "";
+    if (data.duplicate_analysis) {
+        const dup = data.duplicate_analysis;
+        const dupScore = dup.max_similarity_pct || 0;
+        let riskBadgeClass = "badge-new";
+        if (dupScore >= 70) riskBadgeClass = "badge-high";
+        else if (dupScore >= 35) riskBadgeClass = "badge-medium";
+
+        let matchedListHtml = "";
+        if (dup.matched_kaizens && dup.matched_kaizens.length > 0) {
+            matchedListHtml = dup.matched_kaizens.slice(0, 3).map(m => `
+                <div class="matched-item" onclick="openDetailModal('${m.ma_kaizen}')" style="cursor: pointer; background: rgba(15,23,42,0.6); padding: 10px; border-radius: 6px; margin-top: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600; color: #f8fafc; font-size: 13px;">
+                        <span><i class="fa-solid fa-file-lines" style="color: #60a5fa;"></i> [${m.ma_kaizen}] ${m.ten_y_tuong}</span>
+                        <span style="color: #fbbf24; font-weight: 700;">${m.overall_similarity_pct}% Giống</span>
+                    </div>
+                    <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">
+                        Tác giả: ${m.nguoi_de_xuat} (${m.don_vi || 'VICO'}) | Năm: ${m.nam || '2026'}
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        dupHtml = `
+        <div class="overview-summary-card" style="margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.35); background: rgba(15, 23, 42, 0.85); padding: 18px; border-radius: var(--radius-md);">
+            <div class="summary-top" style="display: flex; gap: 16px; align-items: center;">
+                <div class="score-gauge" style="min-width: 90px; height: 90px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, #0f172a 60%, transparent 61%), conic-gradient(${dupScore >= 70 ? '#ef4444' : dupScore >= 35 ? '#f59e0b' : '#10b981'} ${dupScore}%, rgba(255, 255, 255, 0.1) ${dupScore}%);">
+                    <span class="score-num" style="font-size: 20px; font-weight: 800; color: #fff;">${dupScore}%</span>
+                    <span class="score-label" style="font-size: 10px; color: #94a3b8;">Trùng Lắp</span>
+                </div>
+                <div class="summary-headline">
+                    <div class="risk-badge ${riskBadgeClass}">${dup.risk_level}</div>
+                    <div class="res-title-text" style="font-weight: 700; color: #fff; margin-top: 6px; font-size: 14px;">
+                        🔍 KẾT QUẢ ĐỐI CHIẾU TRÙNG LẮP VỚI CSDL KAIZEN VICO (2020 - HIỆN TẠI)
+                    </div>
+                </div>
+            </div>
+            <div class="conclusion-box" style="margin-top: 14px; background: rgba(30, 41, 59, 0.7); padding: 12px 16px; border-radius: 6px; font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+                <strong><i class="fa-solid fa-award" style="color: #fbbf24;"></i> Chính sách khen thưởng (Quy chế VICO):</strong><br>
+                ${dup.reward_policy}
+            </div>
+            ${matchedListHtml ? `<div style="margin-top: 14px;"><strong style="font-size: 12px; color: #94a3b8;"><i class="fa-solid fa-list-check"></i> Các đề tài tương tự trong CSDL VICO:</strong>${matchedListHtml}</div>` : ''}
+        </div>`;
+    }
+
     const html = `
+    ${dupHtml}
     <div class="coaching-card">
         <div class="coaching-header">
             <div class="coaching-title-box">

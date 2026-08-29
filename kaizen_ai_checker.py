@@ -100,20 +100,39 @@ class KaizenDuplicateChecker:
         """
         Evaluate a single full improvement proposal text.
         Determines similarity, duplicate risk, and 50% reward rule eligibility.
+        EXCLUDES self-matching if the input contains an existing Idea Code (mã Kaizen).
         """
         clean_input = self.preprocess_text(content_text)
         if not clean_input:
             return None
 
+        # Extract potential Idea Code (ma_kaizen) from input content
+        extracted_codes = set()
+        code_matches = re.findall(r'\b\d{10,15}-\d+\b', content_text) + re.findall(r'\bKZ-[A-Z0-9-]+\b', content_text, re.I)
+        for cm in code_matches:
+            extracted_codes.add(cm.strip().lower())
+
+        # Check if any record's exact ma_kaizen appears in input text
+        for r in self.records:
+            mk = str(r.get('ma_kaizen') or '').strip().lower()
+            if mk and len(mk) > 3 and mk in content_text.lower():
+                extracted_codes.add(mk)
+
         query_vec = self.vectorizer.transform([clean_input])
         sim_scores = cosine_similarity(query_vec, self.tfidf_matrix).flatten()
 
-        top_indices = np.argsort(sim_scores)[::-1][:top_k]
+        top_indices = np.argsort(sim_scores)[::-1]
 
         matches = []
         for idx in top_indices:
-            score = float(sim_scores[idx])
             rec = self.records[idx]
+            rec_code = str(rec.get('ma_kaizen') or '').strip().lower()
+
+            # EXCLUDE SELF MATCH IF CODE MATCHES
+            if rec_code and rec_code in extracted_codes:
+                continue
+
+            score = float(sim_scores[idx])
 
             # Compute specific solution text similarity
             sol_clean = self.preprocess_text(rec['giai_phap'])
@@ -137,6 +156,9 @@ class KaizenDuplicateChecker:
                 'overall_similarity_pct': round(score * 100, 1),
                 'solution_similarity_pct': round(sol_sim * 100, 1)
             })
+
+            if len(matches) >= top_k:
+                break
 
         max_score = matches[0]['overall_similarity_pct'] if matches else 0
         top_match = matches[0] if matches else None
