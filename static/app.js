@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v559.0";
-const APP_BUILD_TIME = "29/08/2026 - 12:55";
+const APP_VERSION = "v559.1";
+const APP_BUILD_TIME = "29/08/2026 - 12:58";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -582,21 +582,181 @@ async function handleKaizenCoaching(e) {
 
     showLoading("🎯 AI Kaizen Coach đang thẩm định bản chất ý tưởng, chấm điểm Kaizen Fit & viết lại bài chuẩn hóa...");
 
-    try {
-        const response = await fetch("/api/evaluate_kaizen_coaching", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ content: contentText })
-        });
+    // 1. Try local server endpoint if on local server
+    if (isLocalServer) {
+        try {
+            const response = await fetch("/api/evaluate_kaizen_coaching", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: contentText })
+            });
 
-        if (!response.ok) {
-            const errData = await response.json();
-            throw new Error(errData.error || `HTTP error ${response.status}`);
+            const contentType = response.headers.get("content-type") || "";
+            if (response.ok && contentType.includes("application/json")) {
+                const coachingData = await response.json();
+                hideLoading();
+                renderCoachingResult(coachingData);
+                return;
+            }
+        } catch (sErr) {
+            console.warn("Server-side coaching error:", sErr.message);
+        }
+    }
+
+    // 2. Client-side fallback (for GitHub Pages static host or missing server)
+    const apiKey = getGeminiApiKey();
+    if (!apiKey) {
+        hideLoading();
+        alert("Hệ thống đang chạy trên giao diện GitHub Pages. Để sử dụng AI Kaizen Coach, vui lòng nhập API Key hoặc chạy Web Server địa phương có file .env!");
+        return;
+    }
+
+    try {
+        const coachingPrompt = `Bạn là **AI Kaizen Evaluation & Coaching Agent** chính thức của Công ty VICO.
+Nhiệm vụ của bạn là thẩm định bản chất của đề tài cải tiến nộp vào, chấm điểm định lượng Kaizen Fit & Idea Maturity, phát hiện lãng phí (Muda), tìm lỗ hổng thông tin còn thiếu, đưa ra câu hỏi hướng dẫn và **viết lại bài Kaizen theo mẫu chuẩn hóa của VICO**.
+
+NỘI DUNG Ý TƯỞNG CẦN THẨM ĐỊNH & CỐ VẤN:
+"""
+${contentText}
+"""
+
+NGUYÊN TẮC CỐT LÕI & PHÂN LOẠI (CLASSIFICATION):
+1. KAIZEN: Có bản chất cải tiến rõ ràng (Hiện trạng -> Vấn đề -> Thay đổi -> Trạng thái tốt hơn).
+2. KAIZEN_NEEDS_REFINEMENT: Có bản chất Kaizen nhưng cần bổ sung thông tin trước khi triển khai.
+3. KAIZEN_CANDIDATE_NEED_INFO: Có dấu hiệu Kaizen nhưng thông tin quá sơ khai.
+4. PROBLEM_ONLY: Mới chỉ nêu phản ánh vấn đề/khó khăn, chưa đưa ra giải pháp/thay đổi nào.
+5. TARGET_ONLY: Mới chỉ nêu mục tiêu (VD: "Cần giảm 20% điện") chưa có giải pháp.
+6. MAINTENANCE_REPAIR: Chỉ là sửa chữa/thay thế khôi phục thiết bị về trạng thái ban đầu, KHÔNG PHẢI KAIZEN.
+7. COMPLIANCE_ACTION: Chỉ thực hiện theo đúng luật/SOP bắt buộc, chưa phải cải tiến phương pháp.
+8. IMPROVEMENT_PROJECT: Là dự án chuyển đổi quy mô lớn/Kaikaku.
+9. NOT_RECOMMENDED_RISK: Tạo ra rủi ro an toàn/pháp lý/chất lượng nghiêm trọng không chấp nhận được.
+10. NOT_IMPROVEMENT: Không có yếu tố cải tiến.
+
+THỨ TỰ ƯU TIÊN AN TOÀN: SAFETY -> LEGAL/COMPLIANCE -> QUALITY -> OPERATION -> COST.
+
+YÊU CẦU TRẢ VỀ:
+Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown code block hay text giải thích bên ngoài) theo cấu trúc:
+{
+  "classification": "KAIZEN",
+  "classification_display": "🟢 Ý TƯỞNG KAIZEN CHUẨN",
+  "classification_reason": "Mô tả ngắn gọn lý do phân loại trong 1-2 câu.",
+  "kaizen_fit": {
+    "score": 85,
+    "level": "STRONG_KAIZEN",
+    "components": {
+      "problem_waste": 18,
+      "concrete_change": 18,
+      "testability": 12,
+      "measurable_improvement": 12,
+      "process_relevance": 13,
+      "sustainability": 12
+    }
+  },
+  "idea_maturity": {
+    "score": 65,
+    "level": "DEVELOPING",
+    "components": {
+      "problem_definition": 12,
+      "baseline_data": 5,
+      "root_cause": 10,
+      "solution_alignment": 12,
+      "expected_benefit": 10,
+      "feasibility": 8,
+      "risk_analysis": 4,
+      "pilot_standardization": 4
+    }
+  },
+  "confidence": {
+    "level": "HIGH",
+    "coverage_percent": 80
+  },
+  "waste_categories": ["waiting", "motion", "safety_risk"],
+  "causal_logic": {
+    "status": "PLAUSIBLE",
+    "explanation": "Giải thích mối quan hệ nguyên nhân - giải pháp ngắn gọn."
+  },
+  "missing_information": [
+    "Thời gian thực hiện thao tác hiện tại",
+    "Tần suất xảy ra sự cố"
+  ],
+  "top_questions": [
+    "Thao tác hiện tại đang mất bao nhiêu phút mỗi lần thực hiện?",
+    "Một tháng trung bình có bao nhiêu lần xảy ra sự cố này?"
+  ],
+  "improvement_recommendations": [
+    "Nên thử nghiệm trước tại 01 máy hoặc 1 ca làm việc.",
+    "Bổ sung chỉ số đo lường cụ thể để minh chứng hiệu quả."
+  ],
+  "pilot": {
+    "recommended": true,
+    "minimum_testable_kaizen": "Thử nghiệm giải pháp trên phạm vi nhỏ nhất.",
+    "scope": "Phân xưởng / Bộ phận thử nghiệm",
+    "measurement": "Chỉ số đo lường kết quả",
+    "success_criteria": "Tiêu chuẩn đánh giá thành công"
+  },
+  "rewritten_kaizen_statement": "Hiện tại [Quy trình] đang [Vấn đề/Hiện trạng]... Đề xuất thay đổi [Phương pháp cũ] thành [Phương pháp mới] nhằm cải thiện [KPI]. Trước tiên thử nghiệm tại [Phạm vi pilot] trong [Thời gian]. Thành công khi [Tiêu chuẩn]. Nguồn lực cần thiết...",
+  "final_message": "Lời khuyên tổng quan dành cho tác giả nộp bài."
+}`;
+
+        const GEMINI_MODELS = [
+            "gemini-3.6-flash",
+            "gemini-3.5-flash",
+            "gemini-flash-latest",
+            "gemini-2.5-flash"
+        ];
+
+        let geminiJson = null;
+        let lastErrorMsg = "";
+        let usedModel = "";
+
+        for (const modelName of GEMINI_MODELS) {
+            try {
+                const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                const res = await fetch(geminiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: coachingPrompt }] }]
+                    })
+                });
+
+                if (res.ok) {
+                    geminiJson = await res.json();
+                    usedModel = modelName;
+                    break;
+                } else {
+                    const errData = await res.json();
+                    lastErrorMsg = errData.error?.message || `HTTP ${res.status}`;
+                }
+            } catch (mErr) {
+                lastErrorMsg = mErr.message;
+            }
         }
 
-        const coachingData = await response.json();
+        if (!geminiJson) {
+            throw new Error(lastErrorMsg || "Không thể kết nối Gemini API.");
+        }
+
+        const rawText = geminiJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        let cleanedJson = rawText.replace(/```json/gi, "").replace(/```/g, "").trim();
+        let parsedResult = null;
+        try {
+            parsedResult = JSON.parse(cleanedJson);
+        } catch (pErr) {
+            const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                parsedResult = JSON.parse(jsonMatch[0]);
+            }
+        }
+
+        if (!parsedResult) {
+            throw new Error("Không thể parse kết quả JSON từ AI Coach.");
+        }
+
+        parsedResult.used_model = usedModel;
         hideLoading();
-        renderCoachingResult(coachingData);
+        renderCoachingResult(parsedResult);
+
     } catch (err) {
         hideLoading();
         alert("Lỗi khi kết nối AI Kaizen Coach: " + err.message);
