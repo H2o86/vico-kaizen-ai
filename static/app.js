@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v560.0";
-const APP_BUILD_TIME = "29/08/2026 - 13:05";
+const APP_VERSION = "v560.1";
+const APP_BUILD_TIME = "29/08/2026 - 13:09";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -765,11 +765,25 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
 
 // Render AI Kaizen Coaching Results
 function renderCoachingResult(data) {
-    const resultsContainer = document.getElementById("eval-results");
-    if (!resultsContainer) return;
+    const parentContainer = document.getElementById("result-container");
+    if (!parentContainer) return;
 
-    resultsContainer.classList.remove("hidden");
-    resultsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Hide empty state, loading state, and duplicate result container
+    const emptyElem = document.getElementById("empty-state");
+    if (emptyElem) emptyElem.classList.add("hidden");
+    const loadElem = document.getElementById("loading-state");
+    if (loadElem) loadElem.classList.add("hidden");
+    const evalResElem = document.getElementById("eval-result");
+    if (evalResElem) evalResElem.classList.add("hidden");
+
+    let coachingContainer = document.getElementById("coaching-result-wrapper");
+    if (!coachingContainer) {
+        coachingContainer = document.createElement("div");
+        coachingContainer.id = "coaching-result-wrapper";
+        parentContainer.appendChild(coachingContainer);
+    }
+    coachingContainer.classList.remove("hidden");
+    coachingContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 
     // Classification Badge styling
     let badgeClass = "badge-info";
@@ -908,7 +922,7 @@ function renderCoachingResult(data) {
         </div>
     </div>`;
 
-    resultsContainer.innerHTML = html;
+    coachingContainer.innerHTML = html;
 
     // Initialize Chat History
     coachingChatHistory = [
@@ -1220,6 +1234,9 @@ function evaluateClientSide(inputStr, topK = 5) {
 
 // Render Results
 function renderEvaluationResult(data, contentText) {
+    const coachingWrapper = document.getElementById("coaching-result-wrapper");
+    if (coachingWrapper) coachingWrapper.classList.add("hidden");
+
     const resElem = document.getElementById("eval-result");
     if (resElem) resElem.classList.remove("hidden");
 
