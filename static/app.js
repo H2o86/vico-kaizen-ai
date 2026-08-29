@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v560.1";
-const APP_BUILD_TIME = "29/08/2026 - 13:09";
+const APP_VERSION = "v561.0";
+const APP_BUILD_TIME = "29/08/2026 - 13:29";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -634,6 +634,15 @@ NGUYÊN TẮC CỐT LÕI & PHÂN LOẠI (CLASSIFICATION):
 
 THỨ TỰ ƯU TIÊN AN TOÀN: SAFETY -> LEGAL/COMPLIANCE -> QUALITY -> OPERATION -> COST.
 
+QUY TẮC CẤU TRÚC BÀI VIẾT LẠI KAIZEN (rewritten_kaizen_statement):
+Bài viết lại BẮT BUỘC tuân thủ đúng 6 mục sau (dạng Plain Text với Dấu gạch đầu dòng bullet points, KHÔNG dùng bảng Markdown hay định dạng vỡ khi sao chép):
+- **Tên cải tiến:** (Sáng tạo, ngắn gọn thể hiện rõ hành động & mục tiêu).
+- **Hiện trạng - Vấn đề:** Mô tả chi tiết vấn đề, bất cập hoặc lãng phí đang xảy ra tại hiện trường (Gemba). Số liệu lãng phí ước tính (thời gian, công sức, vật tư).
+- **Giải pháp:** Cụ thể biện pháp cải tiến áp dụng nguyên lý ECRS (Giải thích rõ phương pháp áp dụng: E - Eliminate: Loại bỏ; C - Combine: Kết hợp; R - Rearrange: Thay đổi/Sắp xếp lại; S - Simplify: Đơn giản hóa). Giải thích tại sao giải pháp này tối ưu hơn cách làm cũ.
+- **Lợi ích mang lại:** Hiệu quả định lượng (Tiết kiệm bao nhiêu thời gian/ca, giảm bao nhiêu vật tư, tăng năng suất, cải thiện an toàn như thế nào).
+- **Nguồn lực thực hiện:** Các công cụ, vật liệu, chi phí dự kiến hoặc phòng ban cần hỗ trợ để triển khai ý tưởng này.
+- **Cơ hội nhân rộng và phát triển:** Ý tưởng này có thể áp dụng cho các dây chuyền, công đoạn hoặc khu vực nào khác trong nhà máy.
+
 YÊU CẦU TRẢ VỀ:
 Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown code block hay text giải thích bên ngoài) theo cấu trúc:
 {
@@ -694,7 +703,7 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
     "measurement": "Chỉ số đo lường kết quả",
     "success_criteria": "Tiêu chuẩn đánh giá thành công"
   },
-  "rewritten_kaizen_statement": "Hiện tại [Quy trình] đang [Vấn đề/Hiện trạng]... Đề xuất thay đổi [Phương pháp cũ] thành [Phương pháp mới] nhằm cải thiện [KPI]. Trước tiên thử nghiệm tại [Phạm vi pilot] trong [Thời gian]. Thành công khi [Tiêu chuẩn]. Nguồn lực cần thiết...",
+  "rewritten_kaizen_statement": "- **Tên cải tiến:** [Nêu tên ngắn gọn sáng tạo]\\n- **Hiện trạng - Vấn đề:** [Mô tả chi tiết tại Gemba và số liệu lãng phí]\\n- **Giải pháp:** [Chi tiết theo nguyên lý ECRS]\\n- **Lợi ích mang lại:** [Hiệu quả định lượng]\\n- **Nguồn lực thực hiện:** [Vật tư, chi phí, phòng ban hỗ trợ]\\n- **Cơ hội nhân rộng và phát triển:** [Phạm vi nhân rộng toàn nhà máy]",
   "final_message": "Lời khuyên tổng quan dành cho tác giả nộp bài."
 }`;
 
@@ -1049,6 +1058,15 @@ Nhiệm vụ của bạn là trò chuyện tương tác 2 chiều với Cán b�
 2. Hướng dẫn tác giả bổ sung các thông tin còn thiếu (Hiện trạng, Baseline, KPI, Tần suất lỗi).
 3. Cố vấn thu nhỏ phạm vi thử nghiệm (Pilot) & đề xuất chỉ số đo lường.
 4. Giúp tác giả **viết lại đề tài Kaizen theo cấu trúc chuẩn hóa VICO** khi tác giả yêu cầu hoặc khi thông tin đã đủ.
+
+QUY TẮC CẤU TRÚC BÀI VIẾT LẠI KAIZEN:
+Khi được yêu cầu viết lại hoặc trình trình bày bản chuẩn hóa Kaizen, BẮT BUỘC tuân thủ đúng 6 mục sau (dạng Plain Text với bullet points, KHÔNG dùng bảng Markdown):
+- **Tên cải tiến:** (Sáng tạo, ngắn gọn).
+- **Hiện trạng - Vấn đề:** Mô tả chi tiết vấn đề, bất cập hoặc lãng phí đang xảy ra tại hiện trường (Gemba). Số liệu lãng phí ước tính (thời gian, công sức, vật tư).
+- **Giải pháp:** Cụ thể biện pháp cải tiến áp dụng nguyên lý ECRS (Giải thích rõ phương pháp áp dụng: E - Eliminate: Loại bỏ; C - Combine: Kết hợp; R - Rearrange: Thay đổi/Sắp xếp lại; S - Simplify: Đơn giản hóa). Giải thích tại sao giải pháp này tối ưu hơn cách làm cũ.
+- **Lợi ích mang lại:** Hiệu quả định lượng (Tiết kiệm bao nhiêu thời gian/ca, giảm bao nhiêu vật tư, tăng năng suất, cải thiện an toàn như thế nào).
+- **Nguồn lực thực hiện:** Các công cụ, vật liệu, chi phí dự kiến hoặc phòng ban cần hỗ trợ để triển khai ý tưởng này.
+- **Cơ hội nhân rộng và phát triển:** Ý tưởng này có thể áp dụng cho các dây chuyền, công đoạn hoặc khu vực nào khác trong nhà máy.
 
 PHONG CÁCH TRÒ CHUYỆN: Lịch sự, chuyên nghiệp, khuyến khích sáng tạo, súc tích và có trọng tâm. Dùng định dạng Markdown rõ ràng.`;
 
