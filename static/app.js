@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v563.0";
-const APP_BUILD_TIME = "29/08/2026 - 14:17";
+const APP_VERSION = "v564.0";
+const APP_BUILD_TIME = "29/08/2026 - 14:25";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -892,6 +892,35 @@ function renderCoachingResult(data) {
         </div>`;
     }
 
+    const isMature = maturityScore >= 65 && data.classification === "KAIZEN" && data.rewritten_kaizen_statement && !data.rewritten_kaizen_statement.includes('[Cần bổ sung');
+
+    let rewrittenBlockHtml = "";
+    if (isMature) {
+        rewrittenBlockHtml = `
+        <!-- Rewritten Standardized Kaizen Statement -->
+        <div class="rewritten-section">
+            <div class="rewritten-header">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> PHIÊN BẢN KAIZEN ĐÃ ĐƯỢC AI VIẾT LẠI CHUẨN HÓA</h4>
+                <button type="button" class="btn-copy-rewritten" onclick="copyRewrittenStatement()">
+                    <i class="fa-solid fa-copy"></i> 📋 Sao Chép Bài Viết Lại
+                </button>
+            </div>
+            <div class="rewritten-content" id="rewritten-statement-text">${data.rewritten_kaizen_statement}</div>
+        </div>`;
+    } else {
+        rewrittenBlockHtml = `
+        <!-- Guidance Box for Raw/Incomplete Ideas -->
+        <div class="rewritten-section" style="background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3);">
+            <div class="rewritten-header">
+                <h4 style="color: #fbbf24;"><i class="fa-solid fa-comments-dollar"></i> Ý TƯỞNG SƠ KHAI: AI COACH CHƯA VỘI LẬP BÀI CHUẨN HÓA</h4>
+            </div>
+            <div style="font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+                ⏳ Ý tưởng của bạn hiện đang ở dạng sơ khai (Độ hoàn thiện: <strong>${maturityScore}/100</strong>). AI Coach chưa vội viết bài chuẩn hóa ngay để tránh đưa ra thông tin suy đoán thiếu chính xác.<br><br>
+                👉 <strong>Vui lòng trò chuyện 2 chiều với Trợ lý AI Coach trong khung Chatbot bên dưới</strong> để trả lời 1 vài câu hỏi ngắn về hiện trường (Gemba). Sau khi thu thập đủ dữ liệu, AI Coach sẽ tự động xuất bài viết chuẩn hóa 6 mục ECRS hoàn chỉnh cho bạn!
+            </div>
+        </div>`;
+    }
+
     const html = `
     ${dupHtml}
     <div class="coaching-card">
@@ -934,16 +963,7 @@ function renderCoachingResult(data) {
             </div>
         </div>
 
-        <!-- Rewritten Standardized Kaizen Statement -->
-        <div class="rewritten-section">
-            <div class="rewritten-header">
-                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> PHIÊN BẢN KAIZEN ĐÃ ĐƯỢC AI VIẾT LẠI CHUẨN HÓA</h4>
-                <button type="button" class="btn-copy-rewritten" onclick="copyRewrittenStatement()">
-                    <i class="fa-solid fa-copy"></i> 📋 Sao Chép Bài Viết Lại
-                </button>
-            </div>
-            <div class="rewritten-content" id="rewritten-statement-text">${data.rewritten_kaizen_statement || 'Đang cập nhật phiên bản viết lại...'}</div>
-        </div>
+        ${rewrittenBlockHtml}
 
         <!-- Details Grid -->
         <div class="coaching-details-grid">

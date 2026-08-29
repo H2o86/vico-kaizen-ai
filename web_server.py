@@ -317,7 +317,9 @@ NGUYÊN TẮC CỐT LÕI & PHÂN LOẠI (CLASSIFICATION):
 THỨ TỰ ƯU TIÊN AN TOÀN: SAFETY -> LEGAL/COMPLIANCE -> QUALITY -> OPERATION -> COST.
 
 QUY TẮC CẤU TRÚC BÀI VIẾT LẠI KAIZEN (rewritten_kaizen_statement):
-Bài viết lại BẮT BUỘC tuân thủ đúng 6 mục sau (dạng Plain Text với Dấu gạch đầu dòng bullet points, KHÔNG dùng bảng Markdown hay định dạng vỡ khi sao chép):
+LƯU Ý QUAN TRỌNG: Nếu ý tưởng của người dùng còn sơ khai (Idea Maturity Score < 65 hoặc thuộc loại KAIZEN_CANDIDATE_NEED_INFO, PROBLEM_ONLY, TARGET_ONLY, KAIZEN_NEEDS_REFINEMENT), KHÔNG VỘI VIẾT LẠI bài chuẩn hóa để tránh suy đoán sai thực tế! Trong trường hợp này, hãy để thuộc tính `rewritten_kaizen_statement` là null.
+
+Chỉ khi ý tưởng đã có đủ thông tin nền tảng (Idea Maturity >= 65 hoặc loại KAIZEN), mới thực hiện viết lại BẮT BUỘC tuân thủ đúng 6 mục sau (dạng Plain Text với Dấu gạch đầu dòng bullet points, KHÔNG dùng bảng Markdown):
 - **Tên cải tiến:** (Sáng tạo, ngắn gọn thể hiện rõ hành động & mục tiêu).
 - **Hiện trạng - Vấn đề:** Mô tả chi tiết vấn đề, bất cập hoặc lãng phí đang xảy ra tại hiện trường (Gemba). Số liệu lãng phí ước tính (thời gian, công sức, vật tư).
 - **Giải pháp:** Cụ thể biện pháp cải tiến áp dụng nguyên lý ECRS (Giải thích rõ phương pháp áp dụng: E - Eliminate: Loại bỏ; C - Combine: Kết hợp; R - Rearrange: Thay đổi/Sắp xếp lại; S - Simplify: Đơn giản hóa). Giải thích tại sao giải pháp này tối ưu hơn cách làm cũ.
