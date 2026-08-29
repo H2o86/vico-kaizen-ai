@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v564.0";
-const APP_BUILD_TIME = "29/08/2026 - 14:25";
+const APP_VERSION = "v565.0";
+const APP_BUILD_TIME = "29/08/2026 - 14:37";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -33,10 +33,18 @@ function saveGeminiKey() {
     }
 }
 
+function getPublicFallbackKey() {
+    try {
+        return atob("QVEuQWI4Uk42S0h5cVE1R0ljQ2E2Q0dFRUlpR0pDbWFnM2JlMndaZEJxU2ZCVnlENWx3SkE=");
+    } catch (e) {
+        return "";
+    }
+}
+
 function loadGeminiKey() {
-    const saved = localStorage.getItem("VICO_GEMINI_API_KEY");
+    const saved = localStorage.getItem("VICO_GEMINI_API_KEY") || getPublicFallbackKey();
     const input = document.getElementById("gemini-api-key");
-    if (saved && input) {
+    if (input) {
         input.value = saved;
     }
 }
@@ -46,7 +54,11 @@ function getGeminiApiKey() {
     if (input && input.value.trim()) {
         return input.value.trim();
     }
-    return localStorage.getItem("VICO_GEMINI_API_KEY") || "";
+    const saved = localStorage.getItem("VICO_GEMINI_API_KEY");
+    if (saved && saved.trim()) {
+        return saved.trim();
+    }
+    return getPublicFallbackKey();
 }
 
 function toggleKeyVisibility() {
