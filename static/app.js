@@ -5,8 +5,8 @@ let isLocalServer = true;
 
 const LIVE_GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3V5Gp8fEM7amTugmV5tXM6ROfKi2X_q-WABk9TJutPITpF0tJd1gBWQ-tKaCHnKpvBqEHymFWbdVT/pub?gid=693129581&single=true&output=csv';
 
-const APP_VERSION = "v565.0";
-const APP_BUILD_TIME = "29/08/2026 - 14:37";
+const APP_VERSION = "v566.0";
+const APP_BUILD_TIME = "29/09/2026 - 17:18";
 
 document.addEventListener("DOMContentLoaded", async () => {
     setElementText("sys-version-tag", APP_VERSION);
@@ -498,10 +498,11 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
 
         // Step 3: Call Gemini REST API with automatic model fallback array
         const GEMINI_MODELS = [
-            "gemini-3.6-flash",
-            "gemini-3.5-flash",
-            "gemini-flash-latest",
-            "gemini-2.5-flash"
+            "gemini-3.8-flash",
+            "gemini-2.5-flash",
+            "gemini-2.0-flash",
+            "gemini-1.5-flash",
+            "gemini-flash-latest"
         ];
 
         let geminiJson = null;
@@ -734,10 +735,11 @@ Hãy trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm Markdown c
 }`;
 
         const GEMINI_MODELS = [
-            "gemini-3.6-flash",
-            "gemini-3.5-flash",
-            "gemini-flash-latest",
-            "gemini-2.5-flash"
+            "gemini-3.8-flash",
+            "gemini-2.5-flash",
+            "gemini-2.0-flash",
+            "gemini-1.5-flash",
+            "gemini-flash-latest"
         ];
 
         let geminiJson = null;
@@ -1139,10 +1141,11 @@ async function sendChatMessage(customText) {
             }
 
             const GEMINI_MODELS = [
-                "gemini-3.6-flash",
-                "gemini-3.5-flash",
-                "gemini-flash-latest",
-                "gemini-2.5-flash"
+                "gemini-3.8-flash",
+                "gemini-2.5-flash",
+                "gemini-2.0-flash",
+                "gemini-1.5-flash",
+                "gemini-flash-latest"
             ];
 
             const systemInstruction = `# ROLE
